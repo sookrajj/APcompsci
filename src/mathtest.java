@@ -12,7 +12,7 @@ public class mathtest {
 
         num1 = num1 + 1;
         num1 += 1;
-        num1++;
+
 
         int test = 3/4;
         System.out.println(test);
@@ -20,8 +20,10 @@ public class mathtest {
         double myWallet = 235.963475;
         double myWRounded = Math.round(myWallet * 100.0) / 100.0;
 
-        System.out.println("myWRounded");
-        System.out.printf("myWRounded = %.2\n", myWallet);
-
+        System.out.println(myWRounded);
+        System.out.printf("myWRounded = %.2f\n", myWallet);
     }
 }
+       //0
+       // 235.96
+       //myWRounded = 235.96
