@@ -9,12 +9,14 @@ public class Prog54c {
                 double pi = 3.1415926;
                 double Circumference = radius * 2 * pi;
                 double Area = radius * radius * pi;
+                double circumference = Math.round(Circumference * 100.0) / 100.0;
+                double area = Math.round(Area * 100.0) / 100.0;
 
                 System.out.println("Radius=" + radius);
-                System.out.println("Circumference =" + Circumference);
-                System.out.println("Area=" + Area);
+                System.out.println("Circumference =" + circumference);
+                System.out.println("Area=" + area);
     }
 }
 //Radius=3.712
-//Circumference =23.323183462400003
-//Area=43.2878285062144
+//Circumference =23.32
+//Area=43.29
