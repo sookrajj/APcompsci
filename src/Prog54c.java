@@ -1,0 +1,20 @@
+import java.util.*;
+
+public class Prog54c {
+
+    public static void main(String[] args) {
+        Scanner input = new Scanner(System.in);
+        System.out.println("Enter radius: ");
+        double radius = 3.712;
+                double pi = 3.1415926;
+                double Circumference = radius * 2 * pi;
+                double Area = radius * radius * pi;
+
+                System.out.println("Radius=" + radius);
+                System.out.println("Circumference =" + Circumference);
+                System.out.println("Area=" + Area);
+    }
+}
+//Radius=3.712
+//Circumference =23.323183462400003
+//Area=43.2878285062144
