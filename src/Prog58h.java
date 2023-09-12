@@ -32,3 +32,5 @@ public class Prog58h {
 
     }
 }
+//The interest earned is 1637.9571470100136
+//The total amount in savings is now 6637.957147010014
