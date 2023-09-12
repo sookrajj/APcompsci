@@ -18,16 +18,14 @@ public class Prog58h {
         double t = input.nextDouble();
 
         double m = (.01 * r) / n;
-        double l = (n * t) / 365;
-        double f = (Math.pow( m , l));
-        double A = p * (1 + f);
+        double l = (n * t) / 365.0;
+        double A = p * (Math.pow(1 + ((.01 * r) / n), l)) - 1;
 
         double earn = A - p;
 
 
         System.out.println("The interest earned is " + earn);
         System.out.println("The total amount in savings is now " + A);
-
 
 
 
