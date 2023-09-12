@@ -17,8 +17,10 @@ public class Prog58h {
         System.out.println("The amount of days the money is in the account is");
         double t = input.nextDouble();
 
-        double f = Math.pow(((.01 * r) / n), ((n * t) / 365));
-        double A = p * ((1 + f));
+        double m = (.01 * r) / n;
+        double l = (n * t) / 365;
+        double f = (Math.pow( m , l));
+        double A = p * (1 + f);
 
         double earn = A - p;
 
