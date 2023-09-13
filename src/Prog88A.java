@@ -28,6 +28,7 @@ public class Prog88A {
         } else {
             min = num1;
         }
+
         System.out.println("Original numbers are " + num1 + " and " + num2);
 
         System.out.println("Sum = " + sum + " Difference = " + dif + " product = " + pro);
