@@ -11,19 +11,22 @@ public class Prog72t {
 
         System.out.println("the time in coordinates is (" + f + "," + s + ")");
 
-        if (f > s) {
-            double m = f - s;
-            double n = Math.floor(m / 60);
-            double k = m - n;
-            k = l;
-        } else {
-            double m = s - f;
-            double n = Math.floor(m / 60);
-            double k = m - n;
-            k = l;
-        }
+        double v = Math.abs(f - s);
+
+        double n = Math.floor(v / 100);
+        double k = v - n * 100;
 
 
         System.out.println("The difference in time is: " + n + "hours and " + k + "minutes");
+
     }
 }
+//The first military time is:
+//900
+//The second military time is:
+//1730
+//the time in coordinates is (900.0,1730.0)
+//The difference in time is: 8.0hours and 30.0minutes
+
+//the time in coordinates is (1730.0,900.0)
+//The difference in time is: 8.0hours and 30.0minutes
