@@ -11,10 +11,11 @@ public class Prog93a {
         double v = Math.round(t * 100) / 100.0;
         double w = i * .03;
         double b = Math.round(w * 100) / 100.0;
-        double h = i * .04;
-        double m = Math.round(h * 100) / 100.0;
         double p = i + v + b;
+        double h = p * .04;
+        double m = Math.round(h * 100) / 100.0;
         double s = p + m;
+        double y = Math.round(s * 100) / 100.0;
 
         System.out.println("   C O M P S C I Electric   ");
         System.out.println("-----------------------------");
@@ -29,7 +30,22 @@ public class Prog93a {
         System.out.println("");
         System.out.println("Pay this amount        $ " + p);
         System.out.println("");
-        System.out.println("After May 20th Pay     $ " + s);
+        System.out.println("After May 20th Pay     $ " + y);
+
 
     }
 }
+//   C O M P S C I Electric
+//-----------------------------
+//Kilowatts Used             993.0
+//-----------------------------
+//
+//Base Rate 993*.475     $ 47.17
+//Surcharge             $  4.72
+//Citytax               $  1.42
+//
+//                       ------
+//
+//Pay this amount        $ 53.31
+//
+//After May 20th Pay     $ 55.44
