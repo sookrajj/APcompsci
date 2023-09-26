@@ -4,17 +4,29 @@ public class LP1 {
     public static void main(String[] args) {
         Scanner input = new Scanner(System.in);
 
-        System.out.println("B  I  N  G  O");
+        System.out.println("The amount of copies you want: ");
+        int f = input.nextInt();
 
-        double b = Math.random() * (16 - 1);
-        double h = Math.floor(b);
-        double i = Math.random() * (31 - 16);
-        double w = Math.floor(i);
-        double n = Math.random() * (46 - 31);
-        double k = Math.floor(n);
-        double g = Math.random() * (61 - 46);
-        double p = Math.floor(g);
-        double o = Math.random() * (76 - 61);
-        double q = Math.floor(o);
+        if (f < 100) {
+            double j = f * 0.30;
+            System.out.println("price per copy is: $" + 0.30);
+            System.out.println("Total cost is: $" + j);
+        } else if (f < 500) {
+            double j = f * 0.28;
+            System.out.println("price per copy is: $" + 0.28);
+            System.out.println("Total cost is: $" + j);
+        } else if (f<750) {
+            double j = f * 0.27;
+            System.out.println("price per copy is: $" + 0.27);
+            System.out.println("Total cost is: $" + j);
+        } else if (f < 1001) {
+            double j = f * 0.26;
+            System.out.println("price per copy is: $" + 0.26);
+            System.out.println("Total cost is: $" + j);
+        } else {
+            double j = f * 0.25;
+            System.out.println("price per copy is: $" + 0.25);
+            System.out.println("Total cost is: $" + j);
+        }
     }
 }
