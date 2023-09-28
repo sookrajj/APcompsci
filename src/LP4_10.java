@@ -27,3 +27,21 @@ public class LP4_10{
     System.out.println("The area of the cube is: " + y);
   }
 }
+//Rectangular prism
+//The length is:
+//3
+//The width is:
+//4
+//The height is:
+//5
+//The volume is: 60
+//Sphere
+//The radius is:
+//3
+//The area of the Sphere is: 113.04
+//Cube
+//The length of a side is:
+//4
+//The area of the cube is: 64.0
+//
+//Process finished with exit code 0

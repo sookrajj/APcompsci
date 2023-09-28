@@ -16,7 +16,7 @@ public class LP4_3 {
     } else if (k < 11) {
       double h = k * 0.40 + u * ( 0.40 / 12);
       System.out.println("The bill is equal to: $" + h);
-    } else (k > 11) {
+    } else {
       double h = k * 0.35 + u * ( 0.35 / 12);
       System.out.println("The bill is equal to: $" + h);
     }

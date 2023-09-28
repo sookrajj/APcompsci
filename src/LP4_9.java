@@ -6,7 +6,7 @@ public class LP4_9 {
     System.out.println("Enter a number between 1-20");
     int y = input.nextInt();
     double h = Math.random() * 20;
-    int r = Math.floor(h);
+    double r = Math.floor(h);
     System.out.println("Computer's number: " + r);
     System.out.println("Player's number: " + y);
     if (y == r) {
@@ -16,3 +16,8 @@ public class LP4_9 {
     }
   }
 }
+// Enter a number between 1-20
+//16
+//Computer's number: 2.0
+//Player's number: 16
+//Better luck next time!
