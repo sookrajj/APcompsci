@@ -5,8 +5,8 @@ public class LP4_9 {
     Scanner input = new Scanner(System.in);
     System.out.println("Enter a number between 1-20");
     int y = input.nextInt();
-    double h = Math.round() * 20;
-    int r = h * 1;
+    double h = Math.random() * 20;
+    int r = Math.floor(h);
     System.out.println("Computer's number: " + r);
     System.out.println("Player's number: " + y);
     if (y == r) {
