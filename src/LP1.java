@@ -30,4 +30,7 @@ public class LP1 {
         }
     }
 }
-//
+//The amount of copies you want:
+//1001
+//price per copy is: $0.25
+//Total cost is: $250.25

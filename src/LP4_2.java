@@ -12,15 +12,28 @@ public class LP4_2 {
         System.out.println("Enter package height in centimeters: ");
         double e = input.nextDouble();
         double w = p * l * e;
-        if (w < 100000 && d > 27) {
-            System.out.println("Too heavy and too large");
-        }else if (w < 100000) {
-            System.out.println("Too large");
-        } else if (d > 27) {
-            System.out.println("Too heavy");
+        if (w > 100000) {
+            if ( d > 27) {
+                System.out.println("Too heavy and big");
+            } else {
+                System.out.println("Too big");
+            }
         } else {
-            System.out.println("You're good to go");
+            if (d > 27) {
+                System.out.println("Too heavy");
+            } else {
+                System.out.println("You're good");
+            }
         }
+         
     }
 }
-//
+//Enter package weight in kilograms:
+//32
+//Enter package length in centimeters:
+//10
+//Enter package width in centimeters:
+//25
+//Enter package height in centimeters:
+//38
+//Too heavy
