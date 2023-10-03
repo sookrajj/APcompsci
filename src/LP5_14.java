@@ -1,6 +1,6 @@
 import java.util.*;
 
-public class LP5_5 {
+public class LP5_14 {
     public static void main(String[] args) {
         Scanner input = new Scanner(System.in);
         System.out.println("Dice 1  Dice 2  total");
