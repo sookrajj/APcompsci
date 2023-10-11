@@ -5,21 +5,25 @@ public class cl54a {
     private int mynum2;
     private int mynum3;
     private int mynum4;
+    private int mySum;
+    private int myMean;
 
 
-
-    public Lang54bCl(int num1, int num2, int num3, int num4) {
+    public cl54a(int num1, int num2, int num3, int num4) {
         mynum1 = num1;
         mynum2 = num2;
         mynum3 = num3;
         mynum4 = num4;
+        mySum = 0;
+        myMean = 0;
     }
 
     public void calc() {
-        sum = mynum1 + mynum2 + mynum3 + mynum4;
-        mean = (mynum1 + mynum2 + mynum3 + mynum4) / 4;
+        int mySum = mynum1 + mynum2 + mynum3 + mynum4;
+        int myMean = (mynum1 + mynum2 + mynum3 + mynum4) / 4;
     }
 
-    public int getSum() {return sum;}
-    public int getMean() {return mean;}
+    public int getSum() {return mySum;}
+    public int getMean() {return myMean;}
+
 }
