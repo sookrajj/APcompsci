@@ -1,7 +1,7 @@
 package Prog54ccl;
 
 public class cl54c {
-  private int rad;
+  private double rad;
   private double pie;
 
   public cl54c(int radius) {
