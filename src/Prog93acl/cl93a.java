@@ -32,6 +32,6 @@ public class cl93a {
     }
 
     public String toString() {
-        return "C O M P S C I Electric\n---------------------\nKilowatts Used\t\t\t%d\n---------------------\nBase Rate\t%d @ $ 0.0475\t$ %f\nSurcharge\t\t\t\t$ %f\nCitytax\t\t\t$ %f"
-    }
+        return "kilowatts per hour\t" + kWatts + "\n Base rate\t" + bRate + "\n surcharge\t" + sCharge + "\n City Tax\t" + cTax + "\n Total\t" + tcost + "After May 20th cost" + lcost;
+         }
 }
