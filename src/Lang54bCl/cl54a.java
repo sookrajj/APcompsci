@@ -19,8 +19,8 @@ public class cl54a {
     }
 
     public void calc() {
-        int mySum = mynum1 + mynum2 + mynum3 + mynum4;
-        int myMean = (mynum1 + mynum2 + mynum3 + mynum4) / 4;
+        mySum = mynum1 + mynum2 + mynum3 + mynum4;
+        myMean = (mynum1 + mynum2 + mynum3 + mynum4) / 4;
     }
 
     public int getSum() {return mySum;}

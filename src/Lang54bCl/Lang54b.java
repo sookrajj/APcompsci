@@ -11,14 +11,21 @@ public class Lang54b {
     int num3 = input.nextInt();
     int num4 = input.nextInt();
 
-    cl54a w = new cl54a(num1, num2, num3, num4);
-    w.calc();
+    cl54a wow = new cl54a(num1, num2, num3, num4);
+    wow.calc();
 
-    int sum = w.getSum();
-    int mean = w.getMean();
+    int sum = wow.getSum();
+    int mean = wow.getMean();
 
     System.out.println("Sum: " + sum);
     System.out.println("Mean: " + mean);
   }
 
 }
+//Enter 4 numbers in a row
+//876
+//543
+//210
+//926
+//Sum: 2555
+//Mean: 638

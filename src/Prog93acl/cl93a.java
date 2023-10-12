@@ -28,11 +28,11 @@ public class cl93a {
         sCharge = bRate * 0.1;
         cTax = bRate * 0.03;
         tcost = bRate + sCharge + cTax;
-        lcost = bRate + bRate * 0.04;
+        lcost = tcost + tcost * 0.04;
     }
 
     public String toString() {
-        return "kilowatts per hour\t" + kWatts + "\n Base rate\t" + bRate + "\n surcharge\t" + sCharge + "\n City Tax\t" + cTax + "\n Total\t" + tcost + "After May 20th cost" + lcost;
+        return "kilowatts per hour\t" + kWatts + "\n Base rate\t" + bRate + "\n surcharge\t" + sCharge + "\n City Tax\t" + cTax + "\n Total\t" + tcost + "\nAfter May 20th cost\t" + lcost;
          }
 }
 //
