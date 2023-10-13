@@ -2,15 +2,20 @@ package Prog76acl;
 import java.util.*;
 
 public class Prog76a {
-  Scanner input = new Scanner(System.in);
+  public static void main(String[] args) {
+    Scanner input = new Scanner(System.in);
 
-  System.out.println("A whole number between 1-9");
-  int num = input.nextInt();
+    System.out.println("A whole number between 1-9");
+    int num = input.nextInt();
 
-  cl76a w = new cl76a(num);
-  w.calc();
+    cl76a w = new cl76a(num);
+    w.calc();
 
-  cool = w.getNumber();
+    int cool = w.getNumber();
 
-  System.out.println("cool number: " + cool);
+    System.out.println("cool number: " + cool);
+  }
 }
+//A whole number between 1-9
+//5
+//cool number: 555555555

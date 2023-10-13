@@ -35,7 +35,7 @@ public class cl88a {
   public int getSum() {return r;}
   public int getDif() {return h;}
   public int getPro() {return g;}
-  public int getAve() {return f;}
+  public double getAve() {return f;}
   public int getAbs() {return d;}
   public int getMax() {return s;}
 }
