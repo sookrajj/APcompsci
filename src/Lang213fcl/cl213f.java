@@ -15,10 +15,18 @@ public class cl213f {
     }
 
     public void calc() {
-        perkf = 2000 * .07;
-        perks = 8000 * 0.05;
         if (kilou > 10000) {
-            perkl = (kilou-10000) * 0.04;
+            perkl = (kilou - 10000) * 0.04;
+            perkf = 2000 * .07;
+            perks = 8000 * 0.05;
+        } else if (kilou > 2000) {
+            perkl = 0;
+            perkf = 2000 * .07;
+            perks = (kilou - 2000) * 0.05;
+        } else {
+            perkl = 0;
+            perkf = k * .07;
+            perks = 0;
         }
     }
     public double getPerkf() {return perkf;}
