@@ -17,7 +17,18 @@ public class Lang213 {
                 double perk1 = wow.getPerkf();
                 double perk2 = wow.getPerks();
                 double perk3 = wow.getPerkl();
-            }
+                System.out.println("Due: $" + perk1 + perk2 + perk3);
+            } else if (kilosused > 2000) {
+                double perk1 = wow.getPerkf();
+                double perk2 = wow.getPerks();
+                double perk3 = wow.getPerkl();
+                System.out.println("Due: $" + perk1 + perk2 + perk3);
+            } else if (kilosused > 0) {
+                double perk1 = wow.getPerkf();
+                double perk2 = wow.getPerks();
+                double perk3 = wow.getPerkl();
+                System.out.println("Due: $" + perk1 + perk2 + perk3);
+            } else System.out.println("You're trying to steal our money aren't you.");
         }
     }
 }
