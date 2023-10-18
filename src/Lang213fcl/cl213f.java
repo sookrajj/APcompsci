@@ -25,7 +25,7 @@ public class cl213f {
             perks = (kilou - 2000) * 0.05;
         } else {
             perkl = 0;
-            perkf = k * .07;
+            perkf = kilou * .07;
             perks = 0;
         }
     }
