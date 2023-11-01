@@ -1,6 +1,8 @@
 import java.util.Base64;
 
-    public class SCPTemplate23 {
+
+
+    public class SPCTemplate23 {
         public static final String TEAM_NAME = "GoofyGoobers";  // TODO: Change
 
 
@@ -13,7 +15,31 @@ import java.util.Base64;
          * @return – Example: 121
          */
         public int Problem1(int n) {
-        return -1;
+
+            String num = Integer.toString(n);
+            String opnum = "";
+            String next = "";
+            int u = n +1;
+            String h = "";
+            for (int lcv = 0; lcv < num.length(); lcv++) {
+                opnum += num.substring(num.length()-lcv-1, num.length()-lcv);
+
+            }
+            if (opnum.equals(num)) return n;
+            else {
+                for(int y = 0; y < n; y++) {
+                    next = Integer.toString(u);
+                    for(int d = 0; d < next.length();  d++) {
+                        h += next.substring(next.length()-d-1, next.length()-d);
+                    }
+                    if(h.equals(next)) return u;
+                    else {
+                        h = "";
+                        u++;
+                    }
+                }
+            }
+            return n;
         }
 
 
@@ -83,14 +109,9 @@ import java.util.Base64;
          * @return – Example: 34
          */
         public int Problem5(int n) {
-            int y = 1;
-            int f = 1;
-            for (int lcv = 0; lcv < n; lcv++) {
-                if (lcv%2 == 1) y = y + f;
-                else f = f + y;
-            }
-            if (n%2 == 1) return y;
-            else return f;
+            /* Your code here */
+
+            return -1;  // Remove
         }
 
 
@@ -198,18 +219,18 @@ import java.util.Base64;
                     }
                 }
 
-            return -1;  // Remove
+            return u;  // Remove
         }
 
 
         /* DO NOT MODIFY BELOW */
         public static void main(String[] args) {
-            if (TEAM_NAME == null) {
+            if (TEAM_NAME == "GoofyGoobers") {
                 System.out.println("ERROR: Please set TEAM_NAME first!");
                 return;
             }
             try {
-                SCPTemplate23 spc = new SCPTemplate23();
+                SPCTemplate23 spc = new SPCTemplate23();
                 int p1a1 = spc.Problem1(543);
                 int p1a2 = spc.Problem1(8263);
                 int p1a3 = spc.Problem1(415);
