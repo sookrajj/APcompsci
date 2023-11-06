@@ -1,7 +1,5 @@
 import java.util.Base64;
 
-
-
     public class SPCTemplate23 {
         public static final String TEAM_NAME = "GoofyGoobers";  // TODO: Change
 
@@ -15,31 +13,7 @@ import java.util.Base64;
          * @return – Example: 121
          */
         public int Problem1(int n) {
-
-            String num = Integer.toString(n);
-            String opnum = "";
-            String next = "";
-            int u = n +1;
-            String h = "";
-            for (int lcv = 0; lcv < num.length(); lcv++) {
-                opnum += num.substring(num.length()-lcv-1, num.length()-lcv);
-
-            }
-            if (opnum.equals(num)) return n;
-            else {
-                for(int y = 0; y < n; y++) {
-                    next = Integer.toString(u);
-                    for(int d = 0; d < next.length();  d++) {
-                        h += next.substring(next.length()-d-1, next.length()-d);
-                    }
-                    if(h.equals(next)) return u;
-                    else {
-                        h = "";
-                        u++;
-                    }
-                }
-            }
-            return n;
+        return -1;
         }
 
 
@@ -57,7 +31,10 @@ import java.util.Base64;
          */
         public int Problem2(int threshold) {
             /* Your code here */
+            int h = threshold^2;
+            for (int lcv = 0; lcv < h; lcv++){
 
+            }
             return -1;  // Remove
         }
 
@@ -92,9 +69,18 @@ import java.util.Base64;
          * @return – Example: "2 2 3 5"
          */
         public String Problem4(int n) {
+            String h = "";
+            while (n != 1) {
+                for (int lcv = 2; lcv < n; lcv++) {
+                    if (n%lcv == 0) {
+                        n = n/lcv;
+                        h += lcv;
+                    }
 
+                }
+            }
 
-            return "";  // Remove
+            return h;  // Remove
         }
 
 
@@ -109,9 +95,14 @@ import java.util.Base64;
          * @return – Example: 34
          */
         public int Problem5(int n) {
-            /* Your code here */
-
-            return -1;  // Remove
+            int y = 1;
+            int f = 1;
+            for (int lcv = 0; lcv < n; lcv++) {
+                if (lcv%2 == 1) y = y + f;
+                else f = f + y;
+            }
+            if (n%2 == 1) return y;
+            else return f;
         }
 
 
@@ -204,12 +195,11 @@ import java.util.Base64;
          */
         public int Problem9(int n) {
             /* Your code here */
-            int y = 1;
             int p = n;
             int u = 0;
 
                 while (p != 1) {
-                    if (n%2 == 1) {
+                    if (p%2 == 1) {
                         p = p*3+1;
                         u++;
                     } else {
@@ -225,7 +215,7 @@ import java.util.Base64;
 
         /* DO NOT MODIFY BELOW */
         public static void main(String[] args) {
-            if (TEAM_NAME == "GoofyGoobers") {
+            if (TEAM_NAME == null) {
                 System.out.println("ERROR: Please set TEAM_NAME first!");
                 return;
             }
