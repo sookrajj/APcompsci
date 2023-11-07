@@ -12,3 +12,5 @@ public class MSOE2016p1 {
     }
     if (pali.equals(y)) System.out.println("Your word is a palindrome.");
     else System.out.println("Your word is not a palindrome.");
+  }
+}
