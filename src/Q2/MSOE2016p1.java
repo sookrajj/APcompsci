@@ -1,3 +1,4 @@
+package Q2;
 import java.util.*;
 
 public class MSOE2016p1 {
