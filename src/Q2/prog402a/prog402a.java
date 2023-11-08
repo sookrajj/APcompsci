@@ -33,7 +33,7 @@ public class prog402a {
             
           System.out.println("Id\t\tScore\tDiff");
             for (int lcv =0; lcv < cnt; lcv++) {
-              double dif = alsc[lcv] - mean;
+              double dif = Math.round((alsc[lcv] - mean)*100) / 100;
                 System.out.println(list[lcv] + "\t\t" + dif);
             }
           System.out.println("Average score = " + mean);
