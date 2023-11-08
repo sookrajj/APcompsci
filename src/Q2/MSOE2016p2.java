@@ -15,7 +15,7 @@ public class MSOE2016p2 {
     anc = Math.asin((Math.sin(ana)/a) * c);
 
     if (180-anc+ana < 180) {
-      System.out.println("The angle of c can be: " + anc + " and " + 180-anc);
+      System.out.println("The angle of c can be: " + anc + " and " + (180-anc));
     } else System.out.println("The angle of c is " + anc);
     
   }

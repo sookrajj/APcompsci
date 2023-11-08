@@ -1,4 +1,4 @@
-package Q2;
+package Q2.prog410tacl;
 
 public class cl410t {
   private int[] myids;
@@ -18,7 +18,7 @@ public class cl410t {
     }
     tot = 0.0;
     tot += incs;
-    bwpv = 0.0
+    bwpv = 0.0;
   }
 
   public void calc() {
@@ -26,9 +26,11 @@ public class cl410t {
     
   }
   public double getTot() {return tot;}
-  public String toString() {
-    for (int lcv = 0; lcv < cnt; lcv++){
-      return myids[lcv] + "\t" + myincs[lcv] + "\t" mymems[lcv];
+  public String toString () {
+    for (int lcv = 0; lcv < cnt; lcv++) {
+      return myids[lcv] + "\t" + myincs[lcv] + "\t" + mymems[lcv];
+    }
+    return "";
   }
-  }
+
 }

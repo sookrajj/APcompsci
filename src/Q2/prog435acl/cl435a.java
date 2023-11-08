@@ -1,14 +1,14 @@
-package Q2.prog435acl
+package Q2.prog435acl;
 
 public class cl435a {
   private int myctype;
   private int mygate;
   private double mycost;
-  private int[] gnums = new int[8];
-  private int[] cnums = new int[6]; 
+  private double[] gnums = new double[8];
+  private double[] cnums = new double[6];
   private String[] ct = new String[6];
-  
-  
+
+
   public cl435a(int ctype, int gate) {
     myctype = ctype;
     mygate = gate;
@@ -34,11 +34,13 @@ public class cl435a {
     ct[4] = "truck";
     ct[5] = "16 wheeler";
   }
+
   public void calc() {
-    mycost = gnums[mygate-1] * cnums[myctype-1];
+    mycost = gnums[mygate - 1] * cnums[myctype - 1];
   }
-    
+
   public String toString() {
-    return ct[myctype-1] + "\t$" + cnums[myctype-1] + "\t$" + gnums[mygame-1] + "\t$" + mycost;
-    
+    return ct[myctype - 1] + "\t$" + cnums[myctype - 1] + "\t$" + gnums[mygate - 1] + "\t$" + mycost;
+
+  }
 }
