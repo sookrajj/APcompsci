@@ -7,7 +7,7 @@ public class prog402a {
     public static void main(String[] args) {
         try {
             Scanner input = new Scanner(new File("Langdat/prog402a.dat"));
-            cl213farray[] list = new cl213farray[1000];
+            cl402a[] list = new cl402a[1000];
             int cnt = 0;
             double dif = 0.0;
             double mean = 0.0;
