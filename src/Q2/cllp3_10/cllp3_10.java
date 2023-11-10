@@ -1,6 +1,6 @@
-package Q2;
+package Q2.cllp3_10;
 
-public class cllp3-10 {
+public class cllp3_10 {
   private int myburgs;
   private int myfres;
   private int mysods;
@@ -8,7 +8,7 @@ public class cllp3-10 {
   private double tax;
   private double totwtax;
 
-  public cllp3-10(int burgs, int fres, int sods) {
+  public cllp3_10(int burgs, int fres, int sods) {
     myburgs = burgs;
     myfres = fres;
     mysods = sods;
@@ -17,7 +17,7 @@ public class cllp3-10 {
     totwtax = 0.0;
   }
 
-  public calc() {
+  public void calc() {
     mytot = myburgs * 1.69 + myfres * 1.09 + mysods * 0.99;
     tax = Math.round((mytot * 0.065) * 100.0) / 100.0;
     totwtax = mytot + tax;
