@@ -1,6 +1,6 @@
 package Q2;
 
-public class cllp3-10 {
+public class cllp3-9 {
   private int myby;
   private int mybm;
   private int mybd;
@@ -10,7 +10,7 @@ public class cllp3-10 {
   private int alive;
   private int slpt;
 
-  public cllp3-10(int by, int bm, int bd, int cy, int cm, int cd) {
+  public cllp3-9(int by, int bm, int bd, int cy, int cm, int cd) {
     myby = by;
     mybm = bm;
     mybd = bd;
