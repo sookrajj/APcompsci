@@ -1,6 +1,6 @@
 import java.util.*;
 
-public class lp3-10 {
+public class lp3-9 {
   public static void main(String[] args) {
     Scanner input = new Scanner(System.in);
     String hi = "";
@@ -18,7 +18,7 @@ public class lp3-10 {
     int cm = input.nextInt();
     System.out.print("\nDays ");
     int cd = input.nextInt();
-    cllp3-10 sad = new cllp3-10(by, bm, bd, cy, cm, cd);
+    cllp3-9 sad = new cllp3-9(by, bm, bd, cy, cm, cd);
     sad.calc();
     h = sad;
     System.out.println("\n" + sad);
