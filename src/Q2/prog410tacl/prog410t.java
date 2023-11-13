@@ -13,7 +13,7 @@ public class prog410t {
       Scanner s2 = new Scanner(new File("Langdat/survey.dat"));
       int cnt = 0;
       cl410t[] ret = new cl410t[100];
-      int[] ho = new int[50];
+      String[] ho = new String[50];
       double mean = 0.0;
       double pov = 0.0;
 
@@ -27,14 +27,16 @@ public class prog410t {
 
         if(ids != -999) {
           cl410t yikes = new cl410t(ids, incs, mems);
+          yikes.calc();
           ret[cnt] = yikes;
           cnt++;
+
+
+          mean = yikes.getTot();
+          ho = yikes.getHo();
+          pov = yikes.getpov();
         }
-        cl410t cool = new cl410t(ids, incs, mems);
-        cool.calc();
-        mean = cool.getTot();
-        ho = cool.getHo();
-        pov = cool.getpov();
+
 
       }
 
