@@ -31,12 +31,10 @@ public class prog410t {
           ret[cnt] = yikes;
           cnt++;
 
-
           mean = yikes.getTot();
           ho = yikes.getHo();
           pov = yikes.getpov();
         }
-
 
       }
 

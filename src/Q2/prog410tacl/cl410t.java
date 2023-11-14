@@ -23,22 +23,23 @@ public class cl410t {
 
     for (int lcv = 0; lcv < cnt; lcv++) {
       myids[lcv] = ids;
-    myincs[lcv] = incs;
-    mymems[lcv] = mems;
-    tot += myincs[lcv];
-    cnt2++;
-  }
+      myincs[lcv] = incs;
+      mymems[lcv] = mems;
+
+      cnt2++;
+    }
 
 
     bwpv = 0.0;
     mypov = 0.0;
 
-    for (int lcv = 0; lcv < 25; lcv++) myho[lcv] = "";
+    for (int lcv = 0; lcv < myho.length; lcv++) myho[lcv] = "";
 
   }
 
   public void calc() {
-    tot = tot/cnt2;
+    for (int lcv : myincs) tot += lcv;
+    tot = tot/15;
     for (int lcv = 0; lcv < cnt-1; lcv++) {
       if (myincs[lcv] >= tot) {
         for (int lcv2 = 1; lcv2 < lcv; lcv2++) {
