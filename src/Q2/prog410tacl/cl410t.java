@@ -11,7 +11,7 @@ public class cl410t {
   private double no;
   private int bwpv;
   private double mypov;
-  private int cnt2;
+
 
   public cl410t(int ids, int incs, int mems) {
     yes = 0;
@@ -19,40 +19,45 @@ public class cl410t {
     cnt = 0;
 
     tot = 0.0;
-    cnt2 = 0;
 
     myids[cnt] = ids;
     myincs[cnt] = incs;
     mymems[cnt] = mems;
 
-    cnt2++;
+    tot += incs;
     cnt++;
     bwpv = 1;
     mypov = 0.0;
 
-    for (int lcv = 0; lcv < myho.length; lcv++) myho[lcv] = "";
+    for (int lcv = 0; lcv < myho.length; lcv++) {
+      myho[lcv] =  myids[lcv] + "\t" + myincs[lcv] + "\t" + mymems[lcv];
+    }
 
   }
 
   public void calc() {
-    for (int lcv : myincs) tot += lcv;
+    yes += myincs[10];
+    for (int lcv = 0; lcv < 15; lcv++) {
+      tot += myincs[lcv];
+    }
     tot /= 15;
-    for (int lcv = 0; lcv < cnt+1; lcv++) {
-      if (myincs[lcv] >= tot) {
+    for (int lcv = 0; lcv < 15; lcv++) {
+      if (myincs[lcv] <= tot) {
         bwpv++;
-        for (int lcv2 = 1; lcv2 < bwpv; lcv2++) {
-          myho[lcv2-1] = myids[lcv] + "\t" + myincs[lcv] + "\t" + mymems[lcv];
-        }
+
+        myho[lcv] = "";
+
       }
 
     }
-    for (int lcv = 0; lcv < cnt+1; lcv++) {
+    for (int lcv = 0; lcv < 15; lcv++) {
       if (myincs[lcv] >= 3750.00 + 750.00 * (mymems[lcv]-2)) yes++;
       else no++;
     }
     mypov = no/cnt+1;
   }
   public double getpov() {return mypov;}
+  public int getYes() {return yes;}
   public double getTot() {return tot;}
   public String[] getHo() { return myho;}
   public String toString () {

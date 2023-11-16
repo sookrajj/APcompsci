@@ -12,7 +12,7 @@ public class MSOE2016p2 {
     double ana = input.nextDouble();
     double anc = 0.0;
 
-    anc = Math.asin((Math.sin(ana)/a) * c);
+    anc = Math.toDegrees(Math.asin(Math.sin(Math.toRadians(ana)/a) * c));
 
     if (180-anc+ana < 180) {
       System.out.println("The angle of c can be: " + anc + " and " + (180-anc));
@@ -20,3 +20,7 @@ public class MSOE2016p2 {
     
   }
 }
+//Please enter side length a:5
+//Please enter side length c:7
+//Please enter angle a:30
+//The angle of c can be: 47.02903736850241 and 132.9709626314976

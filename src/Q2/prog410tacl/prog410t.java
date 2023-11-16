@@ -16,29 +16,36 @@ public class prog410t {
       String[] ho = new String[50];
       double mean = 0.0;
       double pov = 0.0;
+      int ye = 0;
+      int[] ids = new int[50];
+      int[] incs = new int[50];
+      int[] mems = new int[50];
+
 
       while (s.hasNext()) {
-        int ids = s.nextInt();
-        int incs = s.nextInt();
-        int mems = s.nextInt();
+        ids[ye] = s.nextInt();
+        incs[ye] = s.nextInt();
+        mems[ye] = s.nextInt();
+
        // for (int lcv = 0; lcv < cnt; lcv++) {
         //  cl410t cool = new cl410t(ids, incs, mems);
         //  ret[lcv] = cool;
 
-        if(ids != -999) {
-          cl410t yikes = new cl410t(ids, incs, mems);
-          yikes.calc();
-          ret[cnt] = yikes;
-          cnt++;
 
-          mean = yikes.getTot();
-          ho = yikes.getHo();
-          pov = yikes.getpov();
-        }
+        ye++;
+      }
+      for (int lcv = 0; lcv < ye; lcv++) {
+        cl410t yikes = new cl410t(ids[lcv], incs[lcv], mems[lcv]);
+        yikes.calc();
+        ret[cnt] = yikes;
+        cnt++;
+
+        mean = yikes.getTot();
+        ho = yikes.getHo();
+        pov = yikes.getpov();
 
       }
-
-      
+      System.out.println(ye);
       System.out.println("id     income    members");
       for (int lcv = 0; lcv < cnt; lcv++) {
         System.out.println(ret[lcv]);
