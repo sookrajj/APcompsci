@@ -54,7 +54,7 @@ public class cl410t {
       if (myincs[lcv] >= 3750.00 + 750.00 * (mymems[lcv]-2)) yes++;
       else no++;
     }
-    mypov = no/cnt+1;
+    mypov = no/(cnt+1);
   }
   public double getpov() {return mypov;}
   public int getYes() {return yes;}
