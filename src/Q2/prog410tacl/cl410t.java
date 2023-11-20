@@ -1,10 +1,10 @@
 package Q2.prog410tacl;
 
 public class cl410t {
-  private int[] myids = new int[50];
-  private int[] myincs = new int[50];
-  private int[] mymems = new int[50];
-  private String[] myho = new String[50];
+  private int[] myids;
+  private int[] myincs;
+  private int[] mymems;
+  private String[] myho;
   private double tot;
   private int cnt;
   private int yes;
@@ -13,35 +13,39 @@ public class cl410t {
   private double mypov;
 
 
-  public cl410t(int ids, int incs, int mems) {
+  public setcl410t() {
     yes = 0;
     no = 0.0;
     cnt = 0;
 
     tot = 0.0;
 
+    myids = new int[50];
+    myincs[] = new int[50];
+    mymems[] = new int[50];
+    myho[] = new String[50]
+    tot = 0.0;
+    
+    bwpv = 0;
+    mypov = 0.0;
+
+     }
+  public cl410t(int ids, int incs, int mems) {
     myids[cnt] = ids;
     myincs[cnt] = incs;
     mymems[cnt] = mems;
-
+    myho[cnt] = "";
     tot += incs;
-    cnt++;
-    bwpv = 1;
-    mypov = 0.0;
-
-    for (int lcv = 0; lcv < myho.length; lcv++) {
-      myho[lcv] =  myids[lcv] + "\t" + myincs[lcv] + "\t" + mymems[lcv];
-    }
-
+    cnt++
+    
   }
 
   public void calc() {
-    yes += myincs[10];
-    for (int lcv = 0; lcv < 15; lcv++) {
+    for (int lcv = 0; lcv < cnt+1; lcv++) {
       tot += myincs[lcv];
     }
     tot /= 15;
-    for (int lcv = 0; lcv < 15; lcv++) {
+    for (int lcv = 0; lcv < cnt+1; lcv++) {
       if (myincs[lcv] <= tot) {
         bwpv++;
 
@@ -50,7 +54,7 @@ public class cl410t {
       }
 
     }
-    for (int lcv = 0; lcv < 15; lcv++) {
+    for (int lcv = 0; lcv < cnt+1; lcv++) {
       if (myincs[lcv] >= 3750.00 + 750.00 * (mymems[lcv]-2)) yes++;
       else no++;
     }
