@@ -20,8 +20,8 @@ public class prog410t {
       int[] ids = new int[50];
       int[] incs = new int[50];
       int[] mems = new int[50];
-      setcl410t set = new setcl410t();
 
+      cl410t hi = new cl410t();
 
       while (s.hasNext()) {
         ids[ye] = s.nextInt();

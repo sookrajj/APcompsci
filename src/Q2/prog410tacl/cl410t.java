@@ -13,7 +13,7 @@ public class cl410t {
   private double mypov;
 
 
-  public setcl410t() {
+  public cl410t() {
     yes = 0;
     no = 0.0;
     cnt = 0;
@@ -21,9 +21,9 @@ public class cl410t {
     tot = 0.0;
 
     myids = new int[50];
-    myincs[] = new int[50];
-    mymems[] = new int[50];
-    myho[] = new String[50]
+    myincs = new int[50];
+    mymems = new int[50];
+    myho = new String[50];
     tot = 0.0;
     
     bwpv = 0;
@@ -36,7 +36,7 @@ public class cl410t {
     mymems[cnt] = mems;
     myho[cnt] = "";
     tot += incs;
-    cnt++
+    cnt++;
     
   }
 
@@ -70,5 +70,6 @@ public class cl410t {
     }
     return "";
   }
+
 
 }
