@@ -24,13 +24,13 @@ public class cl410t {
     mypov = 0.0;
 
      }
-  public cl410t(int ids, int incs, int mems) {
+  public cl410t(int ids, int incs, int mems, int ye) {
     myids[cnt] = ids;
     myincs[cnt] = incs;
     mymems[cnt] = mems;
     myho[cnt] = "";
     tot += incs;
-    cnt++;
+    cnt = ye;
   }
 
   public void calc() {
