@@ -11,12 +11,13 @@ public class prog410t {
     try {
       Scanner s = new Scanner(new File("Langdat/survey2.dat"));
       Scanner s2 = new Scanner(new File("Langdat/survey.dat"));
-      int cnt = 0;
+
       cl410t[] ret = new cl410t[100];
       String[] ho = new String[50];
       double mean = 0.0;
       double pov = 0.0;
       int ye = 0;
+      int total = 0;
       int[] ids = new int[50];
       int[] incs = new int[50];
       int[] mems = new int[50];
@@ -31,6 +32,7 @@ public class prog410t {
         // for (int lcv = 0; lcv < cnt; lcv++) {
         //  cl410t cool = new cl410t(ids, incs, mems);
         //  ret[lcv] = cool;
+        total += incs[ye];
 
 
         ye++;
@@ -40,15 +42,15 @@ public class prog410t {
           ids[ye] = s2.nextInt();
           incs[ye] = s2.nextInt();
           mems[ye] = s2.nextInt();
-
+          total += incs[ye];
           ye++;
       }
 
       for (int lcv = 0; lcv < ye; lcv++) {
-        cl410t yikes = new cl410t(ids[cnt], incs[cnt], mems[cnt], ye);
+        cl410t yikes = new cl410t(ids[lcv], incs[lcv], mems[lcv], total);
         yikes.calc();
-        ret[cnt] = yikes;
-        cnt++;
+        ret[lcv] = yikes;
+
 
         mean = yikes.getTot();
         ho = yikes.getHo();
@@ -67,11 +69,11 @@ public class prog410t {
 
       System.out.println(ye);
       System.out.println("id     income    members");
-      for (int lcv = 0; lcv < cnt; lcv++) {
+      for (int lcv = 0; lcv < ye; lcv++) {
         System.out.println(ret[lcv]);
       }
       System.out.println("Households with income exceeding an average income of " + mean + "\nid     income    members");
-      for (int lcv = 0; lcv < cnt; lcv++) {
+      for (int lcv = 0; lcv < ye; lcv++) {
         System.out.println(ho[lcv]);
       }
       System.out.println("Percent of households below poverty level = " + pov);

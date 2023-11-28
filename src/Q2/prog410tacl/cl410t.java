@@ -22,24 +22,24 @@ public class cl410t {
     
     bwpv = 0;
     mypov = 0.0;
+  }
 
-     }
-  public cl410t(int ids, int incs, int mems, int ye) {
+  public cl410t(int ids, int incs, int mems, int total) {
     myids[cnt] = ids;
     myincs[cnt] = incs;
     mymems[cnt] = mems;
-    myho[cnt] = "";
-    tot += incs;
-    cnt = ye;
+    myho[cnt] = myids[cnt] + " " + myincs[cnt] + " " + mymems[cnt];
+    tot = total;
+    if (myincs[cnt] >= 3750.00 + 750.00 * (mymems[cnt]-2)) yes++;
+    else no += 1;
+    cnt++;
   }
 
   public void calc() {
-    for (int lcv = 0; lcv < 13; lcv++) {
-      tot += myincs[lcv];
-    }
-    tot /= 13;
-    for (int lcv = 0; lcv < 13; lcv++) {
-      if (myincs[lcv] <= tot) {
+
+    tot /= 27;
+    for (int lcv = 0; lcv < 27; lcv++) {
+      if (myincs[lcv] >= tot) {
         bwpv++;
 
         myho[lcv] = "";
@@ -51,7 +51,7 @@ public class cl410t {
       if (myincs[lcv] >= 3750.00 + 750.00 * (mymems[lcv]-2)) yes++;
       else no++;
     }
-    mypov = no/(13);
+    mypov = no/(27);
   }
   public double getpov() {return mypov;}
   public int getYes() {return yes;}
