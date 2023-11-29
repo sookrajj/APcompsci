@@ -4,6 +4,7 @@ public class cl410t {
   private int[] myids = new int[50];
   private int[] myincs = new int[50];
   private int[] mymems = new int[50];
+  private String[] mylink = new String[50];
   private String[] myho = new String[50];
   private double tot;
   private int cnt;
@@ -28,7 +29,7 @@ public class cl410t {
     myids[cnt] = ids;
     myincs[cnt] = incs;
     mymems[cnt] = mems;
-    myho[cnt] = myids[cnt] + " " + myincs[cnt] + " " + mymems[cnt];
+    mylink[cnt] = ids + " " + incs + " " + mems;
     tot = total;
     if (myincs[cnt] >= 3750.00 + 750.00 * (mymems[cnt]-2)) yes++;
     else no += 1;
@@ -40,18 +41,27 @@ public class cl410t {
     tot /= 27;
     for (int lcv = 0; lcv < 27; lcv++) {
       if (myincs[lcv] >= tot) {
+
+
+        myho[bwpv] = myids[lcv] + " " + myincs[lcv] + " " + mymems[lcv];
         bwpv++;
-
-        myho[lcv] = "";
-
       }
 
     }
-    for (int lcv = 0; lcv < 13; lcv++) {
+    for (int lcv = 0; lcv < 27; lcv++) {
       if (myincs[lcv] >= 3750.00 + 750.00 * (mymems[lcv]-2)) yes++;
       else no++;
     }
     mypov = no/(27);
+    for (int lcv = 0; lcv < cnt; lcv++) {
+      for(int lcv2 = 0; lcv2 < cnt-1; lcv2++) {
+        if (myids[lcv2] > myids[lcv2+1]) {
+          String temp = mylink[lcv2];
+          mylink[lcv2] = mylink[lcv2+1];
+          mylink[lcv2+1] = temp;
+        }
+      }
+    }
   }
   public double getpov() {return mypov;}
   public int getYes() {return yes;}
@@ -59,7 +69,7 @@ public class cl410t {
   public String[] getHo() { return myho;}
   public String toString () {
     for (int lcv = 0; lcv < cnt; lcv++) {
-      return myids[lcv] + "\t" + myincs[lcv] + "\t" + mymems[lcv];
+      return mylink[lcv];
     }
     return "";
   }
