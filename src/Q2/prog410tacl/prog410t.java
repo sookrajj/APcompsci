@@ -58,7 +58,8 @@ public class prog410t {
       }
 
 
-      System.out.println(ye);
+
+
       System.out.println("id     income    members");
       for (int lcv = 0; lcv < ye; lcv++) {
         System.out.println(ret[lcv]);
@@ -67,6 +68,7 @@ public class prog410t {
       for (int lcv = 0; lcv < ye; lcv++) {
         System.out.println(ho[lcv]);
       }
+
       System.out.println("Percent of households below poverty level = " + pov);
       
     } catch (IOException e) {

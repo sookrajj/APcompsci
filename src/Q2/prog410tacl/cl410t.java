@@ -5,7 +5,7 @@ public class cl410t {
   private int[] myincs = new int[50];
   private int[] mymems = new int[50];
   private String[] mylink = new String[50];
-  private String[] myho = new String[50];
+  private String[] myho = new String[27];
   private double tot;
   private int cnt;
   private int yes;
@@ -20,7 +20,7 @@ public class cl410t {
     cnt = 0;
 
     tot = 0.0;
-    
+
     bwpv = 0;
     mypov = 0.0;
   }
@@ -29,10 +29,14 @@ public class cl410t {
     myids[cnt] = ids;
     myincs[cnt] = incs;
     mymems[cnt] = mems;
-    mylink[cnt] = ids + " " + incs + " " + mems;
+    mylink[cnt] = myids[cnt] + "\t" + myincs[cnt] + "\t" + mymems[cnt];
     tot = total;
-    if (myincs[cnt] >= 3750.00 + 750.00 * (mymems[cnt]-2)) yes++;
-    else no += 1;
+    for (int lcv = 0; lcv < 27; lcv++) {
+      if (myincs[lcv] >= 3750.00 + 750.00 * (mymems[lcv])) yes++;
+      else no++;
+    }
+
+
     cnt++;
   }
 
@@ -40,39 +44,46 @@ public class cl410t {
 
     tot /= 27;
     for (int lcv = 0; lcv < 27; lcv++) {
-      if (myincs[lcv] >= tot) {
-
-
-        myho[bwpv] = myids[lcv] + " " + myincs[lcv] + " " + mymems[lcv];
+      if (myincs[bwpv] >= tot) {
+        myho[bwpv] = mylink[cnt];
+        bwpv++;
+      } else {
+        myho[bwpv] = "";
         bwpv++;
       }
 
     }
-    for (int lcv = 0; lcv < 27; lcv++) {
-      if (myincs[lcv] >= 3750.00 + 750.00 * (mymems[lcv]-2)) yes++;
-      else no++;
-    }
-    mypov = no/(27);
-    for (int lcv = 0; lcv < cnt; lcv++) {
-      for(int lcv2 = 0; lcv2 < cnt-1; lcv2++) {
-        if (myids[lcv2] > myids[lcv2+1]) {
+
+    mypov = no / (27);
+    for (int lcv = 0; lcv < cnt - 1; lcv++) {
+      for (int lcv2 = 0; lcv2 < cnt -lcv -1; lcv2++) {
+        if (myids[lcv2] > myids[lcv2 + 1]) {
           String temp = mylink[lcv2];
-          mylink[lcv2] = mylink[lcv2+1];
-          mylink[lcv2+1] = temp;
+          mylink[lcv2] = mylink[lcv2 + 1];
+          mylink[lcv2 + 1] = temp;
         }
       }
     }
+
   }
-  public double getpov() {return mypov;}
-  public int getYes() {return yes;}
-  public double getTot() {return tot;}
-  public String[] getHo() { return myho;}
-  public String toString () {
-    for (int lcv = 0; lcv < cnt; lcv++) {
-      return mylink[lcv];
+
+    public double getpov () {
+      return mypov;
     }
-    return "";
-  }
+
+    public double getTot () {
+      return tot;
+    }
+    public String[] getHo () {
+      return myho;
+    }
+    public String toString () {
+      for (int lcv = 0; lcv < cnt; lcv++) {
+        return mylink[lcv];
+      }
+      return "";
+    }
+
 
 
 }
