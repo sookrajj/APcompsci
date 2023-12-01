@@ -41,11 +41,32 @@ public class cl410t {
   }
 
   public void calc() {
+    for (int lcv = 0; lcv < cnt; lcv++) {
+      for (int lcv2 = 0; lcv2 < cnt -1; lcv2++) {
+        if (myids[lcv2] > myids[lcv2+1]) {
+           String temp1 = myids[lcv2];
+          myids[lcv2] = myids[lcv2 + 1];
+          myids[lcv2 + 1] = temp1;
 
+           String temp2 = myincs[lcv2];
+          myincs[lcv2] = myincs[lcv2 + 1];
+          myincs[lcv2 + 1] = temp2;
+
+           String temp3 = mymems[lcv2];
+          mymems[lcv2] = mymems[lcv2 + 1];
+          mymems[lcv2 + 1] = temp3;
+          
+          String temp = mylink[lcv2];
+          mylink[lcv2] = mylink[lcv2 + 1];
+          mylink[lcv2 + 1] = temp;
+        }
+      }
+    }
+    
     tot /= 27;
     for (int lcv = 0; lcv < 27; lcv++) {
-      if (myincs[bwpv] >= tot) {
-        myho[bwpv] = mylink[cnt];
+      if (myincs[lcv] >= tot) {
+        myho[bwpv] = mylink[lcv];
         bwpv++;
       } else {
         myho[bwpv] = "";
@@ -55,15 +76,6 @@ public class cl410t {
     }
 
     mypov = no / (27);
-    for (int lcv = 0; lcv < cnt - 1; lcv++) {
-      for (int lcv2 = 0; lcv2 < cnt -lcv -1; lcv2++) {
-        if (myids[lcv2] > myids[lcv2 + 1]) {
-          String temp = mylink[lcv2];
-          mylink[lcv2] = mylink[lcv2 + 1];
-          mylink[lcv2 + 1] = temp;
-        }
-      }
-    }
 
   }
 
