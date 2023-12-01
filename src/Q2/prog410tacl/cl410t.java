@@ -31,10 +31,7 @@ public class cl410t {
     mymems[cnt] = mems;
     mylink[cnt] = myids[cnt] + "\t" + myincs[cnt] + "\t" + mymems[cnt];
     tot = total;
-    for (int lcv = 0; lcv < 27; lcv++) {
-      if (myincs[lcv] >= 3750.00 + 750.00 * (mymems[lcv])) yes++;
-      else no++;
-    }
+
 
 
     cnt++;
@@ -44,15 +41,15 @@ public class cl410t {
     for (int lcv = 0; lcv < cnt; lcv++) {
       for (int lcv2 = 0; lcv2 < cnt -1; lcv2++) {
         if (myids[lcv2] > myids[lcv2+1]) {
-           String temp1 = myids[lcv2];
+           int temp1 = myids[lcv2];
           myids[lcv2] = myids[lcv2 + 1];
           myids[lcv2 + 1] = temp1;
 
-           String temp2 = myincs[lcv2];
+           int temp2 = myincs[lcv2];
           myincs[lcv2] = myincs[lcv2 + 1];
           myincs[lcv2 + 1] = temp2;
 
-           String temp3 = mymems[lcv2];
+           int temp3 = mymems[lcv2];
           mymems[lcv2] = mymems[lcv2 + 1];
           mymems[lcv2 + 1] = temp3;
           
@@ -74,7 +71,10 @@ public class cl410t {
       }
 
     }
-
+    for (int lcv = 0; lcv < 27; lcv++) {
+      if (myincs[lcv] >= 3750.00 + 750.00 * (mymems[lcv])) yes++;
+      else no++;
+    }
     mypov = no / (27);
 
   }

@@ -12,7 +12,7 @@ public class prog410t {
       Scanner s = new Scanner(new File("Langdat/survey2.dat"));
       Scanner s2 = new Scanner(new File("Langdat/survey.dat"));
 
-      cl410t[] ret = new cl410t[100];
+      String[] ret = new String[100];
       String[] ho = new String[50];
       double mean = 0.0;
       double pov = 0.0;
@@ -49,7 +49,7 @@ public class prog410t {
       for (int lcv = 0; lcv < ye; lcv++) {
         cl410t yikes = new cl410t(ids[lcv], incs[lcv], mems[lcv], total);
         yikes.calc();
-        ret[lcv] = yikes;
+        ret[lcv] = yikes.toString();
 
 
         mean = yikes.getTot();
