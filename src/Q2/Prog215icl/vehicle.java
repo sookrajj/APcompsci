@@ -28,7 +28,14 @@ public class vehicle {
     public void calc() {
 
             myMPG = myMiles / myGallons;
-
+            if (myMPG > btemp) {
+                btemp = myMPG;
+                best = myVNum;
+            }
+            if (myMPG < wtemp) {
+                wtemp = myMPG;
+                worst = myVNum;
+            }
 
     }
 
@@ -40,8 +47,8 @@ public class vehicle {
         return myVNum + "\t" + myMiles + "\t" + myGallons + "\t" + myMPG;
     }
 
-    public double getMyMPG() {
-        return myMPG;
+    public double getMyFleetAve() {
+        return myFleetAve;
     }
 
     public int getBest() {
@@ -51,4 +58,5 @@ public class vehicle {
     public int getWorst() {
         return worst;
     }
+    public double getMPG() {return myMPG;}
 }
