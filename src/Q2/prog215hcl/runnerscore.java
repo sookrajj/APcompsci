@@ -32,6 +32,6 @@ public class runnerscore {
     public String toString() {
         return "Contestant " + cnt + "\n" + mynum1 + " " + mynum2 + " " +
                 mynum3 + " " + mynum4 + " " + mynum5 + " " + mynum6 + " "
-                + mynum7 + " " +mynum8 + " =" + myave;
+                + mynum7 + " " +mynum8 + " =" + myave + "\n";
     }
 }
