@@ -7,6 +7,7 @@ public class cl410t {
   private String[] mylink = new String[50];
   private String[] myho = new String[27];
   private double tot;
+  public int myinc;
   private int cnt;
   private int yes;
   private double no;
@@ -29,6 +30,7 @@ public class cl410t {
     myids[cnt] = ids;
     myincs[cnt] = incs;
     mymems[cnt] = mems;
+    myinc = incs;
     mylink[cnt] = myids[cnt] + "\t" + myincs[cnt] + "\t" + mymems[cnt];
     tot = total;
 
@@ -82,6 +84,7 @@ public class cl410t {
     public double getpov () {
       return mypov;
     }
+    public int getmyinc() {return myinc;}
 
     public double getTot () {
       return tot;
