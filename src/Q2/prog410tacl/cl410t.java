@@ -74,10 +74,10 @@ public class cl410t {
 
     }
     for (int lcv = 0; lcv < 27; lcv++) {
-      if (myincs[lcv] >= 3750.00 + 750.00 * (mymems[lcv])) yes++;
+      if (myincs[lcv] <= 3750.00 + 750.00 * (mymems[lcv])) yes++;
       else no++;
     }
-    mypov = no / (27);
+    mypov = no / 27;
 
   }
 
