@@ -12,7 +12,7 @@ public class prog469z {
             int rows = s.nextInt();
             int[][] nums = new int[rows][rows];
             int[][] right = new int[rows][rows];
-            int[][] left = new int[rows][rows];
+            int[] left = new int[rows];
 
             int[] all = new int[50];
             int cnt = 0;
@@ -21,6 +21,18 @@ public class prog469z {
                 all[cnt] = s.nextInt();
                 cnt++;
               }
+            }
+
+            int temp = 0; // temp for row length
+            int max = all[0]; // longest row
+            for (int lcv = 0; lcv < all.length-1; lcv++) {
+                all[lcv] = temp;
+
+                if (max < temp) {
+                    max = temp;
+                }
+                left[cnt] = all[lcv];
+                lcv += temp;
             }
 
 

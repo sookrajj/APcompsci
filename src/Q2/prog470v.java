@@ -37,13 +37,14 @@ public class prog470v {
             yay = true;
           }
         }
+        hi = size;
       }
 
       hi = size;
       for (int lcv = 0; lcv < card[0].length; lcv++) {
         for (int right = 0; right < card.length; right++) {
           for (int num : nums) {
-            if (num == card[lcv][right]) hi--;
+            if (num == card[right][lcv]) hi--;
           }
         }
         if (yay == false) {
@@ -52,9 +53,9 @@ public class prog470v {
             yay = true;
           }
         }
+        hi = size;
       }
       hi = size;
-      int bye = size;
       for (int lcv = 0; lcv < card.length; lcv++) {
         for (int right = 0; right < card[0].length; right++) {
           for (int num : nums) {
@@ -76,3 +77,43 @@ public class prog470v {
       if (yay != true) System.out.println("You lose!");
     }
 }
+//  Enter your card size
+//3
+//Enter 3 different numbers
+//10
+//1
+//4
+//You lose!
+
+//Enter your card size
+//3
+//Enter 3 different numbers
+//6
+//4
+//5
+//You're a row winner!
+
+//Enter your card size
+//3
+//Enter 3 different numbers
+//5
+//3
+//7
+//You're a diagonal winner!
+
+//Enter your card size
+//4
+//Enter 4 different numbers
+//16
+//1
+//6
+//11
+//You're a diagonal winner!
+
+//Enter your card size
+//3
+//Enter 3 different numbers
+//4
+//1
+//7
+//You're a column winner!

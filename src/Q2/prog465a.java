@@ -7,7 +7,7 @@ import java.util.Scanner;
 public class prog465a {
     public static void main(String[] args) {
         try {
-            Scanner s = new Scanner(new File("Langdat/prog213v.dat"));
+            Scanner s = new Scanner(new File("Langdat/prog465a.dat"));
             int[][] mat = new int[4][4];
             int[][] hi = new int[4][4];
 
@@ -62,3 +62,20 @@ public class prog465a {
         }
     }
 }
+//Original 1
+//2 7 6 4
+//6 1 2 4
+//9 7 2 6
+//8 3 2 1
+//Original 2
+//4 1 3 7
+//6 2 3 8
+//7 2 2 4
+//4 2 3 1
+//highest of both arrays
+//4 7 6 7
+//6 2 3 8
+//9 7 2 6
+//8 3 3 1
+//
+//Process finished with exit code 0
