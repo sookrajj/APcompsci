@@ -7,9 +7,9 @@ public class Prog210F {
         Scanner input = new Scanner(System.in);
         int matches = 21;
         boolean yes = true;
-        while (yes = true) {
+        while (yes == true) {
             System.out.println("Player  Computer   Pile");
-            while (matches != 0) {
+            while (matches != 1) {
                 System.out.print("How many (1-4) ");
                 int num = input.nextInt();
                 if (num < 1 || num > 4) {
@@ -19,8 +19,19 @@ public class Prog210F {
                     hi.calc();
                     int comp = hi.getComputer();
 
+                    matches -= comp + num;
+                    System.out.println("\t\t\t\t " + comp + "\t " + matches);
 
                 }
+            }
+            matches = 0;
+
+            System.out.println("\t\tComputer wins");
+            System.out.print("Play again (y/n)? ");
+            String hi = input.next();
+
+            if (hi.equals("n")) {
+                yes = false;
             }
         }
     }
