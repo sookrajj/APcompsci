@@ -8,16 +8,20 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Scanner;
 
-public class Basefile {
+public class prog492h {
     public static void main(String[] args) {
         try {
             Scanner s = new Scanner(new File("Langdat/prog492h.dat"));
 
             String[][] track = new String[30][30];
+            String hi = "";
 
+            while (s.hasNext()) {hi += s.next();}
+            int cnt = 0;
             for (int r = 0; r < track.length; r++) {
               for (int c = 0; c < track[0].length; c++) {
-                track[r][c] = s.next();
+                track[r][c] = hi.substring(cnt, cnt+1);
+                cnt++;
               }
             }
 
@@ -39,8 +43,8 @@ public class Basefile {
                 }
             }
 
-            for (int r = fir; r < las; r++) {
-              for (int c = sec; c < clas; c++) {
+            for (int r = 0; r < track.length; r++) {
+              for (int c = 0; c < track.length; c++) {
                 System.out.print(track[r][c] + " ");
               }
               System.out.println();
@@ -52,13 +56,13 @@ public class Basefile {
               
               for (int r = 0; r < sub.length; r++) {
                 for (int c = 0; c < sub.length; c++) {
-                  sub[r][c] = " ";
+                  sub[r][c] = ".";
                 }
               }
               System.out.println("Generation " + lcv);
               
               for (int r = fir-2; r < las+2; r++) {
-                for (int c = c-2; c < clas+2; c++) {
+                for (int c = sec-2; c < clas+2; c++) {
                   if (track[r+1][c+1].equals("*")) {
                     for (int right = r-1; right <= r+1; right++) {
                       for (int left = c-1; left <= c+1; left++) {
@@ -66,7 +70,7 @@ public class Basefile {
                         surround--;
                       }
                     }
-                    if (surround < 2 || surround > 4) sub[r][c] == "*";
+                    if (surround < 2 || surround > 4) sub[r][c] = "*";
                   } else {
                     for (int right = r-1; right <= r+1; right++) {
                       for (int left = c-1; left <= c+1; left++) {
@@ -93,12 +97,12 @@ public class Basefile {
                     if (las < r) las = r;
                     if (clas < c) clas = c;
                   }
-                  sub[r][c] = " ";
+                  sub[r][c] = ".";
                 }
               }
 
-              for(int r = fir; r < las; r++) {
-                for (int c = sec; c < clas; c++) {
+              for(int r = fir; r < las+1; r++) {
+                for (int c = sec; c < clas+1; c++) {
                   System.out.print(track[r][c] + " ");
                 }
                 System.out.println();
