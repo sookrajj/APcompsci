@@ -25,7 +25,7 @@ public class prog492h {
               }
             }
 
-            System.out.println("Generation 1");
+            System.out.println("Generation 0");
 
             int fir = 30;
             int sec = 30;
@@ -43,16 +43,18 @@ public class prog492h {
                 }
             }
 
-            for (int r = 0; r < track.length; r++) {
-              for (int c = 0; c < track.length; c++) {
-                System.out.print(track[r][c] + " ");
+            for (int r = fir; r < las+1; r++) {
+              for (int c = sec; c < clas+1; c++) {
+                  if (track[r][c].equals("*")) {
+                      System.out.print(track[r][c] + " ");
+                  } else System.out.print("  ");
               }
               System.out.println();
             }
 
             String[][] sub = new String[30][30];
             int surround = 0;
-            for (int lcv = 2; lcv < 16; lcv++) {
+            for (int lcv = 1; lcv < 16; lcv++) {
               
               for (int r = 0; r < sub.length; r++) {
                 for (int c = 0; c < sub.length; c++) {
@@ -61,21 +63,21 @@ public class prog492h {
               }
               System.out.println("Generation " + lcv);
               
-              for (int r = fir-2; r < las+2; r++) {
-                for (int c = sec-2; c < clas+2; c++) {
-                  if (track[r+1][c+1].equals("*")) {
+              for (int r = 2; r < track.length-2; r++) {
+                for (int c = 2; c < track.length-2; c++) {
+                  if (track[r][c].equals("*")) {
                     for (int right = r-1; right <= r+1; right++) {
                       for (int left = c-1; left <= c+1; left++) {
                         if (track[right][left].equals("*")) surround++;
-                        surround--;
+                        if (right == r && left == c) surround--;
                       }
                     }
-                    if (surround < 2 || surround > 4) sub[r][c] = "*";
+                    if (surround == 3 || surround == 2) sub[r][c] = "*";
                   } else {
                     for (int right = r-1; right <= r+1; right++) {
                       for (int left = c-1; left <= c+1; left++) {
                         if (track[right][left].equals("*")) surround++;
-                        surround--;
+
                       }
                     }
                     if (surround == 3) sub[r][c] = "*";
@@ -103,7 +105,9 @@ public class prog492h {
 
               for(int r = fir; r < las+1; r++) {
                 for (int c = sec; c < clas+1; c++) {
-                  System.out.print(track[r][c] + " ");
+                    if(track[r][c].equals("*")) {
+                        System.out.print(track[r][c] + " ");
+                    } else System.out.print("  ");
                 }
                 System.out.println();
               }
@@ -115,3 +119,87 @@ public class prog492h {
         }
     }
 }
+//Generation 0
+//    *         *
+//* *   * * * *   * *
+//    *         *
+//Generation 1
+//* * * * * * * *
+//*   * * * *   *
+//* * * * * * * *
+//Generation 2
+//    * * * * * *
+//  *             *
+//*                 *
+//  *             *
+//    * * * * * *
+//Generation 3
+//      * * * *
+//    * * * * * *
+//  * * * * * * * *
+//* *             * *
+//  * * * * * * * *
+//    * * * * * *
+//      * * * *
+//Generation 4
+//        * *
+//    *         *
+//  *             *
+//*                 *
+//*                 *
+//*                 *
+//  *             *
+//    *         *
+//        * *
+//Generation 5
+//    *             *
+//  * *             * *
+//* * *             * * *
+//  * *             * *
+//    *             *
+//Generation 6
+//  * *             * *
+//*     *         *     *
+//*     *         *     *
+//*     *         *     *
+//  * *             * *
+//Generation 7
+//    * *             * *
+//  *     *         *     *
+//* * * * * *     * * * * * *
+//  *     *         *     *
+//    * *             * *
+//Generation 8
+//    * *             * *
+//*         *     *         *
+//*         *     *         *
+//*         *     *         *
+//    * *             * *
+//Generation 9
+//    *     *         *     *
+//* * *     * * * * * *     * * *
+//    *     *         *     *
+//Generation 10
+//*     *   * *   *     *
+//* * * *   * *   * * * *
+//*     *   * *   *     *
+//Generation 11
+//  *     *   * *   *     *
+//* *     *         *     * *
+//  *     *   * *   *     *
+//Generation 12
+//* *       *     *       * *
+//* * * * *         * * * * *
+//* *       *     *       * *
+//Generation 13
+//  *     * *         * *     *
+//*       * * *     * * *       *
+//  *     * *         * *     *
+//Generation 14
+//        *   *     *   *
+//* *   *     *     *     *   * *
+//        *   *     *   *
+//Generation 15
+//    *         *
+//* *   * * * *   * *
+//    *         *
