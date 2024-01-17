@@ -13,7 +13,7 @@ public class prog477a {
         try {
             Scanner s = new Scanner(new File("Langdat/prog477a.dat"));
 
-            int[][] nums = new int[30][2];
+            int[][] nums = new int[40][2];
             int cnt = 0;
 
             while (s.hasNext()) {
@@ -51,16 +51,24 @@ public class prog477a {
                 dave[r][2] = dave[r][0] + dave[r][1];
               }
 
-              System.out.println("Grade\tMale\tFemale\tTotal\n\tA\t" + dave[0][0] + "\t" + dave[0][1] + "\t" + dave[0][2] +
-                                 "\n\tB\t" + dave[1][0] + "\t" + dave[1][1] + "\t" + dave[1][2] + 
-                                 "\n\tC\t" + dave[2][0] + "\t" + dave[2][1] + "\t" + dave[2][2] +
-                                 "\n\tD\t" + dave[3][0] + "\t" + dave[3][1] + "\t" + dave[3][2] +
-                                 "\n\tF\t" + dave[4][0] + "\t" + dave[4][1] + "\t" + dave[4][2] +
+              System.out.println("Grade\tMale\tFemale\tTotal\n\tA\t" + dave[0][0] + "\t\t" + dave[0][1] + "\t\t" + dave[0][2] +
+                                 "\n\tB\t" + dave[1][0] + "\t\t" + dave[1][1] + "\t\t" + dave[1][2] +
+                                 "\n\tC\t" + dave[2][0] + "\t\t" + dave[2][1] + "\t\t" + dave[2][2] +
+                                 "\n\tD\t" + dave[3][0] + "\t\t" + dave[3][1] + "\t\t" + dave[3][2] +
+                                 "\n\tF\t" + dave[4][0] + "\t\t" + dave[4][1] + "\t\t" + dave[4][2] +
                                  "\n-------------------------" +
-                                 "\n Totals\t" + dave[5][0] + "\t" + dave[5][1] + "\t" + dave[5][2]);
+                                 "\n Totals\t" + dave[5][0] + "\t\t" + dave[5][1] + "\t\t" + dave[5][2]);
                 
         } catch (IOException e) {
             System.out.println("Can't find data file.");
         }
     }
 }
+//Grade	Male	Female	Total
+//	A	2		4		6
+//	B	4		4		8
+//	C	4		7		11
+//	D	2		3		5
+//	F	3		0		3
+//-------------------------
+// Totals	15		18		33
