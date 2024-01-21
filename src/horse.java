@@ -17,9 +17,9 @@ public horse {
 
   public int getWeight() {return myWeight;}
 
-  public double value() {retunr myNumRides * myCostPerRide;}
+  public double value() {return myNumRides * myCostPerRide;}
 
-  public int getCorn() {retun myCorn;}
+  public int getCorn() {return myCorn;}
 
   public int getHay() {return myNumBales;}
 
