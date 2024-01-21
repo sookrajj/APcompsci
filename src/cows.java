@@ -5,7 +5,7 @@ public cows {
 	private int myCorn;
 	private int myNumBales;
 
-  public horse(int cowWeight, int poundsOfMilk, int cowcorn, int cowhay) {
+  public cow(int cowWeight, int poundsOfMilk, int cowcorn, int cowhay) {
     myWeight = cowWeight;
     myPounds = poundsOfMilk;
     myCorn = cowcorn;
