@@ -1,5 +1,5 @@
 
-public cows {
+public class cows {
   private int myWeight;
 	private int myPounds;
 	private int myCorn;
