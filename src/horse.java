@@ -1,6 +1,6 @@
 
 
-public horse {
+public class horse {
   private int myWeight;
 	private int myNumRides;
 	private double  myCostPerRide;
