@@ -1,4 +1,4 @@
-package Q2;
+package Q3;
 
 import Q2.prog213vcl.Bank;
 import Q2.prog213vcl.Transaction;
@@ -20,13 +20,17 @@ public class IFarm {
             double perPound = 0.2;
             ArrayList<cows> allcows = new ArrayList<cows>();
             for (int lcv = 0; lcv < numcows; lcv++) {
-              allcows.add(new cows(s.nextInt(), s.nextInt(), s.nextInt(), s.nextInt()));
+                int cowWeight = s.nextInt();
+                int poundsOfMilk = s.nextInt();
+                int cowcorn = s.nextInt();
+                int cowhay = s.nextInt();
+              allcows.add(new cows(cowWeight, poundsOfMilk, cowcorn, cowhay));
             }
 
             int numhorses = 0;
-            ArrayList<Double> allhorses = new ArrayList<>();
+            ArrayList<horse> allhorses = new ArrayList<>();
             for (int lcv = 0; lcv < numcows; lcv++) {
-              allhorses.add(new horse(s.nextInt(), s.nextInt(), s.nextDouble(), s.nextInt(), s.nextInt()));
+              allhorses.add(new horse(s.nextInt(), s.nextInt(), s.nextInt(), s.nextInt(), s.nextDouble()));
             }
 
             farmcheck farm = new farmcheck();
@@ -47,7 +51,7 @@ public class IFarm {
 
             for (int lcv = 0; lcv < 3; lcv++) {
                 double lowestmilk = 1000;
-                int index = -1
+                int index = -1;
                 for (int c = 0; c < numcows; c++) {
                     if (lowestmilk > allcows.get(lcv).value(perPound)) {
                         lowestmilk = allcows.get(lcv).value(perPound);
@@ -60,7 +64,7 @@ public class IFarm {
 
             for (int lcv = 0; lcv < 2; lcv++) {
                 double lowestmilk = 1000;
-                int index = -1
+                int index = -1;
                 for (int c = 0; c < numhorses; c++) {
                     if (lowestmilk > allhorses.get(lcv).value()) {
                         lowestmilk = allhorses.get(lcv).value();
@@ -71,9 +75,9 @@ public class IFarm {
                 numhorses--;
             }
 
-            allcows.set(0, new cows(1250, 80, 4, 3));'
+            allcows.set(0, new cows(1250, 80, 4, 3));
 
-            System.out.println("Total number of cows and horses on the farm " + (numcows+numhorses));
+            System.out.println("Total number of Q3.cows and horses on the farm " + (numcows+numhorses));
 
             
           

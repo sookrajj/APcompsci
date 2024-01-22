@@ -1,3 +1,4 @@
+package Q3;
 
 public class cows {
   private int myWeight;
@@ -5,7 +6,7 @@ public class cows {
 	private int myCorn;
 	private int myNumBales;
 
-  public cow(int cowWeight, int poundsOfMilk, int cowcorn, int cowhay) {
+  public cows(int cowWeight, int poundsOfMilk, int cowcorn, int cowhay) {
     myWeight = cowWeight;
     myPounds = poundsOfMilk;
     myCorn = cowcorn;
@@ -20,5 +21,5 @@ public class cows {
 
   public int getHay() {return myNumBales;}
 
-  public double getCost(int cornCost, int hayCost) {return (cornCost * myCorn) + (hayCost + myNumBales);}
+  public double getCost(double cornCost, double hayCost) {return (cornCost * myCorn) + (hayCost + myNumBales);}
 }

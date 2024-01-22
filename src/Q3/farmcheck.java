@@ -1,9 +1,10 @@
+package Q3;
 
 import java.util.ArrayList;
 
 public class farmcheck {
-  private static ArrayList mycows;
-  private static ArrayList gay; // horses as a joke
+  private static ArrayList<cows> mycows;
+  private static ArrayList<horse> gay; // horses as a joke
   private int mynumcows;
   private int mynumhorseys;
   private static int haycnt;
@@ -16,11 +17,11 @@ public class farmcheck {
   private int horseatcorn;
 
   public farmcheck() {
-    mycows = new ArrayList<Cow>();
-    gay = new ArrayList<Horse>(); // horseys
+    mycows = new ArrayList<cows>();
+    gay = new ArrayList<horse>(); // horseys
   }
 
-  public farmcheck(ArrayList allcows, ArrayList allhorses, int numcows, int numhorses, double cornsales, double haysales, int haybales, int corn) {
+  public farmcheck(ArrayList<cows> allcows, ArrayList<horse> allhorses, int numcows, int numhorses, double cornsales, double haysales, int haybales, int corn) {
     mycows = allcows;
     gay = allhorses;
     mynumcows = numcows;
@@ -34,14 +35,14 @@ public class farmcheck {
       cowfeedonhay += allcows.get(lcv).getHay();
     }
     for (int lcv = 0; lcv < numhorses; lcv++) {
-      horseathay += allhoses.get(lcv).getHay();
+      horseathay += allhorses.get(lcv).getHay();
       horseatcorn += allhorses.get(lcv).getCorn();
     }
     
   }
 
   private boolean feedcows() {
-    if (hatcnt > cowfeedonhay && corncnt > cowfeedoncorn) {
+    if (haycnt > cowfeedonhay && corncnt > cowfeedoncorn) {
       haycnt -= cowfeedonhay;
       corncnt -= cowfeedoncorn;
       return true;
@@ -50,7 +51,7 @@ public class farmcheck {
   }
 
   private boolean feedhorses() {
-    if (hatcnt > horseathay && corncnt > horseatcorn) {
+    if (haycnt > horseathay && corncnt > horseatcorn) {
       haycnt -= horseathay;
       corncnt -= horseatcorn;
       return true;
@@ -71,7 +72,7 @@ public class farmcheck {
   public double cowIncome(double perPound) {
     double cowmilk = 0.0;
 
-    for (int lcv = 0; lcv < numcows; lcv++) {
+    for (int lcv = 0; lcv < mynumcows; lcv++) {
       cowmilk += mycows.get(lcv).value(perPound);
     }
 
@@ -81,7 +82,7 @@ public class farmcheck {
 
   public double horseIncome() {
     double horseride = 0.0;
-    for (int lcv = 0; lcv < numhorses; lcv++) {
+    for (int lcv = 0; lcv < mynumhorseys; lcv++) {
       horseride += gay.get(lcv).value();
     }
     return horseride;
@@ -90,11 +91,11 @@ public class farmcheck {
   public double farmIncome(double perPound) {
     double cowmilk = 0.0;
 
-    for (int lcv = 0; lcv < numcows; lcv++) {
+    for (int lcv = 0; lcv < mynumcows; lcv++) {
       cowmilk += mycows.get(lcv).value(perPound);
     }
     double horseride = 0.0;
-      for (int lcv = 0; lcv < numhorses; lcv++) {
+      for (int lcv = 0; lcv < mynumhorseys; lcv++) {
         horseride += gay.get(lcv).value();
     }
 
@@ -103,10 +104,10 @@ public class farmcheck {
 
   public int getWeight() {
     int weight = 0;
-    for (int lcv = 0; lcv < numcows; lcv++) {
+    for (int lcv = 0; lcv < mynumcows; lcv++) {
       weight += mycows.get(lcv).getWeight();
     }
-    for (int lcv = 0; lcv < numhorses; lcv++) {
+    for (int lcv = 0; lcv < mynumhorseys; lcv++) {
       weight += gay.get(lcv).getWeight();
     }
     return weight;
@@ -114,10 +115,10 @@ public class farmcheck {
 
   public double getCost() {
     int corn = 0; 
-    for (int lcv = 0; lcv < numcows; lcv++) {
+    for (int lcv = 0; lcv < mynumcows; lcv++) {
       corn += mycows.get(lcv).getCost(corncost, haycost);
     }
-    for (int lcv = 0; lcv < numhorses; lcv++) {
+    for (int lcv = 0; lcv < mynumhorseys; lcv++) {
       corn += gay.get(lcv).getCost(corncost, haycost);
     }
     return corn;
