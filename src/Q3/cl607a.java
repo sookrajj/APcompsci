@@ -18,6 +18,7 @@ public class cl607a {
     String nice = "101112";
     String lets = "ABCDEFGHIJKL";
     String end = "QRSTUVWXYZ";
+    String back = "ZYXWVUTSRQLKJIHGFEDCBA";
     int fir = 80;
     int las = 0;
     for (int lcv = 0; lcv < mydate.length() - 1; lcv++) {
@@ -42,28 +43,44 @@ public class cl607a {
     }
 
     if (las - fir > 1) {
-      for (int h = las - fir; h > 0; h--) {
+      for (int h = 0; h < 2; h++) {
         for (int lcv = 0; lcv < hi.length(); lcv++) {
-          if (hi.substring(lcv, lcv + 1).equals(mydate.substring(fir + 1, las))) {
-            code += lets.substring(lcv, lcv + 1);
+          if (hi.substring(lcv, lcv + 1).equals(mydate.substring(h , h+1))) {
+            code += end.substring(lcv, lcv + 1);
           }
         }
       }
 
-        for (int lcv = 0; lcv < hi.length(); lcv++) {
-          if (hi.substring(lcv, lcv + 1).equals(mydate.substring(fir , las-1))) {
-            code += lets.substring(lcv, lcv + 1);
+      int temp = Integer.valueOf(mydate.substring(las+1, mydate.length()-1));
+      if (temp < 100) temp -= 70;
+      else temp-= 1970;
+
+      code += back.substring(temp, temp+1);
+      
+
+
+    } else {
+      for (int lcv = 0; lcv < hi.length(); lcv++) {
+          if (hi.substring(lcv, lcv + 1).equals(mydate.substring(fir , las))) {
+            code += end.substring(lcv, lcv + 1);
           }
-        }
+      }
 
+      int temp = Integer.valueOf(mydate.substring(las+1, mydate.length()-1));
+      if (temp < 100) temp -= 70;
+      else temp-= 1970;
 
+      code += back.substring(temp, temp+1);
+      
     }
+
+    
   }
 
 
     
     
-
+  public String getCode();
 
   public String getDate() {return mydate;}
 
