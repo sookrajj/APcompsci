@@ -21,9 +21,17 @@ public class prog607a {
         System.out.print("\nenter a date (m/d/y): ");
         date = s.next();
         list.add(new cl607a(date));
+        list.get(list.size()-1).calc();
+        System.out.println("The code is: " + list.get(list.size()-1).getCode());
 
-
+      } else if (choice == 2) {
+        encode = s.next();
+        for (int lcv = 0; lcv < list.size(); lcv++) {
+          if (list.get(lcv).getCode().equals(encode)) System.out.println("The date is: " + list.get(lcv).getDate());
+        }
       }
     }
+
+    System.out.println("Program quitted.");
   }
 }
