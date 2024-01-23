@@ -27,9 +27,9 @@ public class IFarm {
               allcows.add(new cows(cowWeight, poundsOfMilk, cowcorn, cowhay));
             }
 
-            int numhorses = 0;
+            int numhorses = s.nextInt();
             ArrayList<horse> allhorses = new ArrayList<>();
-            for (int lcv = 0; lcv < numcows; lcv++) {
+            for (int lcv = 0; lcv < numhorses; lcv++) {
               allhorses.add(new horse(s.nextInt(), s.nextInt(), s.nextInt(), s.nextInt(), s.nextDouble()));
             }
 
@@ -41,7 +41,7 @@ public class IFarm {
             System.out.println("The income of the day is: $" + income);
 
             System.out.println("The cost of feeding the animals for a day is: $" + farm.getCost());
-            System.out.println("The weight of all the animals is: " + farm.getWeight() + "Pounds");
+            System.out.println("The weight of all the animals is: " + farm.getWeight() + " Pounds");
 
             if (farm.feedAllAnimals() == true) {
                 System.out.println("The animals have been fed. You have " + farm.gethaycnt() + " haybales and " + farm.getcorncnt() + " corn left.");
@@ -77,7 +77,7 @@ public class IFarm {
 
             allcows.set(0, new cows(1250, 80, 4, 3));
 
-            System.out.println("Total number of Q3.cows and horses on the farm " + (numcows+numhorses));
+            System.out.println("Total number of cows and horses on the farm " + (numcows+numhorses));
 
             
           

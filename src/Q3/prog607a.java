@@ -1,4 +1,4 @@
-
+package Q3;
 import java.util.*;
 import java.util.ArrayList;
 import java.util.Scanner;
@@ -17,7 +17,13 @@ public class prog607a {
       System.out.println("2) Decode date");
       System.out.print("Select an option: ");
       choice = s.nextInt();
-      if (choice = 1) {
+      if (choice == 1) {
         System.out.print("\nenter a date (m/d/y): ");
         date = s.next();
-        list.add(new cl607a(date);
+        list.add(new cl607a(date));
+
+
+      }
+    }
+  }
+}
