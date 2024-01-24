@@ -1,5 +1,5 @@
-package Q3;
-import java.util.*;
+package Q3.prog607a;
+
 import java.util.ArrayList;
 import java.util.Scanner;
 

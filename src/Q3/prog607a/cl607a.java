@@ -1,10 +1,9 @@
-package Q3;
+package Q3.prog607a;
 
 
 
 public class cl607a {
   private String mydate;
-  private String myencode;
   private String code;
 
 
@@ -51,7 +50,11 @@ public class cl607a {
         }
       }
 
-      int temp = Integer.valueOf(mydate.substring(las+1, mydate.length()-1));
+      int temp = 0;
+      for (int lcv = mydate.length(); lcv > las; lcv--) {
+
+      }
+
       if (temp < 100) temp -= 70;
       else temp-= 1970;
 
@@ -80,7 +83,7 @@ public class cl607a {
 
     
     
-  public String getCode();
+  public String getCode() {return code;};
 
   public String getDate() {return mydate;}
 
