@@ -79,7 +79,7 @@ public class prog702p {
           }
         }
 
-        for (int lcv = 0; lcv < words.length() - 1; lcv++) {
+        for (int lcv = 0; lcv < words.length(); lcv++) {
           for (int r = 0; r < alp.length() - 1; r++) {
             if (words.substring(lcv, lcv + 1).equals(alp.substring(r, r + 1))) {
               cnt[r]++;
@@ -95,19 +95,19 @@ public class prog702p {
         int thir = 0;
         for (int lcv = 1; lcv < cnt.length; lcv++) {
           if (fir == cnt[lcv]) {
-            if (sec == cnt[lcv]) thir = cnt[lcv];
-
-          } else if (cnt[lcv] > fir) fir = cnt[lcv];
+            if (sec == cnt[lcv] && sec == fir) thir = cnt[lcv];
+            else sec = cnt[lcv];
+          } else if (fir < cnt[lcv]) fir = cnt[lcv];
 
 
 
         }
         if (fir > sec)
-          System.out.println("The most common letter(s) in all the Beepers' words is: " + alp.substring(fir - 1, fir));
+          System.out.println("The most common letter(s) in all the Beepers' words is: " + alp.substring(fir, fir+1));
         else if (sec > thir && fir == sec)
-          System.out.println("The most common letter(s) in all the Beepers' words is: " + alp.substring(fir - 1, fir) + " " + alp.substring(sec - 1, sec));
+          System.out.println("The most common letter(s) in all the Beepers' words is: " + alp.substring(fir, fir+1) + " " + alp.substring(sec, sec+1));
         else {
-          System.out.println("The most common letter(s) in all the Beepers' words is: " + alp.substring(fir - 1, fir) + " " + alp.substring(sec - 1, sec) + " " + alp.substring(thir - 1, thir));
+          System.out.println("The most common letter(s) in all the Beepers' words is: " + alp.substring(fir, fir+1) + " " + alp.substring(sec, sec+1) + " " + alp.substring(thir, thir+1));
         }
         } catch(Exception e){
           System.out.println("Can't find data file.");
