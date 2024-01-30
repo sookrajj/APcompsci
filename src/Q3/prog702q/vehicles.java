@@ -1,4 +1,4 @@
-package Q3;
+package Q3.prog702q;
 
 public class vehicles implements vnames {
   private String name;
@@ -11,7 +11,7 @@ public class vehicles implements vnames {
     this.val = val;
   }
 
-  public String getname() {return name;}
-  public int gettires() {return tires;}
-  public double getval() {return val;}
+  public String getName() {return name;}
+  public int getTires() {return tires;}
+  public double getValue() {return val;}
 }

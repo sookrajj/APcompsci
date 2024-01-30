@@ -91,23 +91,35 @@ public class prog702p {
         System.out.println("The average size of the Beepers words is: " + (double) words.length() / cntb);
 
         int fir = cnt[0];
+        int pla = 0;
         int sec = 0;
+        int pla2 = 0;
         int thir = 0;
+        int pla3 = 0;
         for (int lcv = 1; lcv < cnt.length; lcv++) {
           if (fir == cnt[lcv]) {
-            if (sec == cnt[lcv] && sec == fir) thir = cnt[lcv];
-            else sec = cnt[lcv];
-          } else if (fir < cnt[lcv]) fir = cnt[lcv];
+            if (sec == cnt[lcv] && sec == fir) {
+              thir = cnt[lcv];
+              pla3 = lcv;
+            }
+            else {
+              sec = cnt[lcv];
+              pla2 = lcv;
+            }
+          } else if (fir < cnt[lcv]) {
+            pla = lcv;
+            fir = cnt[lcv];
+          }
 
 
 
         }
         if (fir > sec)
-          System.out.println("The most common letter(s) in all the Beepers' words is: " + alp.substring(fir, fir+1));
+          System.out.println("The most common letter(s) in all the Beepers' words is: " + alp.substring(pla, pla+1));
         else if (sec > thir && fir == sec)
-          System.out.println("The most common letter(s) in all the Beepers' words is: " + alp.substring(fir, fir+1) + " " + alp.substring(sec, sec+1));
+          System.out.println("The most common letter(s) in all the Beepers' words is: " + alp.substring(pla, pla+1) + " " + alp.substring(pla2, pla2+1));
         else {
-          System.out.println("The most common letter(s) in all the Beepers' words is: " + alp.substring(fir, fir+1) + " " + alp.substring(sec, sec+1) + " " + alp.substring(thir, thir+1));
+          System.out.println("The most common letter(s) in all the Beepers' words is: " + alp.substring(pla, pla+1) + " " + alp.substring(pla2, pla2+1) + " " + alp.substring(pla3, pla3+1));
         }
         } catch(Exception e){
           System.out.println("Can't find data file.");
@@ -116,3 +128,52 @@ public class prog702p {
 
 }
 
+//Hicca's name is: Billy Buckner
+//Its fur is worth: 3.25
+//
+//Wallie's name is: Fred Ballony
+//Wallie has taken : 28 steps
+//
+//Beeper's name is Nick Cuccia
+//Beeper's favorite word is: coolbeans
+//
+//Hicca's name is: Murray Cox
+//Its fur is worth: 4.0
+//
+//Hicca's name is: Carly Seifert
+//Its fur is worth: 2.58
+//
+//Hicca's name is: Elias Smith
+//Its fur is worth: 3.22
+//
+//Wallie's name is: Katy Rumberger
+//Wallie has taken : 45 steps
+//
+//Wallie's name is: Tanya Barton
+//Wallie has taken : 78 steps
+//
+//Wallie's name is: Casey Bats
+//Wallie has taken : 97 steps
+//
+//Wallie's name is: Brandon Davis
+//Wallie has taken : 68 steps
+//
+//Beeper's name is Ingrid Sink
+//Beeper's favorite word is: superdude
+//
+//Beeper's name is Nico Binge
+//Beeper's favorite word is: attaway
+//
+//Beeper's name is Mike Break
+//Beeper's favorite word is: done
+//
+//Hicca's name is: Brad Williamson
+//Its fur is worth: 2.75
+//
+//Hicca's name is: Lorenzo Rapp
+//Its fur is worth: 2.55
+//
+//The average value of the Hicca fur is: 3.0583333333333336
+//The average number of steps taken by the Wallies is:  63.2
+//The average size of the Beepers words is: 7.25
+//The most common letter(s) in all the Beepers' words is: a e

@@ -1,4 +1,4 @@
-package Q3;
+package Q3.prog702q;
 
 public class truck extends vehicles {
   private double mileage;

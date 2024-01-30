@@ -1,4 +1,4 @@
-package Q3;
+package Q3.prog702q;
 
 public class cars extends vehicles {
   private double val;
@@ -8,5 +8,5 @@ public class cars extends vehicles {
     this.val = val;
   }
 
-  public double getval() {return val;}
+  public double getValue() {return val;}
 }
