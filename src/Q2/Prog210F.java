@@ -8,6 +8,7 @@ public class Prog210F {
         int matches = 21;
         boolean yes = true;
         while (yes == true) {
+            matches = 21;
             System.out.println("Player  Computer   Pile");
             while (matches != 1) {
                 System.out.print("How many (1-4) ");
