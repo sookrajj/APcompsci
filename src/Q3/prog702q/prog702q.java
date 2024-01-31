@@ -42,14 +42,33 @@ public class prog702q {
 
             double carsvalue = 0;
             double allvalue = 0;
+            int alltires = 0;
+            double leastvaltruck = 1000000;
+            String homelong = "";
             for (vehicles v : list) {
                 if (v instanceof cars) {
                     carsvalue += v.getValue();
                     allvalue += v.getValue();
                 } else if (v instanceof truck) {
                     allvalue += v.getValue() - ((truck) v).getmileage()*0.25;
+                    if (leastvaltruck > v.getValue() - ((truck) v).getmileage()*0.25) {
+                        leastvaltruck = v.getValue() - ((truck) v).getmileage()*0.25;
+                    }
+                } else if (v instanceof bus) {
+                    allvalue += v.getValue();
+                    if (homelong.length() < ((bus)v).getHome().length()) {
+                        homelong = ((bus) v).getHome();
+                    }
                 }
+                alltires += v.getTires();
             }
+
+            System.out.println("The total cost of all vehicles is: " + allvalue);
+            System.out.println("The total cost of all cars is: " + carsvalue);
+            System.out.println("The longest home destination name is: " + homelong);
+
+            System.out.println("Least valuable truck is: " + leastvaltruck);
+            System.out.println("The total tires amount is: " + alltires);
 
 
 
@@ -59,3 +78,9 @@ public class prog702q {
         }
     }
 }
+//Total amount of vehicles is: 13
+//The total cost of all vehicles is: 428199.75
+//The total cost of all cars is: 33950.0
+//The longest home destination name is: Minneapolis
+//Least valuable truck is: 18750.0
+//The total tires amount is: 179

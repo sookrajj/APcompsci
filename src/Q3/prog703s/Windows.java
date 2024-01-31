@@ -1,4 +1,6 @@
-public class Windows extends Computers {
+package Q3.prog703s;
+
+public class Windows extends Computer {
   private double ver;
 
   public Windows(String name, int number, double value, double ver) {

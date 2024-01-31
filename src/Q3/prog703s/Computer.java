@@ -1,3 +1,5 @@
+package Q3.prog703s;
+
 public class Computer implements comps {
   private String name;
   private int number;

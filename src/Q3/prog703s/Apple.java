@@ -1,4 +1,6 @@
-public class Apple extends Computers {
+package Q3.prog703s;
+
+public class Apple extends Computer {
   private String color;
 
 

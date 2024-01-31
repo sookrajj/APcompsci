@@ -8,5 +8,5 @@ public class bus extends vehicles {
     this.home = home;
   }
 
-  public String gethome() {return home;}
+  public String getHome() {return home;}
 }

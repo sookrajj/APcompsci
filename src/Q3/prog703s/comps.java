@@ -1,3 +1,5 @@
+package Q3.prog703s;
+
 public interface comps
 {
 	public String getName();
