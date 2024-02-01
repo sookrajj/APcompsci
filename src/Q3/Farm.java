@@ -90,7 +90,7 @@ public class Farm implements Ifarm2 {
     for (Horse2 ho : gay) {
       horseWeight += ho.getWeight();
     }
-    return milk + ride;
+    return cowWeight + horseWeight;
   }
 
   public double farmCost() {
@@ -104,6 +104,34 @@ public class Farm implements Ifarm2 {
     }
     return milk + ride;
   }
+
+  public int weightiestCow() {
+    double weight = 0;
+    int index = 0
+    for (int lcv = 0; lcv < cow.size(); lcv++) {
+	if (weight < cow.get(lcv).getWeight()) {
+		weight = cow.get(lcv).getWeight();
+		index = lcv;
+	}
+    }
+
+    return index;
+  }
+
+  public int weightiestHorse() {
+    double weight = 0;
+    int index = 0
+    for (int lcv = 0; lcv < gay.size(); lcv++) {
+	if (weight < gay.get(lcv).getWeight()) {
+		weight = gay.get(lcv).getWeight();
+		index = lcv;
+	}
+    }
+
+    return index;
+  }
+
+  
 
   public ArrayList<Cow2> cows() {return cow;}
   public ArrayList<Horse2> gay() {return gay;}
