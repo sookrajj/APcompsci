@@ -16,7 +16,7 @@ public class Horse2 {
   Public int getWeight() {return myweight;}
 
 	//returns the value of the milk produced
-	Public double value(double perpound) {return mynumRides*mycostRide;}
+	Public double value() {return mynumRides*mycostRide;}
 
 	//returns the amount of corn eaten by this cow
 	Public int getCorn() {return myCorn;}
