@@ -1,23 +1,27 @@
-public interface IFarm {
+package Q3.prog505u;
+
+import java.util.ArrayList;
+
+public interface Ifarm2 {
     /** Feeds all cows where farm has enough food */
-    private boolean feedCows() { return false; }
+    private boolean feedCows2() { return false; }
 
     /** Feeds all horses where farm has enough food */
-    private boolean feedHorses()  { return false; }
+    private boolean feedHorses2()  { return false; }
 
     /** Feeds all cows and horses where farm has enough food  */
-    public boolean feedAllAnimals();
+    public boolean feedAllAnimals2();
 
     /** Calculates the value of the milk produced by the
      *  cows price for each cow's milk is the same per pound */
-    private double cowIncome(double perPound)  { return 0; }
+    private double cowIncome2(double perPound) {return 0;}
 
     /** Calculates the value of the rides given by the horses
      *  ride value of each horse changes based on the horse */
-    private double horseIncome() { return 0; }
+    private double horseIncome2() { return 0; }
 
     /** Calculates the daily income of the farm */
-    public double farmIncome();
+    public double farmIncome2();
 
     /** Calculates the total weight of all the farm animals */
     public int getWeight();
@@ -27,8 +31,8 @@ public interface IFarm {
     public double getCost();
 
     /** Returns the cows in an ArrayList */
-    public ArrayList<Cow> getCows();
+    public ArrayList<Cow2> getCows();
 
     /** Returns the horses in an ArrayList */
-    public ArrayList<Horse> getHorses();
+    public ArrayList<Horse2> getGay();
 }

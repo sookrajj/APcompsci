@@ -25,7 +25,6 @@ public class Prog210F {
 
                 }
             }
-            matches = 0;
 
             System.out.println("\t\tComputer wins");
             System.out.print("Play again (y/n)? ");

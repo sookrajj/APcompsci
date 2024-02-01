@@ -1,7 +1,13 @@
-public class Farm implements Ifarm2 {
+package Q3.prog505u;
+
+import Q3.prog505u.Cow2;
+import Q3.prog505u.Horse2;
+import java.util.ArrayList;
+
+public class Farm implements Ifarm2{
   private ArrayList<Cow2> cow;
   private ArrayList<Horse2> gay;
-  private int myNumHayBales;
+  private int myNumHaybales;
 	private int myNumCorn;
 	private double myHayCost;
 	private double myCornCost;
@@ -16,7 +22,7 @@ public class Farm implements Ifarm2 {
     myCornCost = CornCost;
   }
 
-  public boolean feedCows() {
+  public boolean feedCows2() {
     int hay = 0;
     int corn = 0;
     for (Cow2 co : cow) {
@@ -27,7 +33,7 @@ public class Farm implements Ifarm2 {
     return false;
   }
 
-  public boolean feedHorses() {
+  public boolean feedHorses2() {
     int hay = 0;
     int corn = 0;
     for (Horse2 ho : gay) {
@@ -38,7 +44,7 @@ public class Farm implements Ifarm2 {
     return false;
   }
 
-  public boolean feedCows() {
+  public boolean feedAllAnimals2() {
     int hay = 0;
     int corn = 0;
     for (Cow2 co : cow) {
@@ -49,11 +55,15 @@ public class Farm implements Ifarm2 {
       hay += ho.getHay();
       corn += ho.getCorn();
     }
-    if (hay <= myNumHaybales && corn <= myNumCorn) return true;
+    if (hay <= myNumHaybales && corn <= myNumCorn) {
+      myNumCorn -= corn;
+      myNumHaybales -= hay;
+      return true;
+    }
     return false;
   }
 
-  public double cowIncome(double perPound) {
+  public double cowIncome2(double perPound) {
     double milk = 0;
     for (Cow2 co : cow) {
       milk += co.getMilk() * perPound;
@@ -61,27 +71,27 @@ public class Farm implements Ifarm2 {
     return milk;
   }
 
-  public double horseIncome() {
+  public double horseIncome2() {
     double ride = 0;
     for (Horse2 ho : gay) {
-      ride += ho.getRides() * ho.getRideCost();
+      ride += ho.value();
     }
     return ride;
   }
 
-  public double farmIncome(double perPound) {
+  public double farmIncome2() {
     double milk = 0;
     for (Cow2 co : cow) {
-      milk += co.getMilk() * perPound;
+      milk += co.getMilk() * .2;
     }
     double ride = 0;
     for (Horse2 ho : gay) {
-      ride += ho.getRides() * ho.getRideCost();
+      ride += ho.value();
     }
     return milk + ride;
   }
 
-  public int farmWeight() {
+  public int getWeight() {
     int cowWeight = 0;
     for (Cow2 co : cow) {
       cowWeight += co.getWeight();
@@ -93,21 +103,21 @@ public class Farm implements Ifarm2 {
     return cowWeight + horseWeight;
   }
 
-  public double farmCost() {
+  public double getCost() {
     double milk = 0;
     for (Cow2 co : cow) {
-      milk += co.getCost();
+      milk += co.getCost(myCornCost, myHayCost);
     }
     double ride = 0;
     for (Horse2 ho : gay) {
-      ride += ho.getCost();
+      ride += ho.getCost(myCornCost, myHayCost);
     }
     return milk + ride;
   }
 
   public int weightiestCow() {
     double weight = 0;
-    int index = 0
+    int index = 0;
     for (int lcv = 0; lcv < cow.size(); lcv++) {
 	if (weight < cow.get(lcv).getWeight()) {
 		weight = cow.get(lcv).getWeight();
@@ -120,7 +130,7 @@ public class Farm implements Ifarm2 {
 
   public int weightiestHorse() {
     double weight = 0;
-    int index = 0
+    int index = 0;
     for (int lcv = 0; lcv < gay.size(); lcv++) {
 	if (weight < gay.get(lcv).getWeight()) {
 		weight = gay.get(lcv).getWeight();
@@ -133,6 +143,6 @@ public class Farm implements Ifarm2 {
 
   
 
-  public ArrayList<Cow2> cows() {return cow;}
-  public ArrayList<Horse2> gay() {return gay;}
+  public ArrayList<Cow2> getCows() {return cow;}
+  public ArrayList<Horse2> getGay() {return gay;}
 }
