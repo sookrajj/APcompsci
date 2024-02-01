@@ -1,8 +1,8 @@
 public class Cow2 {
-  Private int myweight;
-	Private int mymilk;
-	Private int mycorn;
-	Private int myHaybales;
+  private int myweight;
+  private int mymilk;
+  private int mycorn;
+  private int myHaybales;
 
   public Cow2(int weight, int milk, int corn, int HayEaten) {
     myweight = weight;
@@ -23,5 +23,5 @@ public class Cow2 {
 	Public int getHay() {return myHaybales;}
 
 	//calculates the amount of money it will take to feed the cows for the day
-	Public double getCost(double corncost,double haycost) {return (corncost*mycorn) + (haycost * mynumbales);}
+	Public double getCost(double corncost,double haycost) {return (corncost*mycorn) + (haycost * myHaybales);}
 }
