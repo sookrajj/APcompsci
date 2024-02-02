@@ -142,7 +142,7 @@ public class Farm implements Ifarm2{
   }
 
     public int lightiestCow() {
-    double weight = 111111111111110;
+    double weight = 1111111110;
     int index = 0;
     for (int lcv = 0; lcv < cow.size(); lcv++) {
 	if (weight > cow.get(lcv).getWeight()) {
@@ -155,7 +155,7 @@ public class Farm implements Ifarm2{
   }
 
   public int lightiestHorse() {
-    double weight = 11111111111110;
+    double weight = 1111111110;
     int index = 0;
     for (int lcv = 0; lcv < gay.size(); lcv++) {
 	if (weight > gay.get(lcv).getWeight()) {

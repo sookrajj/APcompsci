@@ -11,70 +11,83 @@ import java.util.Scanner;
 public class prog505u {
     public static void main(String[] args) {
         try {
-            Scanner s = new Scanner(new File("Langdat/prog505u.dat"));
+            Scanner s = new Scanner(new File("Langdat/prog505u.txt"));
             double perPound = .2;
             int numFarms = s.nextInt();
-            int haybales = s.nextInt();
-            double hayCost = s.nextDouble();
-            int corn = s.nextInt();
-            double cornCost = s.nextDouble();
+            int[] haybales = new int[4];
+            double[] hayCost = new double[numFarms];
+            int[] corn = new int[4];
+            double[] cornCost = new double[numFarms];
             ArrayList<Cow2> farmcows = new ArrayList<>();
             ArrayList<Horse2> farmgay = new ArrayList<>();
-            // ArrayList<Cow2> farm2cows = new ArrayList<>();
-            // ArrayList<Horse2> farm2gay = new ArrayList<>();
-            // ArrayList<Cow2> farm3cows = new ArrayList<>();
-            // ArrayList<Horse2> farm3gay = new ArrayList<>();
-            // ArrayList<Cow2> farm4cows = new ArrayList<>();
-            // ArrayList<Horse2> farm4gay = new ArrayList<>();
+             ArrayList<Cow2> farm2cows = new ArrayList<>();
+             ArrayList<Horse2> farm2gay = new ArrayList<>();
+             ArrayList<Cow2> farm3cows = new ArrayList<>();
+             ArrayList<Horse2> farm3gay = new ArrayList<>();
+             ArrayList<Cow2> farm4cows = new ArrayList<>();
+             ArrayList<Horse2> farm4gay = new ArrayList<>();
             int[] numcows = new int[numFarms];
             int[] numHorses = new int[numFarms];
             int[][][] cowfarm = new int[numFarms][15][4];
             double[][][] horsefarm = new double[numFarms][15][5];
             int cnt = 0;
-            for (int z = 0; z < numfarms; z++) {
-                for (int y = 0; y < cowfarm[z].length; y++) {
-                    numcows[cnt] = s.nextInt();
-                    for (int x = 0; x < numCows[cnt]; x++) {
+            for (int z = 0; z < numFarms; z++) {
+                haybales[z] = s.nextInt();
+                hayCost[z] =s.nextDouble();
+                corn[z] = s.nextInt();
+                cornCost[z] = s.nextDouble();
+                numcows[cnt] = s.nextInt();
+                for (int y = 0; y < numcows[cnt]; y++) {
+                    for (int x = 0; x < 4; x++) {
                         cowfarm[z][y][x] = s.nextInt();
                     }
-                    numHorses[cnt] = s.nextInt();
-                    for (int x = 0; x < numHorses[cnt]-1; x++) {
+                }
+                numHorses[cnt] = s.nextInt();
+                for (int y = 0; y < numHorses[cnt]; y++) {
+                    for (int x = 0; x < 4; x++) {
                         horsefarm[z][y][x] = (double) s.nextInt();
                     }
-                    horsefarm[z][y][horsefarm[z][y].length] = s.nextDouble();
-                    cnt++;
+                    horsefarm[z][y][horsefarm[z][y].length-1] = s.nextDouble();
                 }
+                cnt++;
+
             }
 
             for (int z = 0; z < cowfarm.length; z++) {
                 for (int y = 0; y < cowfarm[z].length; y++) {
-                    int weight = cowfarm[z][y][0];
-                    int milk = cowfarm[z][y][1];
-                    int hay = cowfarm[z][y][2];
-                    int corn = cowfarm[z][y][3];
-                    farmcows.add(new Cow2(weight, milk, hay, corn));
-                    int weight = (int) horsefarm[z][y][0];
-                    int hay = (int) horsefarm[z][y][1];
-                    int corn = (int) horsefarm[z][y][2];
-                    int ride = (int) horsefarm[z][y][3];
-                    double cost = horsefarm[z][y][4];
-                    farmhorses.add(new Horse2(weight, hay, corn, ride, cost));
+                    int cweight = cowfarm[z][y][0];
+                    int cmilk = cowfarm[z][y][1];
+                    int chay = cowfarm[z][y][2];
+                    int cowcorn = cowfarm[z][y][3];
+                    farmcows.add(new Cow2(cweight, cmilk, chay, cowcorn));
+                    int hweight = (int) horsefarm[z][y][0];
+                    int hhay = (int) horsefarm[z][y][1];
+                    int hcorn = (int) horsefarm[z][y][2];
+                    int hride = (int) horsefarm[z][y][3];
+                    double hcost = horsefarm[z][y][4];
+                    farmgay.add(new Horse2(hweight, hhay, hcorn, hride, hcost));
                 }
             }
 
-            Farm farm = new Farm(farmcows, farmhorses, haybales, corn, haycost, corncost);
+            Farm farm = new Farm(farmcows, farmgay, haybales[0], corn[0], hayCost[0], cornCost[0]);
 
             if (farm.weightiestCow() > farm.weightiestHorse()) {
-                System.out.println("The heaviest animal was a cow at " + farm.weightiestCow() + " lbs";
+                System.out.println("The heaviest animal was a cow at " + farm.weightiestCow() + " lbs");
             } else {
-                System.out.println("The heaviest animal was a horse at " + farm.weightiestHorse() + " lbs";
+                System.out.println("The heaviest animal was a horse at " + farm.weightiestHorse() + " lbs");
             }
 
             if (farm.lightiestCow() < farm.lightiestHorse()) {
-                System.out.println("The lightest animal was a cow at " + farm.lightiestCow() + " lbs";
+                System.out.println("The lightest animal was a cow at " + farm.lightiestCow() + " lbs");
             } else {
-                System.out.println("The lightest animal was a horse at " + farm.lightiestHorse() + " lbs";
+                System.out.println("The lightest animal was a horse at " + farm.lightiestHorse() + " lbs");
             }
+
+            System.out.println("Total cost is: " + farm.getCost());
+            System.out.println("Total income is: " + farm.farmIncome2());
+
+
+
             // int numHorses = s.nextInt();
             // for (int lcv = 0; lcv < numHorses; lcv++){
             //   int weight = s.nextInt();
