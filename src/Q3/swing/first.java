@@ -1,9 +1,12 @@
 package Q3.swing;
 
 import javax.swing.*;
+import java.util.*;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.util.Timer;
+import java.util.TimerTask;
 
 public class first {
     private JPanel first;
@@ -12,21 +15,33 @@ public class first {
     private JButton button3;
     private JButton button4;
     private JLabel Hi;
+    private static int cooks = 1;
+    private static int cnt = 0;
+    private static Timer time;
+    private static int add = 0;
+
 
     public first() {
 
+
+        time.schedule(new TimerTask() {
+            public int add(int add) {
+                cnt += add;
+                return cnt;
+            }
+        }, 0, 1000);
         button1.addMouseListener(new MouseAdapter() {
-            int cnt = 0;
-            int cooks = 1;
+
             @Override
             public void mouseClicked(MouseEvent e) {
-                Hi.setText(cnt);
+                Hi.setText("hi's = " + cnt);
                 cnt += cooks;
             }
         });
         button2.addMouseListener(new MouseAdapter() {
             public void mouseClicked(MouseEvent e) {
                 if (cnt > 10) {
+                    button2.setText("hi's per click + 1");
                     cooks++;
                     cnt -= 10;
                 }
@@ -34,6 +49,7 @@ public class first {
         });
         button3.addMouseListener(new MouseAdapter() {
             public void mouseClicked(MouseEvent e) {
+                button3.setText("hi's per click + 10");
                 if (cnt > 100) {
                     cooks += 10;
                     cnt -= 100;
@@ -41,7 +57,9 @@ public class first {
             }
         });
         button4.addMouseListener(new MouseAdapter() {
+
             public void mouseClicked(MouseEvent e) {
+                button4.setText("hi's per click + 1000");
                 if (cnt > 1000) {
                     cooks += 1000;
                     cnt -= 1000;
@@ -60,14 +78,5 @@ public class first {
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.pack();
         frame.setVisible(true);
-        button2 b2 = new button2("Count +1");
-        b2.setBounds(100, 100, 100, 50);
-        frame.add(b2);
-        button3 b3 = new button3("Count +10");
-        b3.setBounds(100, 50, 100, 50);
-        frame.add(b3);
-        button4 b4 = new button4("Count +1000");
-        b4.setBounds(100, 0, 100, 50);
-        frame.add(b4);
     }
 }
