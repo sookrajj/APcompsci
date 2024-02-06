@@ -1,12 +1,9 @@
 package Q3.swing;
 
 import javax.swing.*;
-import java.util.*;
-import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.util.Timer;
-import java.util.TimerTask;
 
 public class first {
     private JPanel first;
@@ -15,57 +12,92 @@ public class first {
     private JButton button3;
     private JButton button4;
     private JLabel Hi;
+    private JProgressBar buttonRadioButton;
+    private JButton button5;
+    private JButton button6;
+    private JLabel mo;
     private static int cooks = 1;
     private static int cnt = 0;
-    private static Timer time;
-    private static int add = 0;
+
 
 
     public first() {
-
-
-        time.schedule(new TimerTask() {
-            public int add(int add) {
-                cnt += add;
-                return cnt;
-            }
-        }, 0, 1000);
+        mo.setText("Hi's per click " + 1);
+        Hi.setText("hi's = " + cnt);
+        button1.setText("increse hi's count");
+        button2.setText("hi's per click + 1 for 10 hi's");
+        button3.setText("hi's per click + 10 for 100 hi's");
+        button4.setText("hi's per click + 100 for 1000 hi's");
+        button5.setText("hi's per click + 1000 for 10000 hi's");
+        button6.setText("hi's per click + 10000 for 100000 hi's");
         button1.addMouseListener(new MouseAdapter() {
-
-            @Override
             public void mouseClicked(MouseEvent e) {
                 Hi.setText("hi's = " + cnt);
                 cnt += cooks;
+                mo.setText("Hi's per click " + cooks);
+                buttonRadioButton.setValue(cnt/100000);
+                buttonRadioButton.getPercentComplete();
             }
         });
         button2.addMouseListener(new MouseAdapter() {
             public void mouseClicked(MouseEvent e) {
                 if (cnt > 10) {
-                    button2.setText("hi's per click + 1");
+
                     cooks++;
                     cnt -= 10;
+                    Hi.setText("hi's = " + cnt);
+                    mo.setText("Hi's per click " + cooks);
                 }
             }
         });
         button3.addMouseListener(new MouseAdapter() {
             public void mouseClicked(MouseEvent e) {
-                button3.setText("hi's per click + 10");
                 if (cnt > 100) {
                     cooks += 10;
                     cnt -= 100;
+                    Hi.setText("hi's = " + cnt);
+                    mo.setText("Hi's per click " + cooks);
                 }
             }
         });
         button4.addMouseListener(new MouseAdapter() {
 
             public void mouseClicked(MouseEvent e) {
-                button4.setText("hi's per click + 1000");
+
                 if (cnt > 1000) {
-                    cooks += 1000;
+                    cooks += 100;
                     cnt -= 1000;
+                    Hi.setText("hi's = " + cnt);
+                    mo.setText("Hi's per click " + cooks);
                 }
             }
         });
+        buttonRadioButton.setMaximum(100);
+        button5.addMouseListener(new MouseAdapter() {
+
+            public void mouseClicked(MouseEvent e) {
+
+                if (cnt > 10000) {
+                    cooks += 1000;
+                    cnt -= 10000;
+                    Hi.setText("hi's = " + cnt);
+                    mo.setText("Hi's per click " + cooks);
+                }
+            }
+        });
+        button6.addMouseListener(new MouseAdapter() {
+
+            public void mouseClicked(MouseEvent e) {
+
+                if (cnt > 100000) {
+                    cooks += 10000;
+                    cnt -= 100000;
+                    Hi.setText("hi's = " + cnt);
+                    mo.setText("Hi's per click " + cooks);
+                }
+            }
+        });
+
     }
 
     private void createUIComponents() {
@@ -78,5 +110,6 @@ public class first {
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.pack();
         frame.setVisible(true);
+
     }
 }
