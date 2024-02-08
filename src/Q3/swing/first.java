@@ -16,8 +16,10 @@ public class first {
     private JButton button5;
     private JButton button6;
     private JLabel mo;
+    private JRadioButton radioButton1;
     private static int cooks = 1;
     private static int cnt = 0;
+    public static int check = 0;
 
 
 
@@ -30,6 +32,7 @@ public class first {
         button4.setText("hi's per click + 100 for 1000 hi's");
         button5.setText("hi's per click + 1000 for 10000 hi's");
         button6.setText("hi's per click + 10000 for 100000 hi's");
+        radioButton1.setText("double clicks once ");
         button1.addMouseListener(new MouseAdapter() {
             public void mouseClicked(MouseEvent e) {
                 Hi.setText("hi's = " + cnt);
@@ -47,6 +50,8 @@ public class first {
                     cnt -= 10;
                     Hi.setText("hi's = " + cnt);
                     mo.setText("Hi's per click " + cooks);
+                    buttonRadioButton.setValue(cnt/100000);
+                    buttonRadioButton.getPercentComplete();
                 }
             }
         });
@@ -57,6 +62,8 @@ public class first {
                     cnt -= 100;
                     Hi.setText("hi's = " + cnt);
                     mo.setText("Hi's per click " + cooks);
+                    buttonRadioButton.setValue(cnt/100000);
+                    buttonRadioButton.getPercentComplete();
                 }
             }
         });
@@ -69,6 +76,8 @@ public class first {
                     cnt -= 1000;
                     Hi.setText("hi's = " + cnt);
                     mo.setText("Hi's per click " + cooks);
+                    buttonRadioButton.setValue(cnt/100000);
+                    buttonRadioButton.getPercentComplete();
                 }
             }
         });
@@ -97,7 +106,19 @@ public class first {
                 }
             }
         });
+        radioButton1.addMouseListener(new MouseAdapter() {
+            public void mouseClicked(MouseEvent e) {
+                if (check == 0) {
+                    cooks *= 2;
+                    mo.setText("Hi's per click " + cooks);
+                    check++;
+                }
+            }
+        });
 
+        if (buttonRadioButton.getPercentComplete() == 100) {
+
+        }
     }
 
     private void createUIComponents() {
