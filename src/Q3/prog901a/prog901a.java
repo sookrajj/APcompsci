@@ -32,8 +32,6 @@ public class prog901a {
             Scanner s = new Scanner(new File("Langdat/prog512h.dat"));
             printFile(s);
 
-
-
         } catch (
                 IOException e) {
             System.out.println("Can't find data file.");
