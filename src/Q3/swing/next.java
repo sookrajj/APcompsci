@@ -4,6 +4,6 @@ import javax.swing.*;
 
 public class next {
     private JPanel panel1;
-
+ 
 
 }
