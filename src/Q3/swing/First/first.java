@@ -1,9 +1,8 @@
-package Q3.swing;
+package Q3.swing.First;
 
 import javax.swing.*;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
-import java.util.Timer;
 
 public class first {
     private JPanel first;
@@ -20,8 +19,7 @@ public class first {
     private static int cooks = 1;
     private static int cnt = 0;
     public static int check = 0;
-
-
+    private static JPanel Next;
 
     public first() {
         mo.setText("Hi's per click " + 1);
@@ -113,13 +111,17 @@ public class first {
                     mo.setText("Hi's per click " + cooks);
                     check++;
                 }
+
             }
         });
 
         if (buttonRadioButton.getPercentComplete() == 100) {
+            Hi.setText("Yippie");
 
         }
     }
+
+
 
     private void createUIComponents() {
         // TODO: place custom component creation code here
@@ -133,4 +135,6 @@ public class first {
         frame.setVisible(true);
 
     }
+
+
 }
