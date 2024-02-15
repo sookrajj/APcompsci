@@ -5,7 +5,7 @@ import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 
 public class first {
-    private JPanel first;
+    private JPanel first; 
     private JButton button1;
     private JButton button2;
     private JButton button3;
