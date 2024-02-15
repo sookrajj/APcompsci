@@ -6,7 +6,7 @@ import java.awt.event.MouseEvent;
 import java.util.Timer;
 
 public class first {
-    private JPanel first;
+    private JPanel first; 
     private JButton button1;
     private JButton button2;
     private JButton button3;
