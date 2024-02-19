@@ -39,11 +39,14 @@ public class first {
         button5.setText("hi's per click + 1000 for 10000 hi's");
         button6.setText("hi's per click + 10000 for 100000 hi's");
         radioButton1.setText("double clicks once ");
+        buttonRadioButton.setMaximum(100);
         Timer tr = new Timer(1000, new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 cnt += timedcooks;
                 Hi.setText("hi's = " + cnt);
+                buttonRadioButton.setValue(cnt/100000);
+                buttonRadioButton.getPercentComplete();
             }
         });
         tr.start();
@@ -58,7 +61,7 @@ public class first {
         });
         button2.addMouseListener(new MouseAdapter() {
             public void mouseClicked(MouseEvent e) {
-                if (cnt > 10) {
+                if (cnt >= 10) {
 
                     cooks++;
                     cnt -= 10;
@@ -71,7 +74,7 @@ public class first {
         });
         button3.addMouseListener(new MouseAdapter() {
             public void mouseClicked(MouseEvent e) {
-                if (cnt > 100) {
+                if (cnt >= 100) {
                     cooks += 10;
                     cnt -= 100;
                     Hi.setText("hi's = " + cnt);
@@ -85,7 +88,7 @@ public class first {
 
             public void mouseClicked(MouseEvent e) {
 
-                if (cnt > 1000) {
+                if (cnt >= 1000) {
                     timedcooks += 10;
                     cnt -= 1000;
                     Hi.setText("hi's = " + cnt);
@@ -95,16 +98,18 @@ public class first {
                 }
             }
         });
-        buttonRadioButton.setMaximum(100);
+
         button5.addMouseListener(new MouseAdapter() {
 
             public void mouseClicked(MouseEvent e) {
 
-                if (cnt > 10000) {
+                if (cnt >= 10000) {
                     cooks += 1000;
                     cnt -= 10000;
                     Hi.setText("hi's = " + cnt);
                     mo.setText("Hi's per click " + cooks);
+                    buttonRadioButton.setValue(cnt/100000);
+                    buttonRadioButton.getPercentComplete();
                 }
             }
         });
@@ -112,11 +117,13 @@ public class first {
 
             public void mouseClicked(MouseEvent e) {
 
-                if (cnt > 100000) {
+                if (cnt >= 100000) {
                     cooks += 10000;
                     cnt -= 100000;
                     Hi.setText("hi's = " + cnt);
                     mo.setText("Hi's per click " + cooks);
+                    buttonRadioButton.setValue(cnt/100000);
+                    buttonRadioButton.getPercentComplete();
                 }
             }
         });
