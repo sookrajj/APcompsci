@@ -2,9 +2,9 @@ package Q3.farm;
 
 public class CowW extends Animal{
     private static final double MILKPRICE = 0.20;
-    private double myMilk;
+    private int myMilk;
 
-    public CowW(String name, int weight,  double milk, int corn, int hay) {
+    public CowW(String name, int weight, int milk, int corn, int hay) {
         super(name, weight, corn, hay);
         myMilk = milk;
     }

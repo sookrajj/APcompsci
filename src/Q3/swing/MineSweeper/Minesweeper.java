@@ -47,7 +47,7 @@ public class Minesweeper {
     private JLabel MinesL;
     public static int[][] mineCheck = new int[6][6];
 
-    public minesweeper() {
+    public Minesweeper() {
         for (int lcv = 0; lcv < mineCheck.length; lcv++) {
             for (int i = 0; i < mineCheck[0].length; i++) {
                 mineCheck[lcv][i] = 1;
@@ -55,7 +55,7 @@ public class Minesweeper {
         }
         for (int lcv = 0; lcv < 10; lcv++) {
             int num = (int) Math.random()*64;
-            while (num)
+
         }
     }
 
@@ -65,7 +65,6 @@ public class Minesweeper {
 
     public static void main(String[] args) {
         JFrame frame = new JFrame("nice");
-        frame.setContentPane(new minesweeper().Minesweeper);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.pack();
         frame.setVisible(true);
