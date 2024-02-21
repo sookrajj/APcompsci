@@ -1,4 +1,4 @@
-package Q3;
+package Q3.prog505t;
 
 import java.util.ArrayList;
 

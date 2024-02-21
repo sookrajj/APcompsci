@@ -1,6 +1,6 @@
 package Q3.farm;
 
-public abstract class Animal {
+public abstract class Animal extends Farm{
     private String myName;
     private int myWeight;
     private int mynumCorn;

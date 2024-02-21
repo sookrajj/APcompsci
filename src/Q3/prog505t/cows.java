@@ -1,4 +1,4 @@
-package Q3;
+package Q3.prog505t;
 
 public class cows {
   private int myWeight;

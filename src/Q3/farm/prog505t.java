@@ -6,33 +6,30 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
-public class Prog505w {
+public class prog505t {
     public static void main(String[] args) {
         try {
             Scanner s = new Scanner(new File("Langdat/prog505w.dat"));
-            List<Animal> animals = new ArrayList<Animal>();
+            ArrayList<CowW> cow = new ArrayList<>();
+            ArrayList<HorseW> horse = new ArrayList<>();
             int numHay = s.nextInt();
             double hayCost = s.nextDouble();
             int numCorn = s.nextInt();
             double cornCost = s.nextDouble();
-            int cowRows = s.nextInt();
-            int cowPens = s.nextInt();
-            for (int lcv = 0; lcv < cowRows; lcv++) {
-                for (int lcv2 = 0; lcv2 < cowPens; lcv2++) {
+            int numCow = s.nextInt();
+            for (int lcv = 0; lcv < numCow; lcv++) {
                     String name = s.next();
                     int weight = s.nextInt();
                     int milk = s.nextInt();
                     int hayEaten = s.nextInt();
                     int cornEat = s.nextInt();
-                    animals.add(new CowW(name, weight, milk, cornEat, hayEaten));
+                    cow.add(new CowW(name, weight, milk, cornEat, hayEaten));
                     numHay -= hayEaten;
                     numCorn -= cornEat;
-                }
+
             }
-            int horRows = s.nextInt();
-            int horPens = s.nextInt();
-            for (int lcv = 0; lcv < horRows; lcv++) {
-                for (int lcv2 = 0; lcv2 < horPens; lcv2++) {
+            int numHorse = s.nextInt();
+            for (int lcv = 0; lcv < numHorse; lcv++) {
                     String name = s.next();
                     int weight = s.nextInt();
                     int hayEaten = s.nextInt();
@@ -40,11 +37,12 @@ public class Prog505w {
                     double rides = s.nextDouble();
                     double cost = s.nextDouble();
                     HorseW wow = new HorseW(name, weight, cornEat, hayEaten, rides, cost);
-                    animals.add(wow);
+                    horse.add(wow);
                     numHay -= hayEaten;
                     numCorn -= cornEat;
-                }
+
             }
+            Farm farm = new Farm(cow, horse, numCow, numHorse, cornCost, hayCost, numHay, numCorn);
 
             /*TODO: report income of day
             Todo: cumulative weight, enough food to feed
