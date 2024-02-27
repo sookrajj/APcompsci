@@ -49,52 +49,37 @@ public class prog505t {
             Todo: cow makes most money
              */
             int mostmonindex = 0;
-            double income = 0;
-            int totWeight = 0;
-            int Hayfood = 0;
+            double income = farm.value();
+            int totWeight = farm.getweight();
+            double dayscost = farm.feed();
             int Cornfood= 0;
-            for (int lcv = 0; lcv < animals.size(); lcv++) {
-                if (animals.get(lcv) instanceof CowW) {
-                    if (animals.get(lcv).value(cornCost, hayCost) > animals.get(mostmonindex).value(cornCost, hayCost)) {
-                        mostmonindex = lcv;
-                    }
 
-
-                }
-                income += animals.get(lcv).value(cornCost, hayCost);
-                totWeight += animals.get(lcv).getWeight();
-                Cornfood += animals.get(lcv).getnumCorn();
-                Hayfood += animals.get(lcv).getnumHay();
-            }
+//            for (int lcv = 0; lcv < farm.getcows().size(); lcv++) {
+//                    if (farm.getcows().get(lcv).value(cornCost, hayCost) > farm.getcows().get(mostmonindex).value(cornCost, hayCost)) {
+//                        mostmonindex = lcv;
+//                    }
+//
+//
+//
+//                income += animals.get(lcv).value(cornCost, hayCost);
+//                totWeight += animals.get(lcv).getWeight();
+//                Cornfood += animals.get(lcv).getnumCorn();
+//                Hayfood += animals.get(lcv).getnumHay();
+//            }
 
             System.out.println("Total income is " + income);
-            System.out.println("The cow's name who makes the most money is " + animals.get(mostmonindex).getName());
+            System.out.println("The cost for one day is " + dayscost);
             System.out.println("Total weight on the farm is " + totWeight);
-            if (numCorn-Cornfood >= 0 && numHay-Hayfood >= 0) {
-                if (numCorn/Cornfood > numHay/Hayfood) {
-                    System.out.println("You have enough food for " + numHay/Hayfood + " days");
-                } else {
-                    System.out.println("You have enough food for " + numCorn/numHay + " days");
-                }
-            } else {
-                System.out.println("Your animals will die");
-            }
+//            if (numCorn-Cornfood >= 0 && numHay-Hayfood >= 0) {
+//                if (numCorn/Cornfood > numHay/Hayfood) {
+//                    System.out.println("You have enough food for " + numHay/Hayfood + " days");
+//                } else {
+//                    System.out.println("You have enough food for " + numCorn/numHay + " days");
+//                }
+//            } else {
+//                System.out.println("Your animals will die");
+//            }
 
-
-            double minHorseValue = Double.MAX_VALUE;
-            int minHorseIndex = 0;
-            for (int lcv = 0; lcv < animals.size(); lcv++) {
-                if (animals.get(lcv) instanceof HorseW) {
-                    HorseW horse = (HorseW)animals.get(lcv);
-
-                    if (horse.value(cornCost, hayCost) < minHorseValue) {
-                        minHorseValue = horse.value(cornCost, hayCost);
-                        minHorseIndex = lcv;
-                    }
-                }
-            }
-
-            System.out.printf("Horse %s makes the least money\n", animals.get(minHorseIndex).getName());
 
 
 

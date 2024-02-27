@@ -103,7 +103,7 @@ public class Farm implements IFarrm {
             return cowmilk+ horseride;
         }
 
-        public int getWeight() {
+        public int getweight() {
             int weight = 0;
             for (int lcv = 0; lcv < mynumcows; lcv++) {
                 weight += mycows.get(lcv).getWeight();
@@ -114,8 +114,25 @@ public class Farm implements IFarrm {
             return weight;
         }
 
-        public double value(double cornCost, double hayCost) {
-            return
+        public double value() {
+            double tot = 0;
+            for (int lcv = 0; lcv < mycows.size(); lcv++) {
+                tot += mycows.get(lcv).value(corncost, haycost);
+            }
+            for (int lcv = 0; lcv < gay.size(); lcv++) {
+                tot += gay.get(lcv).value(corncost, haycost);
+            }
+            return tot;
+        }
+        public double feed() {
+            double cost = 0;
+            for (CowW lcv : mycows) {
+                cost += lcv.getnumCorn() *corncost + lcv.getnumHay() * haycost;
+            }
+            for (HorseW lcv : gay) {
+                cost += lcv.getnumCorn() *corncost + lcv.getnumHay() * haycost;
+            }
+            return cost;
         }
 
         public int gethaycnt() {return haycnt;}
@@ -124,7 +141,11 @@ public class Farm implements IFarrm {
         public int getMoreHay() {return cowfeedonhay + horseathay - haycnt;}
         public int getMoreCorn() {return cowfeedoncorn + horseatcorn - corncnt;}
 
+    public ArrayList<CowW> getcows() {
+        return mycows;
+    }
 
-
-
+    public ArrayList<HorseW> getGay() {
+        return gay;
+    }
 }
