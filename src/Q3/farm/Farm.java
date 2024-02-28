@@ -21,6 +21,7 @@ public class Farm implements IFarrm {
         private int horseatcorn;
 
 
+        public Farm() {}
 
         public Farm(ArrayList<CowW> allcows, ArrayList<HorseW> allhorses, int numcows, int numhorses, double cornsales, double haysales, int haybales, int corn) {
             mycows = allcows;
@@ -70,23 +71,31 @@ public class Farm implements IFarrm {
         }
 
 
-        public double cowIncome(double perPound) {
-            double cowmilk = 0.0;
+        public int cowIncome() {
+            double lowmilk = 0.0;
+            int in = 0;
 
-            for (int lcv = 0; lcv < mynumcows; lcv++) {
-                cowmilk += mycows.get(lcv).value(corncost, haycost);
+            for (int lcv = 0; lcv < mynumcows-1; lcv++) {
+                if (lowmilk > mycows.get(lcv).value(corncost, haycost)) {
+                    lowmilk = mycows.get(lcv).value(corncost, haycost);
+                    in = lcv;
+                }
             }
 
-            return cowmilk;
+            return in;
 
         }
 
-        public double horseIncome() {
+        public int horseIncome() {
             double horseride = 0.0;
-            for (int lcv = 0; lcv < mynumhorseys; lcv++) {
-                horseride += gay.get(lcv).value(corncost, haycost);
+            int in = 0;
+            for (int lcv = 0; lcv < mynumhorseys-1; lcv++) {
+                if (horseride > gay.get(lcv).value(corncost, haycost)) {
+                    horseride = gay.get(lcv).value(corncost, haycost);
+                    in = lcv;
+                }
             }
-            return horseride;
+            return in;
         }
 
         public double farmIncome(double perPound) {
@@ -134,6 +143,10 @@ public class Farm implements IFarrm {
             }
             return cost;
         }
+        public int getsize() {
+            int si = mycows.size() + gay.size();
+            return si;
+        }
 
         public int gethaycnt() {return haycnt;}
         public int getcorncnt() {return corncnt;}
@@ -144,8 +157,12 @@ public class Farm implements IFarrm {
     public ArrayList<CowW> getcows() {
         return mycows;
     }
+    public void changeCows(ArrayList<CowW> cows, int numcows) {mycows = cows;
+        mynumcows = numcows;}
 
     public ArrayList<HorseW> getGay() {
         return gay;
     }
+    public void changeHorse(ArrayList<HorseW> horse, int numHorse) {gay = horse;
+        mynumhorseys = numHorse;}
 }

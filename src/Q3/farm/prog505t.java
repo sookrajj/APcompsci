@@ -9,7 +9,7 @@ import java.util.Scanner;
 public class prog505t {
     public static void main(String[] args) {
         try {
-            Scanner s = new Scanner(new File("Langdat/prog505w.dat"));
+            Scanner s = new Scanner(new File("Langdat/prog505t.dat"));
             ArrayList<CowW> cow = new ArrayList<>();
             ArrayList<HorseW> horse = new ArrayList<>();
             int numHay = s.nextInt();
@@ -17,8 +17,8 @@ public class prog505t {
             int numCorn = s.nextInt();
             double cornCost = s.nextDouble();
             int numCow = s.nextInt();
+            String name = "";
             for (int lcv = 0; lcv < numCow; lcv++) {
-                    String name = s.next();
                     int weight = s.nextInt();
                     int milk = s.nextInt();
                     int hayEaten = s.nextInt();
@@ -30,7 +30,6 @@ public class prog505t {
             }
             int numHorse = s.nextInt();
             for (int lcv = 0; lcv < numHorse; lcv++) {
-                    String name = s.next();
                     int weight = s.nextInt();
                     int hayEaten = s.nextInt();
                     int cornEat = s.nextInt();
@@ -53,6 +52,36 @@ public class prog505t {
             int totWeight = farm.getweight();
             double dayscost = farm.feed();
             int Cornfood= 0;
+            System.out.printf("Total income is $%.2f\n",  income);
+            System.out.println("The days cost is $" + dayscost);
+            System.out.println("Total weight on the farm is " + totWeight);
+            if (farm.feedAllAnimals()) {
+                System.out.println("Your have enough food to feed all the animals");
+                System.out.println("Corn left " + numCorn + " Hay left " + numHay);
+            } else {
+                System.out.println("We need more food! Corn needed " + farm.getMoreCorn() + " Hay needed " + farm.getMoreHay());
+            }
+
+            cow.remove(farm.cowIncome());
+            numCow--;
+
+            farm.changeCows(cow, numCow);
+            cow.remove(farm.cowIncome());
+            numCow--;
+
+            farm.changeCows(cow, numCow);
+            cow.remove(farm.cowIncome());
+            numCow--;
+            farm.changeCows(cow, numCow);
+            horse.remove(farm.horseIncome());
+            numHorse--;
+            farm.changeHorse(horse, numHorse);
+            horse.remove(farm.horseIncome());
+            numHorse--;
+            farm.changeHorse(horse, numHorse);
+            cow.set(0, new CowW(cow.get(0).getName(), 1250, 80, 4, 3));
+            farm.changeCows(cow, numCow);
+            System.out.println("Number of animals on the farm " + farm.getsize());
 
 //            for (int lcv = 0; lcv < farm.getcows().size(); lcv++) {
 //                    if (farm.getcows().get(lcv).value(cornCost, hayCost) > farm.getcows().get(mostmonindex).value(cornCost, hayCost)) {
@@ -67,9 +96,7 @@ public class prog505t {
 //                Hayfood += animals.get(lcv).getnumHay();
 //            }
 
-            System.out.println("Total income is " + income);
-            System.out.println("The cost for one day is " + dayscost);
-            System.out.println("Total weight on the farm is " + totWeight);
+
 //            if (numCorn-Cornfood >= 0 && numHay-Hayfood >= 0) {
 //                if (numCorn/Cornfood > numHay/Hayfood) {
 //                    System.out.println("You have enough food for " + numHay/Hayfood + " days");
@@ -89,3 +116,9 @@ public class prog505t {
         }
     }
 }
+//Total income is $78.90
+//The days cost is $180.5
+//Total weight on the farm is 42835
+//Your have enough food to feed all the animals
+//Corn left 2420 Hay left 939
+//Number of animals on the farm 20

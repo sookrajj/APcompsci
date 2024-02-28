@@ -7,6 +7,7 @@ public abstract class Animal extends Farm{
     private int mynumHay;
 
     public Animal(String name, int weight, int corn, int hay) {
+        super();
         myName = name;
         myWeight = weight;
         mynumCorn = corn;
