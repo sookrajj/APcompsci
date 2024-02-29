@@ -12,6 +12,7 @@ public class GIGATurkey extends GIGAAnimals{
         }
         weight = (int) Math.round(Math.random() * 10) + 25;
         worth = Math.round(weight * Math.round(Math.random() * 24 * 100))/100;
+        worth = worth;
     }
     public int getWeight() {return weight;}
     public int getId() {return ID;}
