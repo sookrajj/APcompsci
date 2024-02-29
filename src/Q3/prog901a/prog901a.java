@@ -21,18 +21,16 @@ public class prog901a {
     }
     public static  String reverseString(String s) {
         String rever = "";
-        for (int lcv = s.length(); lcv > 0; lcv--) {
-            rever += s.substring(lcv-1, lcv);
-        }
-        return rever;
+        if (s.length() == 0) {
+            return "";
+        } else rever = s.substring(s.length()-1);
+        return rever + reverseString(s.substring(0, s.length()-1));
     }
 
     public static void main(String[] args) {
         try {
             Scanner s = new Scanner(new File("Langdat/prog512h.dat"));
             printFile(s);
-
-
 
         } catch (
                 IOException e) {

@@ -1,7 +1,8 @@
-package Q3;
+package Q3.prog505t;
 
-import Q2.prog213vcl.Bank;
-import Q2.prog213vcl.Transaction;
+import Q3.prog505t.cows;
+import Q3.prog505t.farmcheck;
+import Q3.prog505t.horse;
 
 import java.io.File;
 import java.io.IOException;
@@ -43,7 +44,7 @@ public class IFarm {
             System.out.println("The cost of feeding the animals for a day is: $" + farm.getCost());
             System.out.println("The weight of all the animals is: " + farm.getWeight() + " Pounds");
 
-            if (farm.feedAllAnimals() == true) {
+            if (farm.feedAllAnimals()) {
                 System.out.println("The animals have been fed. You have " + farm.gethaycnt() + " haybales and " + farm.getcorncnt() + " corn left.");
             } else {
                 System.out.println("There's not enough food. We need " + farm.getMoreHay() + " haybales and " + farm.getMoreCorn() + " corn left.");
