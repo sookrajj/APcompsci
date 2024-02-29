@@ -10,8 +10,8 @@ public class GIGAHorse extends GIGAAnimals{
         super(corn, hay, beans, oats);
         String Vowel = "aeiouy";
         String constant = "bcdfghjklmnpqrstvwxz";
-        int fir = (int) Math.round(Math.random()*19);
-        int sec = (int) Math.round(Math.random()*19);;
+        int fir = (int) Math.round(Math.random()*19 );
+        int sec = (int) Math.round(Math.random()*19);
         int thir = (int) Math.round(Math.random()*5);
         int fou = (int) Math.round(Math.random()*19);
         name = constant.substring(fir, fir+1) + constant.substring(sec, sec+1) + Vowel.substring(thir, thir+1) + constant.substring(fou, fou+1);
