@@ -8,8 +8,11 @@ public class GIGAMain {
     public static void main(String[] args) {
         ArrayList<GIGAFarm> farms = new ArrayList<GIGAFarm>();
         LinkedList<GIGAHorse> horse = new LinkedList<GIGAHorse>();
+        LinkedList<GIGAHorse> horses = new LinkedList<GIGAHorse>();
         Map<Integer, GIGACow> cows = new HashMap<Integer, GIGACow>();
+        Map<Integer, GIGACow> cowwows = new HashMap<Integer, GIGACow>();
         Set<GIGATurkey> turks = new HashSet<GIGATurkey>();
+        Set<GIGATurkey> turkeys = new HashSet<GIGATurkey>();
         double[] costs = new double[5];
         int[] nums = new int[4];
         int corn = 0;
@@ -39,7 +42,7 @@ public class GIGAMain {
                 hay = 0;
                 beans = 0;
                 oats = (int) Math.round(Math.random() * 2) + 2;
-                horse.add(new GIGAHorse(corn, hay, beans, oats));
+                turks.add(new GIGATurkey(corn, hay, beans, oats));
             }
             int hor = (int) Math.round(Math.random() * 2) + 8;
             System.out.println(hor);
@@ -48,11 +51,12 @@ public class GIGAMain {
                 hay = (int) Math.round(Math.random() * 2) + 1;
                 beans = (int) Math.round(Math.random() * 3) + 2;
                 oats = (int) Math.round(Math.random() * 3) + 1;
-                turks.add(new GIGATurkey(corn, hay, beans, oats));
+                horse.add(new GIGAHorse(corn, hay, beans, oats));
             }
             int pi = (int) Math.round(Math.random() * 8) + 12;
             System.out.println(pi);
             GIGAPig[] pig = new GIGAPig[pi];
+            GIGAPig[] piggie = new GIGAPig[pi];
             for (int lcv = 0; lcv < pig.length; lcv++) {
                 corn = (int) Math.round(Math.random() * 5) + 3;
                 hay = (int) Math.round(Math.random() * 1) + 1;
@@ -74,13 +78,22 @@ public class GIGAMain {
                 }
             }
 
-            costs[0] = Math.round(Math.random() * .70*100)/100+ 1;
-            costs[1] = Math.round(Math.random() * .70*100)/100 + 2;
-            costs[2] = Math.round(Math.random() * .50*100)/100 + 0.50;
-            costs[3] =  Math.round(Math.random() * .50*100)/100 + 0.50;
-            costs[4] = Math.round(Math.random() * 0.04*100)/100 + .20;
+            costs[0] = Math.round(Math.random() * .70*100)/100+ 5;
+            costs[1] = Math.round(Math.random() * .70*100)/100 + 10;
+            costs[2] = Math.round(Math.random() * .50*100)/100 + 1;
+            costs[3] =  Math.round(Math.random() * .50*100)/100 + 1;
+            costs[4] = Math.round(Math.random() * 0.04*100)/100 + .40;
             farms.add(new GIGAFarm(pig, cows, horse, turks, rides, nums, costs));
+            horses.clear();
+            horse = horses;
+            turks = turkeys;
+            cows = cowwows;
+            pig = piggie;
+            System.out.println(horse);
+            System.out.println(horses);
+            System.out.println(farms.get(lc).getHorse());
         }
+
         double totcost = 0;
         double totincome = 0;
         double totprof = 0;
@@ -89,6 +102,7 @@ public class GIGAMain {
         int rideSpot = 0;
         for (int l = 0; l < farms.size(); l++) {
             GIGAFarm farm = farms.get(l);
+            System.out.println(farm);
             for (int lcv = 0; lcv < farm.getPigs().length; lcv++) {
                 totani++;
                 GIGAPig Pigs = farm.getPigs()[lcv];
@@ -96,13 +110,18 @@ public class GIGAMain {
                 totincome += Pigs.getIncome(farm.getMilk());
                 totprof += Pigs.getProfit(farm.getMilk(), farm.getCc(), farm.getHc(), farm.getBc(), farm.getOc());
             }
+            System.out.println(farm.getPigs().length);
             for (int lcv = 1; lcv < farm.getCowies().size()+1; lcv++) {
                 totani++;
                 totincome += farm.getCowies().get(lcv).getMilk() * farm.getMilk();
                 totcost += farm.getCowies().get(lcv).getCost(farm.getCc(), farm.getHc(), farm.getBc(), farm.getOc());
                 totprof += farm.getCowies().get(lcv).getProfit(farm.getMilk(), farm.getCc(), farm.getHc(), farm.getBc(), farm.getOc());
             }
+            totani-= 2;
+            System.out.println(farm.getCowies().size()+1);
             int[][] hi = farm.getRids();
+            totani += farm.getHorse().size();
+
             for (int ll = 0; ll < hi.length; ll++) {
 
                     for (int lcv = 0; lcv < hi[0].length; lcv++) {
@@ -115,12 +134,15 @@ public class GIGAMain {
                         }
                     }
 
-                totani++;
+
             }
+            System.out.println(farm.getHorse().size());
             turks = farm.getTurk();
+            totani += turks.size();
+            System.out.println(turks.size());
             Iterator<GIGATurkey> itr = turks.iterator();
             while (itr.hasNext()) {
-                totani++;
+
                 GIGATurkey gay = itr.next();
                 totincome += gay.getIncome(farm.getMilk());
                 totcost += gay.getCost(farm.getCc(), farm.getHc(), farm.getBc(), farm.getOc());
@@ -133,7 +155,7 @@ public class GIGAMain {
             System.out.println();
             System.out.printf("The profit is $%.2f", totprof);
             System.out.println();
-            System.out.println("Total animals this farm hhas is " + totani);
+            System.out.println("Total animals this farm has is " + totani);
             System.out.println();
             totcost = 0;
             totincome = 0;
@@ -204,3 +226,35 @@ public class GIGAMain {
 //Total animals across all farms is 975
 //
 //Total animals across all farms is 975
+
+//Farm 1
+//The cost is $1095.00
+//The income is $526436.40
+//The profit is $525341.40
+//Total animals this farm hhas is 82
+//
+//Farm 2
+//The cost is $1100.00
+//The income is $525902.40
+//The profit is $524802.40
+//Total animals this farm hhas is 82
+//
+//Farm 3
+//The cost is $1086.50
+//The income is $525884.40
+//The profit is $524797.90
+//Total animals this farm hhas is 81
+//
+//Farm 4
+//The cost is $1079.50
+//The income is $524715.40
+//The profit is $523635.90
+//Total animals this farm hhas is 80
+//
+//Farm 5
+//The cost is $1043.50
+//The income is $524190.40
+//The profit is $523146.90
+//Total animals this farm hhas is 76
+//
+//Total animals across all farms is 401Disconnected from the target VM, address: '127.0.0.1:60244', transport: 'socket'

@@ -58,7 +58,7 @@ public class GIGAFarm {
         return cowies;
     }
     public LinkedList<GIGAHorse> getHorse() {
-        return horse;
+        return this.horse;
     }
     public int getCorn() {return numes[0];}
     public int getHay() {return numes[1];}
