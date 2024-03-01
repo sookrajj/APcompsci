@@ -28,7 +28,7 @@ public class GIGAHorse extends GIGAAnimals{
         return rideCost;
     }
 
-    public int getNumRides() {return numRides;}
+    public int getRides() {return numRides;}
     public String getName() {
         return name;
     }
