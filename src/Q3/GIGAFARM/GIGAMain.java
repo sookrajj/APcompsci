@@ -3,13 +3,16 @@ package Q3.GIGAFARM;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.CircleListedList;
+import java.util.Set;
 
 public class GIGAMain {
     public static void main(String[] args) {
         ArrayList<GIGAAnimals> animals = new ArrayList<GIGAAnimals>();
         ArrayList<GIGAFarm> farms = new ArrayList<GIGAFarm>();
-
+        CircleListedList<GIGAHorse> horse = new CircleListedList<GIGAHorse>();
         Map<Integer, GIGACow> cows = new HashMap<Integer, GIGACow>();
+        Set<GIGATurkey> turks = new Set<GIGATurkey>();
         double[] costs = new double[5];
         int[] nums = new int[4];
         int corn = 0;
@@ -35,7 +38,7 @@ public class GIGAMain {
                 hay = 0;
                 beans = 0;
                 oats = (int) Math.round(Math.random() * 2) + 2;
-                animals.add(new GIGAHorse(corn, hay, beans, oats));
+                horse.add(new GIGAHorse(corn, hay, beans, oats));
             }
 
             for (int lcv = 0; lcv < (int) Math.round(Math.random() * 2) + 8; lcv++) {
@@ -43,15 +46,16 @@ public class GIGAMain {
                 hay = (int) Math.round(Math.random() * 2) + 1;
                 beans = (int) Math.round(Math.random() * 3) + 2;
                 oats = (int) Math.round(Math.random() * 3) + 1;
-                animals.add(new GIGACow(corn, hay, beans, oats));
+                turks.add(new GIGATurkey(corn, hay, beans, oats));
             }
 
-            for (int lcv = 0; lcv < (int) Math.round(Math.random() * 8) + 12; lcv++) {
+            GIGAPig[] pig = new GIGAPig[(int) Math.round(Math.random() * 8) + 12];
+            for (int lcv = 0; lcv < pig.length; lcv++) {
                 corn = (int) Math.round(Math.random() * 5) + 3;
                 hay = (int) Math.round(Math.random() * 1) + 1;
                 beans = (int) Math.round(Math.random() * 4) + 2;
                 oats = (int) Math.round(Math.random() * 3) + 3;
-                animals.add(new GIGAPig(corn, hay, beans, oats));
+                pig[lcv] = new GIGAPig(corn, hay, beans, oats);
             }
 
             nums[0] = (int) Math.round(Math.random() * 5000) + 10000;
@@ -72,26 +76,46 @@ public class GIGAMain {
             costs[2] = Math.round(Math.random() * .50*100)/100 + 0.50;
             costs[3] =  Math.round(Math.random() * .50*100)/100 + 0.50;
             costs[4] = Math.round(Math.random() * 0.04*100)/100 + .20;
-            farms.add(new GIGAFarm(animals, cows, rides, nums, costs));
+            farms.add(new GIGAFarm(pigs, cows, horse, turks, rides, nums, costs));
         }
         double totcost = 0;
         double totincome = 0;
         double totprof = 0;
         int totani = 0;
+        int rideSpot = 0;
         for (int l = 0; l < farms.size(); l++) {
             GIGAFarm farm = farms.get(l);
-            for (int lcv = 0; lcv < farm.getAnis().size(); lcv++) {
+            for (int lcv = 0; lcv < farm.getPigs().size(); lcv++) {
                 totani++;
-                GIGAAnimals ani = farm.getAnis().get(lcv);
-                totcost += ani.getCost(farm.getCc(), farm.getHc(), farm.getBc(), farm.getOc());
-                totincome += ani.getIncome(farm.getMilk());
-                totprof += ani.getProfit(farm.getMilk(), farm.getCc(), farm.getHc(), farm.getBc(), farm.getOc());
+                GIGAAnimals Pigs = farm.getPigs().get(lcv);
+                totcost += Pigs.getCost(farm.getCc(), farm.getHc(), farm.getBc(), farm.getOc());
+                totincome += Pigs.getIncome(farm.getMilk());
+                totprof += Pigs.getProfit(farm.getMilk(), farm.getCc(), farm.getHc(), farm.getBc(), farm.getOc());
             }
             for (int lcv = 1; lcv < farm.getCowies().size()+1; lcv++) {
                 totani++;
-                totcost += farm.getCowies().get(lcv).getMilk() * farm.getMilk();
-                totincome += farm.getCowies().get(lcv).getCost(farm.getCc(), farm.getHc(), farm.getBc(), farm.getOc());
+                totincome += farm.getCowies().get(lcv).getMilk() * farm.getMilk();
+                totcost += farm.getCowies().get(lcv).getCost(farm.getCc(), farm.getHc(), farm.getBc(), farm.getOc());
                 totprof += farm.getCowies().get(lcv).getProfit(farm.getMilk(), farm.getCc(), farm.getHc(), farm.getBc(), farm.getOc());
+            }
+            for (int l = 0; l < farm.getRides.length; l++) {
+                for (int lc = 0; lc < farm.getRides[0].length; lc++) {
+                    for (int lcv = 0; lcv < farm.getRides[l][lc]; lcv++) {
+                        totincome += farm.getHorse().get(lcv).getIncome(farm.getMilk());
+                        totcost += farm.getHorse().get(lcv).getCost(farm.getCc(), farm.getHc(), farm.getBc(), farm.getOc());
+                        totProf += farm.getHorse().get(rideSpot).getProfit(farm.getMilk(), farm.getCc(), farm.getHc(), farm.getBc(), farm.getOc());
+                        rideSpot++;
+                        if (rideSpot == farm.getHorse().size()) rideSpot = 0;
+                    }
+                }
+            }
+            turks = farm.getTurk();
+            Iterator<GIGATurkey> itr = turks.Iterator();
+            while (itr.hasNext()) {
+                GIGAHorse gay = itr.next();
+                totincome += gay.getIncome(farm.getMilk());
+                totcost += gay.getCost(farm.getCc(), farm.getHc(), farm.getBc(), farm.getOc());
+                totProf += gay.getProfit(farm.getMilk(), farm.getCc(), farm.getHc(), farm.getBc(), farm.getOc());
             }
             System.out.println("Farm " + (l+1));
             System.out.printf("The cost is $%.2f", totcost);
