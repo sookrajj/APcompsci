@@ -12,13 +12,12 @@ public class GIGATurkey extends GIGAAnimals{
         }
         weight = (int) Math.round(Math.random() * 10) + 25;
         worth = Math.round(weight * Math.round(Math.random() * 24 * 100))/100;
-        worth = worth;
     }
     public int getWeight() {return weight;}
     public int getId() {return ID;}
     public double getWorth() {return worth;}
 
     public double getIncome(double milkCost) {
-        return Math.round(weight * worth * 100) / 100;
+        return Math.round(worth * 100) / 100;
     }
 }

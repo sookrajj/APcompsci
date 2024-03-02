@@ -34,6 +34,6 @@ public class GIGAHorse extends GIGAAnimals{
     }
 
     public double getIncome(double milkCost) {
-        return numRides * rideCost;
+        return rideCost;
     }
 }

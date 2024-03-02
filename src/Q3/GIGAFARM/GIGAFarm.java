@@ -2,11 +2,9 @@ package Q3.GIGAFARM;
 
 import Q2.ArrayListcl.ArrayListab;
 
-import java.util.ArrayList;
+import java.util.*;
 import java.util.LinkedList;
-import java.util.Map;
-import java.util.LinkedList;
-import java.util.Set;
+
 public class GIGAFarm {
     private int[] numes = new int[4];
     private int[][] rids;
@@ -17,8 +15,11 @@ public class GIGAFarm {
     private LinkedList<GIGAHorse> horse;
     private Set<GIGATurkey> turk;
     private GIGAPig[] Pigs;
+    private Stack<Integer> myhay;
+    private Queue<Integer> mycorn;
 
-    public GIGAFarm(GIGAPig[] pig, Map<Integer, GIGACow> cows, LinkedList<GIGAHorse> horse, Set<GIGATurkey> turks, int[][] rides, int[] nums, double[] cost) {
+    public GIGAFarm(GIGAPig[] pig, Map<Integer, GIGACow> cows, LinkedList<GIGAHorse> horse, Set<GIGATurkey> turks,
+                    int[][] rides, Stack<Integer> hay, Queue<Integer> corn, int[] nums, double[] cost) {
          numes = nums;
          rids = rides;
          cowies = cows;
@@ -28,6 +29,8 @@ public class GIGAFarm {
          curind = firhor;
          coast = cost;
         this.horse = horse;
+        myhay = hay;
+        mycorn = corn;
     }
 
     public int getCurind() {return curind;}
@@ -60,8 +63,8 @@ public class GIGAFarm {
     public LinkedList<GIGAHorse> getHorse() {
         return this.horse;
     }
-    public int getCorn() {return numes[0];}
-    public int getHay() {return numes[1];}
-    public int getBeans() {return numes[2];}
-    public int getOats() {return numes[3];}
+    public int getCorn() {return mycorn.poll();}
+    public int getHay() {return myhay.pop();}
+    public int getBeans() {return numes[0];}
+    public int getOats() {return numes[1];}
 }
