@@ -119,8 +119,11 @@ public class GIGAMain {
         }
 
         double totcost = 0;
+        double costforwhole = 0;
         double totincome = 0;
+        double incomeforwhole = 0;
         double totprof = 0;
+        double profitforwhole = 0;
         int total = 0;
         int totani = 0;
         int rideSpot = 0;
@@ -172,6 +175,9 @@ public class GIGAMain {
                 totprof += gay.getProfit(farm.getMilk(), farm.getCc(), farm.getHc(), farm.getBc(), farm.getOc());
             }
 
+            costforwhole += totcost;
+            incomeforwhole += totincome;
+            profitforwhole += totprof;
             System.out.println("Farm " + (l+1));
             System.out.printf("The cost is $%.2f", totcost);
             System.out.println();
@@ -187,6 +193,10 @@ public class GIGAMain {
             total +=  totani;
             totani = 0;
         }
+        System.out.println("The entirety of the farm makes: ");
+        System.out.println("The cost is " + costforwhole);
+        System.out.println("The income is " + incomeforwhole);
+        System.out.println("The profit is " + profitforwhole);
         System.out.print("Total animals across all farms is " + total);
 
 
