@@ -205,7 +205,7 @@ public class GIGAMain {
         int[] ship = new int[10];
         int[] shay = new int[10];
         int[] soat = new int[10];
-        int[] sean = new int[10];
+        int[] sean = new int[10]; // set up constructor to set all values to 0
         System.out.println("Hello, and welcome to GIGA farm");
         System.out.println("Games span 10 days. You can choose to continue. " +
                 "\nYou start with $10000 and a farm both given by your recent passed grandpa" +
@@ -356,6 +356,101 @@ public class GIGAMain {
                         System.out.println("boring");
                         farms.get(l).mor(-20);
                     }
+
+                    System.out.println("Do you want to buy corn? Comes in shipments of 1000-1500. max of 10 shipments per day\n Always arrives the next day.");
+                    choice = input.next();
+                    if (choice.equals("yes") && ship[9] == 0) {
+                        System.out.println("How many?");
+                        int numship = input.nextInt();
+                        while (numship > 10 ||  numship <= 0) {
+                            System.out.println("input a valid number");
+                            numship = input.nextInt();
+                        }
+                        for (int r = 0; r < numship; r++) {
+                            ship[r] = (int) Math.round(Math.random() * 500) + 1000;
+                            if (curmon >= ship[r] * farms.get(l).getCc()) {
+                                farms.get(l).addCorn(ship[r]);
+                                curmon -= ship[r] * farms.get(l).getCc();
+                                System.out.println("Current money = $" + curmon);
+                            }
+                        }
+                    }
+
+                    System.out.println("Would you like to buy some hay? you may buy up to 10 bundles a day as well.\nArrives next day");
+                    choice = input.next();
+                    if (choice.equals("yes")) {
+                        System.out.println("How many?");
+                        int numshipdehay = input.nextInt();
+                        while (numshipdehay > 10 ||  numshipdehay <= 0) {
+                            System.out.println("input a valid number");
+                            numshipdehay = input.nextInt();
+                        }
+                        for (int r = 0; r < numshipdehay; r++) {
+                            shay[r] = (int) Math.round(Math.random() * 500) + 1000;
+                            if (curmon >= shay[r] * farms.get(l).getHc()) {
+                                farms.get(l).addHay(shay[r]);
+                                curmon -= shay[r] * farms.get(l).getHc();
+                                System.out.println("Current money = $" + curmon);
+                            }
+                        }
+                    }
+
+                    System.out.println("Would you like to buy some oats? you may buy up to 10 bundles a day.\nArrives next day");
+                    choice = input.next();
+                    if (choice.equals("yes")) {
+                        System.out.println("How many?");
+                        int numshipdeoat = input.nextInt();
+                        while (numshipdeoat > 10 ||  numshipdeoat <= 0) {
+                            System.out.println("input a valid number");
+                            numshipdeoat = input.nextInt();
+                        }
+                        for (int r = 0; r < numshipdeoat; r++) {
+                            soat[r] = (int) Math.round(Math.random() * 500) + 1000;
+                            if (curmon >= soat[r] * farms.get(l).getOc()) {
+                                farms.get(l).addOats(soat[r]);
+                                curmon -= soat[r] * farms.get(l).getOc();
+                                System.out.println("Current money = $" + curmon);
+                            }
+                        }
+                    }
+
+                    System.out.println("Would you like to buy some hay? you may buy up to 10 bundles a day as well.\nArrives next day");
+                    choice = input.next();
+                    if (choice.equals("yes")) {
+                        System.out.println("How many?");
+                        int numshipdehay = input.nextInt();
+                        while (numshipdehay > 10 ||  numshipdehay <= 0) {
+                            System.out.println("input a valid number");
+                            numshipdehay = input.nextInt();
+                        }
+                        for (int r = 0; r < numshipdehay; r++) {
+                            shay[r] = (int) Math.round(Math.random() * 500) + 1000;
+                            if (curmon >= shay[r] * farms.get(l).getHc()) {
+                                farms.get(l).addHay(shay[r]);
+                                curmon -= shay[r] * farms.get(l).getHc();
+                                System.out.println("Current money = $" + curmon);
+                            }
+                        }
+                    }
+                    System.out.println("Would you like to buy some beans? you may buy up to 10 shipments.\nArrives next day");
+                    choice = input.next();
+                    if (choice.equals("yes")) {
+                        System.out.println("How many?");
+                        int numshipdebeans = input.nextInt();
+                        while (numshipdebeans > 10 ||  numshipdebeans <= 0) {
+                            System.out.println("input a valid number");
+                            numshipdebeans = input.nextInt();
+                        }
+                        for (int r = 0; r < numshipdebeans; r++) {
+                            sean[r] = (int) Math.round(Math.random() * 500) + 1000;
+                            if (curmon >= sean[r] * farms.get(l).getBc()) {
+                                farms.get(l).addBeans(sean[r]);
+                                curmon -= sean[r] * farms.get(l).getBc();
+                                System.out.println("Current money = $" + curmon);
+                            }
+                        }
+                    }
+
                 }
 
             }

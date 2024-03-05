@@ -85,11 +85,25 @@ public class GIGAFarm {
         numes[1] += o;
     }
     public void death(int die) {
-        farmhealth += die;
+        if (farmhealth > 0 && die < 0) farmhealth += die;
+        else if (farmhealth < 100 && die > 0){
+            farmhealth += die;
+        } else {
+            farmhealth += die;
+        }
     }
     public int farmHealth() {return farmhealth;}
     public void mor(int mor) {
-        morale += mor;
+        if (morale == 200) {
+            if (mor < 0) morale += mor;
+            else this.death(5);
+        }
+        else if (morale == 50) {
+            if (mor > 0) morale += mor;
+            else this.death(-10);
+        } else {
+            morale += mor;
+        }
     }
     public int morale() {return morale;}
     public void feedanis() {
