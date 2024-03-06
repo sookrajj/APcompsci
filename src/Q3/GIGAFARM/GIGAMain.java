@@ -87,10 +87,10 @@ public class GIGAMain {
                 }
             }
 
-            costs[0] = Math.round(Math.random() * .70*100)/100+ 5;
-            costs[1] = Math.round(Math.random() * .70*100)/100 + 10;
-            costs[2] = Math.round(Math.random() * .50*100)/100 + 1;
-            costs[3] =  Math.round(Math.random() * .50*100)/100 + 1;
+            costs[0] = Math.round(Math.random() * .70*100)/100+ .5;
+            costs[1] = Math.round(Math.random() * .70*100)/100 + 1;
+            costs[2] = Math.round(Math.random() * .50*100)/100 + .5;
+            costs[3] =  Math.round(Math.random() * .50*100)/100 + .5;
             costs[4] = Math.round(Math.random() * 0.04*100)/100 + .40;
             farms.add(new GIGAFarm(pig, cows, horse, turks, rides, hayStack, cornQue, nums, costs));
 
@@ -179,33 +179,33 @@ public class GIGAMain {
             costforwhole += totcost;
             incomeforwhole += totincome;
             profitforwhole += totprof;
-            System.out.println("Farm " + (l+1));
-            System.out.printf("The cost is $%.2f", totcost);
-            System.out.println();
-            System.out.printf("The income is $%.2f", totincome);
-            System.out.println();
-            System.out.printf("The profit is $%.2f", totprof);
-            System.out.println();
-            System.out.println("Total animals this farm has is " + totani);
-            System.out.println();
+//            System.out.println("Farm " + (l+1));
+//            System.out.printf("The cost is $%.2f", totcost);
+//            System.out.println();
+//            System.out.printf("The income is $%.2f", totincome);
+//            System.out.println();
+//            System.out.printf("The profit is $%.2f", totprof);
+//            System.out.println();
+//            System.out.println("Total animals this farm has is " + totani);
+//            System.out.println();
             totcost = 0;
             totincome = 0;
             totprof = 0;
             total +=  totani;
             totani = 0;
         }
-        System.out.println("The entirety of the farm makes: ");
-        System.out.println("The cost is " + costforwhole);
-        System.out.println("The income is " + incomeforwhole);
-        System.out.println("The profit is " + profitforwhole);
-        System.out.print("Total animals across all farms is " + total);
+//        System.out.println("The entirety of the farm makes: ");
+//        System.out.println("The cost is " + costforwhole);
+//        System.out.println("The income is " + incomeforwhole);
+//        System.out.println("The profit is " + profitforwhole);
+//        System.out.print("Total animals across all farms is " + total);
 
         boolean yes = true;
-        double  curmon = 10000;
+        double  curmon = 100000;
         int[] ship = new int[10];
         int[] shay = new int[10];
         int[] soat = new int[10];
-        int[] sean = new int[10]; // set up constructor to set all values to 0
+        int[] sean = new int[10];
         for (int lcv = 0; lcv < ship.length; lcv++) {
             ship[lcv] = 0;
             shay[lcv] = 0;
@@ -213,40 +213,49 @@ public class GIGAMain {
             sean[lcv] = 0;
         }
         System.out.println("Hello, and welcome to GIGA farm");
-        System.out.println("Games span 10 days. You can choose to continue. " +
-                "\nYou start with $10000 and a farm both given by your recent passed grandpa" +
+        System.out.println("Games span 10 days. You can choose to continue. \nAnswer in y or n unless int is asked. " +
+                "\nYou start with $100000 and a farm both given by your recent passed grandpa" +
+                "\nYou can only buy shipments in the morning" +
                 "\nIt is up to you as to what happens\nLet's start!");
         while (yes) {
             for (int lcv = 0; lcv < 10; lcv++) {
 
-                System.out.println("Mourning");
+                System.out.println("Morning");
                 System.out.println("Current money = $" + curmon);
+                String choice = "";
                 for (int l = 0; l < farms.size(); l++) {
-                    System.out.println("This is farm " + l);
+
+                    System.out.println("This is farm " + (l+1));
                     System.out.println("Do you want to feed your animals?");
-                    String choice = input.next();
-                    if (choice.equals("yes")) {
+                    choice = input.next();
+                    if (choice.equals("y")) {
                         farms.get(l).feedanis();
                         if (farms.get(l).farmHealth() > 0) {
-                            farms.get(l).death(-5);
+                            farms.get(l).death(-10);
                         }
                     } else {
                         System.out.println("Menace");
-                        farms.get(l).death(20);
+                        farms.get(l).death(10);
+                        if (farms.get(l).farmHealth() >= 100) {
+                            System.out.println("All animals on this farm have died.\nYou have one less farm now");
+                            farms.remove(l);
+                            System.out.println("You mourn the losses that you caused, it is now evening.");
+                            l += 10;
+                        }
                     }
                     System.out.println("Do you want the animals to be able to roam free?");
                     choice = input.next();
-                    if (choice.equals("yes")) {
+                    if (choice.equals("y")) {
                         System.out.println("Yay!");
                         farms.get(l).mor(10);
                     } else {
                         System.out.println("boring");
-                        farms.get(l).mor(-20);
+                        farms.get(l).mor(-10);
                     }
 
                     System.out.println("Do you want to buy corn? Comes in shipments of 1000-1500. max of 10 shipments per day\n Always arrives the next day.");
                     choice = input.next();
-                    if (choice.equals("yes")) {
+                    if (choice.equals("y")) {
                         System.out.println("How many?");
                         int numship = input.nextInt();
                         while (numship > 10 ||  numship <= 0) {
@@ -256,16 +265,17 @@ public class GIGAMain {
                         for (int r = 0; r < numship; r++) {
                             ship[r] = (int) Math.round(Math.random() * 500) + 1000;
                             if (curmon >= ship[r] * farms.get(l).getCc()) {
-                                farms.get(l).addCorn(ship[r]);
                                 curmon -= ship[r] * farms.get(l).getCc();
                                 System.out.println("Current money = $" + curmon);
+                            } else {
+                                System.out.println("not enough money");
                             }
                         }
                     }
 
                     System.out.println("Would you like to buy some hay? you may buy up to 10 bundles a day as well.\nArrives next day");
                     choice = input.next();
-                    if (choice.equals("yes")) {
+                    if (choice.equals("y")) {
                         System.out.println("How many?");
                         int numshipdehay = input.nextInt();
                         while (numshipdehay > 10 ||  numshipdehay <= 0) {
@@ -278,13 +288,15 @@ public class GIGAMain {
                                 farms.get(l).addHay(shay[r]);
                                 curmon -= shay[r] * farms.get(l).getHc();
                                 System.out.println("Current money = $" + curmon);
+                            } else {
+                                System.out.println("not enough money");
                             }
                         }
                     }
 
                     System.out.println("Would you like to buy some oats? you may buy up to 10 bundles a day.\nArrives next day");
                     choice = input.next();
-                    if (choice.equals("yes")) {
+                    if (choice.equals("y")) {
                         System.out.println("How many?");
                         int numshipdeoat = input.nextInt();
                         while (numshipdeoat > 10 ||  numshipdeoat <= 0) {
@@ -297,12 +309,14 @@ public class GIGAMain {
                                 farms.get(l).addOats(soat[r]);
                                 curmon -= soat[r] * farms.get(l).getOc();
                                 System.out.println("Current money = $" + curmon);
+                            }  else {
+                                System.out.println("not enough money");
                             }
                         }
                     }
                     System.out.println("Would you like to buy some beans? you may buy up to 10 shipments.\nArrives next day");
                     choice = input.next();
-                    if (choice.equals("yes")) {
+                    if (choice.equals("y")) {
                         System.out.println("How many?");
                         int numshipdebeans = input.nextInt();
                         while (numshipdebeans > 10 ||  numshipdebeans <= 0) {
@@ -315,128 +329,87 @@ public class GIGAMain {
                                 farms.get(l).addBeans(sean[r]);
                                 curmon -= sean[r] * farms.get(l).getBc();
                                 System.out.println("Current money = $" + curmon);
+                            } else {
+                                System.out.println("not enough money");
                             }
                         }
                     }
+
                 }
+
 
                 System.out.println("Evening");
                 for (int l = 0; l < farms.size(); l++) {
-                    System.out.println("This is farm " + l);
+                    System.out.println("This is farm " + (l+1));
                     System.out.println("Do you want to feed your animals?");
-                    String choice = input.next();
-                    if (choice.equals("yes")) {
+                    choice = input.next();
+                    if (choice.equals("y")) {
                         farms.get(l).feedanis();
                         if (farms.get(l).farmHealth() > 0) {
-                            farms.get(l).death(-5);
+                            farms.get(l).death(-10);
                         }
                     } else {
                         System.out.println("Menace");
-                        farms.get(l).death(20);
+                        farms.get(l).death(10);
+                        if (farms.get(l).farmHealth() >= 100) {
+                            System.out.println("All animals on this farm have died.\nYou have one less farm now");
+                            farms.remove(l);
+                            System.out.println("You mourn the losses that you caused, it is now the next day.");
+                            l += 10;
+                        }
                     }
                     System.out.println("Do you want the animals to be able to roam free?");
                     choice = input.next();
-                    if (choice.equals("yes")) {
+                    if (choice.equals("y")) {
                         System.out.println("Yay!");
                         farms.get(l).mor(10);
                     } else {
                         System.out.println("boring");
-                        farms.get(l).mor(-20);
+                        farms.get(l).mor(-10);
                     }
+                    curmon += farms.get(l).profit() * (farms.get(l).morale()/100.0);
+                    for (int lc = 0; lc < 10; lc++) {
+                        if (ship[lc] != 0) {
+                            farms.get(l).addCorn(ship[lc]);
+                            ship[lc] = 0;
+                        }
+                        if (shay[lc] != 0) {
+                            farms.get(l).addHay(shay[lc]);
+                            shay[lc] = 0;
+                        }
 
-                    System.out.println("Do you want to buy corn? Comes in shipments of 1000-1500. max of 10 shipments per day\n Always arrives the next day.");
-                    choice = input.next();
-                    if (choice.equals("yes") && ship[9] == 0) {
-                        System.out.println("How many?");
-                        int numship = input.nextInt();
-                        int mostre = 0;
-                        for (int lc = 0; lc < ship.length; lc++) {
-                            if (ship[lc] != 0) mostre = lc;
+                        if (soat[lc] != 0) {
+                            farms.get(l).addOats(soat[lc]);
+                            soat[lc] = 0;
                         }
-                        while (numship+mostre > 10 ||  numship+mostre <= 0) {
-                            System.out.println("input a valid number");
-                            numship = input.nextInt();
-                        }
-                        for (int r = mostre; r < numship; r++) {
-                            ship[r] = (int) Math.round(Math.random() * 500) + 1000;
-                            if (curmon >= ship[r] * farms.get(l).getCc()) {
-                                farms.get(l).addCorn(ship[r]);
-                                curmon -= ship[r] * farms.get(l).getCc();
-                                System.out.println("Current money = $" + curmon);
-                            }
-                        }
-                    }
-
-                    System.out.println("Would you like to buy some hay? you may buy up to 10 bundles a day as well.\nArrives next day");
-                    choice = input.next();
-                    if (choice.equals("yes") && shay[9] == 0) {
-                        System.out.println("How many?");
-                        int numshipdehay = input.nextInt();
-                        int mostre = 0;
-                        for (int lc = 0; lc < ship.length; lc++) {
-                            if (ship[lc] != 0) mostre = lc;
-                        }
-                        while (numshipdehay > 10 ||  numshipdehay <= 0) {
-                            System.out.println("input a valid number");
-                            numshipdehay = input.nextInt();
-                        }
-                        for (int r = 0; r < numshipdehay; r++) {
-                            shay[r] = (int) Math.round(Math.random() * 500) + 1000;
-                            if (curmon >= shay[r] * farms.get(l).getHc()) {
-                                farms.get(l).addHay(shay[r]);
-                                curmon -= shay[r] * farms.get(l).getHc();
-                                System.out.println("Current money = $" + curmon);
-                            }
-                        }
-                    }
-
-                    System.out.println("Would you like to buy some oats? you may buy up to 10 bundles a day.\nArrives next day");
-                    choice = input.next();
-                    if (choice.equals("yes") && soat[9] == 0) {
-                        System.out.println("How many?");
-                        int numshipdeoat = input.nextInt();
-                        int mostre = 0;
-                        for (int lc = 0; lc < soat.length; lc++) {
-                            if (soat[lc] != 0) mostre = lc;
-                        }
-                        while (numshipdeoat+mostre > 10 ||  numshipdeoat+mostre <= 0) {
-                            System.out.println("input a valid number");
-                            numshipdeoat = input.nextInt();
-                        }
-                        for (int r = mostre; r < numshipdeoat+mostre; r++) {
-                            soat[r] = (int) Math.round(Math.random() * 500) + 1000;
-                            if (curmon >= soat[r] * farms.get(l).getOc()) {
-                                farms.get(l).addOats(soat[r]);
-                                curmon -= soat[r] * farms.get(l).getOc();
-                                System.out.println("Current money = $" + curmon);
-                            }
-                        }
-                    }
-                    System.out.println("Would you like to buy some beans? you may buy up to 10 shipments.\nArrives next day");
-                    choice = input.next();
-                    if (choice.equals("yes") && sean[9] == 0) {
-                        System.out.println("How many?");
-                        int numshipdebeans = input.nextInt();
-                        int mostre = 0;
-                        for (int lc = 0; lc < sean.length; lc++) {
-                            if (sean[lc] != 0) mostre = lc;
-                        }
-                        while (numshipdebeans+mostre > 10 ||  numshipdebeans+mostre <= 0) {
-                            System.out.println("input a valid number");
-                            numshipdebeans = input.nextInt();
-                        }
-                        for (int r = mostre; r < numshipdebeans+mostre; r++) {
-                            sean[r] = (int) Math.round(Math.random() * 500) + 1000;
-                            if (curmon >= sean[r] * farms.get(l).getBc()) {
-                                farms.get(l).addBeans(sean[r]);
-                                curmon -= sean[r] * farms.get(l).getBc();
-                                System.out.println("Current money = $" + curmon);
-                            }
+                        if (sean[lc] != 0) {
+                            farms.get(l).addBeans(sean[lc]);
+                            sean[lc] = 0;
                         }
                     }
 
                 }
-
+                System.out.println();
+                for (int be = 0; be < farms.size(); be++) {
+                    System.out.println("Farm " + (be+1));
+                    cornQue = farms.get(be).qcorn();
+                    int g = 0;
+                    while (!cornQue.isEmpty()) {
+                        g += cornQue.poll();
+                    }
+                    System.out.println("Corn left: " + g);
+                    g = 0;
+                    Stack<Integer> l = new Stack<>();
+                    l = farms.get(be).sthay();
+                    while (!l.empty()) {
+                        g += l.pop();
+                    }
+                    System.out.println("Hay left: " + g);
+                    System.out.println("Oats left: " + farms.get(be).getOats());
+                    System.out.println("Beans left: " + farms.get(be).getBc());
+                }
+                System.out.println("The money you have is " + curmon);
+                System.out.println();
             }
 
 

@@ -68,7 +68,8 @@ public class GIGAFarm {
         return this.horse;
     }
     public int getCorn() {return mycorn.poll();}
-
+    public Queue<Integer> qcorn() {return mycorn;}
+    public  Stack<Integer> sthay() {return myhay;}
     public void addCorn(int co) {
         mycorn.add(co);
     }
@@ -185,5 +186,56 @@ public class GIGAFarm {
         } else {
             System.out.println("You need " + (numes[1]-oats) + " more oats");
         }
+    }
+
+    public double profit() {
+        double totcost = 0;
+        double costforwhole = 0;
+        double totincome = 0;
+        double incomeforwhole = 0;
+        double totprof = 0;
+        double profitforwhole = 0;
+        int total = 0;
+        int totani = 0;
+        int rideSpot = 0;
+
+            for (int lcv = 0; lcv < Pigs.length; lcv++) {
+                totani++;
+                GIGAPig Pigs = this.getPigs()[lcv];
+                totprof += Pigs.getProfit(this.getMilk(), this.getCc(), this.getHc(), this.getBc(), this.getOc());
+            }
+
+            for (int lcv = 1; lcv < this.getCowies().size() + 1; lcv++) {
+                totani++;
+                totprof += this.getCowies().get(lcv).getProfit(this.getMilk(), this.getCc(), this.getHc(), this.getBc(), this.getOc());
+            }
+
+            totani -= 2;
+
+            int[][] hi = this.getRids();
+            totani += this.getHorse().size();
+            for (int ll = 0; ll < hi.length; ll++) {
+
+                for (int lcv = 0; lcv < hi[0].length; lcv++) {
+                    for (int lc = 0; lc < hi[ll][lcv]; lc++) {
+                        totprof += horse.get(rideSpot).getProfit(this.getMilk(), this.getCc(), this.getHc(), this.getBc(), this.getOc());
+                        rideSpot++;
+                        if (rideSpot == horse.size()) rideSpot = 0;
+                    }
+                }
+
+
+            }
+
+
+            totani += turk.size();
+            Iterator<GIGATurkey> itr = turk.iterator();
+            while (itr.hasNext()) {
+
+                GIGATurkey gay = itr.next();
+                totprof += gay.getProfit(this.getMilk(), this.getCc(), this.getHc(), this.getBc(), this.getOc());
+            }
+
+        return totprof;
     }
 }
