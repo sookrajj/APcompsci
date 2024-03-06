@@ -70,10 +70,18 @@ public class GIGAFarm {
     public int getCorn() {return mycorn.poll();}
     public Queue<Integer> qcorn() {return mycorn;}
     public  Stack<Integer> sthay() {return myhay;}
+    public Stack<Integer> copyhay(Stack<Integer> hay) {
+        myhay = hay;
+        return myhay;
+    }
     public void addCorn(int co) {
         mycorn.add(co);
     }
     public int getHay() {return myhay.pop();}
+    public  Queue<Integer> copycorn(Queue<Integer> corn) {
+        mycorn = corn;
+        return mycorn;
+    }
     public void addHay(int h) {
         myhay.push(h);
     }
@@ -88,8 +96,6 @@ public class GIGAFarm {
     public void death(int die) {
         if (farmhealth > 0 && die < 0) farmhealth += die;
         else if (farmhealth < 100 && die > 0){
-            farmhealth += die;
-        } else {
             farmhealth += die;
         }
     }
