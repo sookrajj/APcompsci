@@ -94,6 +94,13 @@ public class GIGAMain {
             costs[4] = Math.round(Math.random() * 0.04*100)/100 + .40;
             farms.add(new GIGAFarm(pig, cows, horse, turks, rides, hayStack, cornQue, nums, costs));
 
+            System.out.println(cornQue + " " + hayStack + " " + nums[0] + " " + nums[1]);
+
+            double g = farms.get(lc).getHay();
+            int c = farms.get(lc).getCorn();
+            System.out.println(cornQue + " " + hayStack + " " + g + " " + c);
+            farms.get(lc).addCorn(c);
+            farms.get(lc).addHay((int) g);
             if (lc == 0) {
                 horse = horses;
                 turks = turkeys;
