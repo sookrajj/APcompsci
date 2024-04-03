@@ -38,12 +38,37 @@ public class Library implements LibrarySystem {
         }
     }
     // Other methods...
+    @Override
+    public void addPatron(Patron patron) {
+        patrons.add(patron);
+    }
+
+    @Override
+    public void removePatron(String patronId) {
+        for (int lcv = 0; lcv < patrons.size(); lcv++) {
+            if (patrons.get(lcv).getPatronId().equals(patronId)) {
+                patrons.remove(lcv);
+                return;
+            }
+        }
+    }
+
+    @Override
+    public void createTransaction(String isbn, String patronId, String checkoutDate) {
+        transactions.add(new Transaction(isbn, patronId, checkoutDate));
+    }
+    @Override
+    public void updateTransaction(String isbn, String patronId, String returnDate) {
+        for (int lcv = 0; lcv < transactions.size(); lcv++) {
+            return;
+        }
+    }
 
     @Override
     public void viewMostRecentTransaction(String isbn) {
         // Hint: Use a backward loop to find the most recent transaction
         // If no transaction is found, print "No transactions found for ISBN: <isbn>"
-        for (int lcv = books.size(); lcv > 0; lcv--) {
+        for (int lcv = books.size()-1; lcv > 0; lcv--) {
             if (books.get(lcv).getIsbn().equals(isbn)) {
                 System.out.println("Most recent transaction is " + books.get(lcv).getTitle());
                 return;
@@ -59,7 +84,13 @@ public class Library implements LibrarySystem {
     public Book findClosestBook(String title) {
         // TODO: Search for the closest book title using .toLowerCase() and .contains(); return the closest book or null
         title.toLowerCase();
-        return books.get(0);
+        int ind = 1110;
+        for (int lcv = 0; lcv < books.size(); lcv++) {
+            if (Math.abs(books.get(lcv).getTitle().compareTo(title)) < ind) {
+                ind = Math.abs(books.get(lcv).getTitle().compareTo(title));
+            }
+        }
+        return books.get(ind);
     }
 
     @Override
@@ -67,6 +98,18 @@ public class Library implements LibrarySystem {
         // TODO: Binary search for book; if not found, return the closest book
         BinarySearchUtil bin = new BinarySearchUtil();
         int hi = bin.binser(books, title);
+        if (hi != -1) {
+            return books.get(hi);
+        } else {
+            return null;
+        }
+    }
+
+    @Override
+    public Book searchBookByAuthor(String author) {
+        // TODO: Binary search for book; if not found, return the closest book
+        BinarySearchUtil bin = new BinarySearchUtil();
+        int hi = bin.autser(books, author);
         if (hi != -1) {
             return books.get(hi);
         } else {
