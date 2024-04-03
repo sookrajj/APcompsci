@@ -60,9 +60,39 @@ public class Library implements LibrarySystem {
     @Override
     public void updateTransaction(String isbn, String patronId, String returnDate) {
         for (int lcv = 0; lcv < transactions.size(); lcv++) {
-            return;
+            if (transactions.get(lcv).getIsbn().equals(isbn)) {
+                if (transactions.get(lcv).getPatronId().equals(patronId)) {
+                    transactions.get(lcv).setReturn(returnDate);
+                    return;
+                }
+            }
         }
     }
+
+    @Override
+    public boolean checkoutBook(String isbn, String patronId) {
+        for (int lcv = 0; lcv < books.size(); lcv++) {
+            if (books.get(lcv).getIsbn().equals(isbn)) {
+                if (!books.get(lcv).getcheck()) {
+                    books.get(lcv).setCheckedOut(boolean true);
+                    return true;
+                }
+            }
+        }
+        return false;
+    }
+
+    @Override
+    public boolean checkinBook(String isbn, String patronId) {
+        for (int lcv = 0; lcv < books.size(); lcv++) {
+            if (books.get(lcv).getIsbn().equals(isbn)) {
+                if (books.get(lcv).getcheck()) {
+                    books.get(lcv).setCheckedOut(boolean false);
+                    return false;
+                }
+            }
+        }
+        return true;
 
     @Override
     public void viewMostRecentTransaction(String isbn) {
