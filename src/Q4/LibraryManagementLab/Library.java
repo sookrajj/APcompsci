@@ -88,11 +88,11 @@ public class Library implements LibrarySystem {
             if (books.get(lcv).getIsbn().equals(isbn)) {
                 if (books.get(lcv).getcheck()) {
                     books.get(lcv).setCheckedOut(boolean false);
-                    return false;
+                    return true;
                 }
             }
         }
-        return true;
+        return false;
 
     @Override
     public void viewMostRecentTransaction(String isbn) {
