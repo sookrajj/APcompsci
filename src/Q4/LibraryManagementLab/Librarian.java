@@ -20,25 +20,49 @@ public Librarian {
         num = s.nextInt();
 
         if (num == 1) {
-          System.out.print("Enter Name: ");
+          System.out.print("/nEnter Name: ");
           String name = s.next();
-          System.out.print("Enter Patron ID: ");
+          System.out.print("/nEnter Patron ID: ");
           String patron = s.next();
           li.addPatron(new Patron(name, patron));
-          System.out.println("Patron added successfully");
+          System.out.println("/nPatron added successfully");
         } else if (num == 2) {
-          System.out.print("Enter Isbn: ");
+          System.out.print("/nEnter Isbn: ");
           String Isbn = s.next();
-          System.out.print("Enter Title: ");
+          System.out.print("/nEnter Title: ");
           String title = s.nextLine();
-          System.out.print("Enter Author :");
+          System.out.print("/nEnter Author :");
           String aut = s.nextLine();
           li.addBook(new Book(Isbn, title, aut));
-          System.out.println("Book added successfully");
+          System.out.println("/nBook added successfully");
         } else if (num == 3) {
-          System.out.print("Enter ISBN: ");
+          System.out.print("/nEnter ISBN: ");
           String Isbn = s.next();
           li.removeBook(Isbn);
-          System.out.print("Removed successfully");
-        }
+          System.out.print("/nRemoved successfully");
+        } else if (num == 4) {
+          System.out.print("/nEnter Isbn: ");
+          String Isbn = s.next();
+          System.out.print("/nEnter Patron ID: ");
+          String patron = s.next();
+          li.checkOutBook(Isbn, patron);
+        } else if (num == 5) {
+          System.out.print("/nEnter Isbn: ");
+          String Isbn = s.next();
+          System.out.print("/nEnter Patron ID: ");
+          String patron = s.next();
+          li.checkinBook(Isbn, patron);
+        } else if (num == 6) {
+          System.out.print("/nEnter Title: ");
+          String title = s.next();
+          li.searchBookByTitle(title);
+          
+
+
+
+      }
+    }
+  }
+}
+
           
