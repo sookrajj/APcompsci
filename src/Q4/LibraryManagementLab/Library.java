@@ -120,7 +120,7 @@ public class Library implements LibrarySystem {
                 ind = Math.abs(books.get(lcv).getTitle().compareTo(title));
             }
         }
-        return books.get(ind);
+        return books.get(ind).toString();
     }
 
     @Override
@@ -129,7 +129,7 @@ public class Library implements LibrarySystem {
         BinarySearchUtil bin = new BinarySearchUtil();
         int hi = bin.binser(books, title);
         if (hi != -1) {
-            return books.get(hi);
+            return books.get(hi).toString();
         } else {
             return null;
         }
