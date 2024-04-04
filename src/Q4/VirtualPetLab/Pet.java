@@ -6,6 +6,9 @@ public abstract class Pet {
     private int hunger;
     private int energy;
     private int happiness;
+    public static final int MIN_HUNGER = 0;
+    public static final int MIN_ENERGY = 0;
+    public static final int MIN_HAPPINESS = 0;
     public static final int MAX_HUNGER = 100;
     public static final int MAX_ENERGY = 100;
     public static final int MAX_HAPPINESS = 100;
@@ -36,6 +39,9 @@ public abstract class Pet {
 
     // TODO: Add a public method to return the pet's status as a string
 
+    public String toString() {
+        return "Name: " + name + "\nHunger: " + hunger + "\nEnergy: " + energy + "\nHappiness: " + happiness;
+    }
     // It may also be help to make a public/protected "clampAttributes()" method to ensure that the pet's attributes do
     // not exceed their maximum values or drop below 0 when feeding/playing/sleeping. Call this method using 'super'.
 }
