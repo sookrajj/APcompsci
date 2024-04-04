@@ -27,7 +27,6 @@ public class LibraryManager {
             return books;
         } catch (FileNotFoundException e) {
             System.out.println("\nFile not found. Returning empty catalog. ");
-            System.out.println();
         }
         return new ArrayList<>();
     }

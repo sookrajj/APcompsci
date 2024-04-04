@@ -24,7 +24,9 @@ public class Patron {
         int in = -1;
         for(int lcv = 0; lcv < checkedOutBooks.size(); lcv++) {
             if (checkedOutBooks.get(lcv).getTitle().equals(book.getTitle())) {
-                in = lcv;
+                if (checkOutbooks.get(lcv).getIsbn().equals(book.getIsbn())) {
+                    in = lcv;
+                }
             }
         }
         if (in != -1) {
