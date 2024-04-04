@@ -1,5 +1,6 @@
 package Q4.LibraryManagementLab;
 
+import java.sql.SQLOutput;
 import java.time.Instant;
 import java.time.ZoneOffset;
 import java.time.format.DateTimeFormatter;
@@ -18,12 +19,18 @@ public class Library implements LibrarySystem {
         patrons = new ArrayList<>();
         transactions = new ArrayList<>();
     }
+
+    public Library(ArrayList<Book> book) {
+        books = book;
+        patrons = new ArrayList<>();
+        transactions = new ArrayList<>();
+    }
     // Implement interface methods
     @Override
     public void addBook(Book book) { /* Implementation; remember to add in sorted order */
         BinarySearchUtil bin = new BinarySearchUtil();
         if (bin.binser(books, book.getTitle()) == -1) {
-            return;
+            System.out.println("Could not add book");
         } else {
             books.add(bin.binser(books, book.getTitle()), book);
         }
@@ -74,7 +81,8 @@ public class Library implements LibrarySystem {
         for (int lcv = 0; lcv < books.size(); lcv++) {
             if (books.get(lcv).getIsbn().equals(isbn)) {
                 if (!books.get(lcv).getcheck()) {
-                    books.get(lcv).setCheckedOut(boolean true);
+                    books.get(lcv).setCheckedOut(true);
+                    transactions.add(new Transaction(isbn, patronId, this.getDateToday()));
                     return true;
                 }
             }
@@ -87,12 +95,14 @@ public class Library implements LibrarySystem {
         for (int lcv = 0; lcv < books.size(); lcv++) {
             if (books.get(lcv).getIsbn().equals(isbn)) {
                 if (books.get(lcv).getcheck()) {
-                    books.get(lcv).setCheckedOut(boolean false);
+                    books.get(lcv).setCheckedOut(false);
+                    transactions.get(lcv).setReturn(this.getDateToday());
                     return true;
                 }
             }
         }
         return false;
+    }
 
     @Override
     public void viewMostRecentTransaction(String isbn) {
@@ -120,19 +130,13 @@ public class Library implements LibrarySystem {
                 ind = Math.abs(books.get(lcv).getTitle().compareTo(title));
             }
         }
-        return books.get(ind).toString();
+        return books.get(ind);
     }
 
     @Override
     public Book searchBookByTitle(String title) {
         // TODO: Binary search for book; if not found, return the closest book
-        BinarySearchUtil bin = new BinarySearchUtil();
-        int hi = bin.binser(books, title);
-        if (hi != -1) {
-            return books.get(hi).toString();
-        } else {
-            return null;
-        }
+        return findClosestBook(title);
     }
 
     @Override

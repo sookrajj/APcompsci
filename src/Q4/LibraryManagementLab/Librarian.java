@@ -1,63 +1,68 @@
 package Q4.LibraryManagementLab;
 
-import java.util.*
+import java.util.*;
 
-public Librarian {
+public class Librarian {
   public static void main(String[] args) {
     Scanner s = new Scanner(System.in);
-    Library li = new Library();
     LibraryManager lib = new LibraryManager();
     ArrayList<Book> books = new ArrayList<>();
     books = lib.loadCatalog();
+    Library li = new Library(books);
     if (books.isEmpty()) {
       System.out.print("Failed to start program");
     } else {
       int num = 10;
       while (num != 8) {
-        System.out.println("Menu:/n/n1. Add Patron/n2. Add Book/n3. Remove Book/n4. Checkout Book/n" +
-                           "5. Return book/n6. Search Book/n7. Search Book Transaction/n 8. Exit");
+        System.out.println("Menu:\n1. Add Patron\n2. Add Book\n3. Remove Book\n4. Checkout Book\n" +
+                           "5. Return book\n6. Search Book\n7. Search Book Transaction\n8. Exit");
         System.out.print("Enter your choice: ");
         num = s.nextInt();
 
         if (num == 1) {
-          System.out.print("/nEnter Name: ");
+          System.out.print("Enter Name: ");
           String name = s.next();
-          System.out.print("/nEnter Patron ID: ");
+          System.out.print("Enter Patron ID: ");
           String patron = s.next();
           li.addPatron(new Patron(name, patron));
-          System.out.println("/nPatron added successfully");
+          System.out.println("Patron added successfully");
         } else if (num == 2) {
-          System.out.print("/nEnter Isbn: ");
+          System.out.print("Enter Isbn: ");
           String Isbn = s.next();
-          System.out.print("/nEnter Title: ");
-          String title = s.nextLine();
-          System.out.print("/nEnter Author :");
-          String aut = s.nextLine();
+          System.out.print("Enter Title: ");
+          String ti = s.next();
+          String title = ti + s.nextLine();
+          System.out.print("Enter Author: ");
+          String a = s.next();
+          String aut = a + s.nextLine();
+          System.out.println("what");
           li.addBook(new Book(Isbn, title, aut));
-          System.out.println("/nBook added successfully");
+          System.out.println("Book added successfully");
         } else if (num == 3) {
-          System.out.print("/nEnter ISBN: ");
+          System.out.print("\nEnter ISBN: ");
           String Isbn = s.next();
           li.removeBook(Isbn);
-          System.out.print("/nRemoved successfully");
+          System.out.print("Removed successfully");
         } else if (num == 4) {
-          System.out.print("/nEnter Isbn: ");
+          System.out.print("Enter Isbn: ");
           String Isbn = s.next();
-          System.out.print("/nEnter Patron ID: ");
+          System.out.print("Enter Patron ID: ");
           String patron = s.next();
-          li.checkOutBook(Isbn, patron, li.getDateToday());
-          System.out.println("/nBook checked out successfully");
+          li.checkoutBook(Isbn, patron);
+          System.out.println("Book checked out successfully");
         } else if (num == 5) {
-          System.out.print("/nEnter Isbn: ");
+          System.out.print("Enter Isbn: ");
           String Isbn = s.next();
-          System.out.print("/nEnter Patron ID: ");
+          System.out.print("Enter Patron ID: ");
           String patron = s.next();
-          li.checkinBook(Isbn, patron, li.getDateToday());
-          System.out.println("/nBook checked in successfully");
+          li.checkinBook(Isbn, patron);
+          System.out.println("Book checked in successfully");
         } else if (num == 6) {
-          System.out.print("/nEnter Title: ");
-          String title = s.next();
-          li.searchBookByTitle(title);
+          System.out.print("Enter Title: ");
+          String ti = s.next();
+          String title = ti + s.nextLine();
+          Book b = li.searchBookByTitle(title);
+          System.out.println(b.toString());
         } else if (num == 7) {
           System.out.print("Enter Isbn: ");
           String Isbn = s.next();

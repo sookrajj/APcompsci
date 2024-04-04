@@ -12,7 +12,7 @@ public class Patron {
     public Patron(String name, String patronId) {
         this.name = name;
         this.patronId = patronId;
-
+        checkedOutBooks = new ArrayList<>();
     }
     // Basic getters
     public String getName() { return name; }
@@ -24,7 +24,7 @@ public class Patron {
         int in = -1;
         for(int lcv = 0; lcv < checkedOutBooks.size(); lcv++) {
             if (checkedOutBooks.get(lcv).getTitle().equals(book.getTitle())) {
-                if (checkOutbooks.get(lcv).getIsbn().equals(book.getIsbn())) {
+                if (checkedOutBooks.get(lcv).getIsbn().equals(book.getIsbn())) {
                     in = lcv;
                 }
             }

@@ -11,7 +11,7 @@ public class LibraryManager {
         try {
             // Dataset source: https://www.kaggle.com/datasets/saurabhbagchi/books-dataset
             System.out.print("Loading catalog...");
-            String path = "LibraryManagementLab/book_catalog.csv";  // Change directory as needed
+            String path = "Langdat/book_catalog.csv";  // Change directory as needed
             Scanner file = new Scanner(new File(path));
             ArrayList<Book> books = new ArrayList<>();
             while (file.hasNextLine()) {
