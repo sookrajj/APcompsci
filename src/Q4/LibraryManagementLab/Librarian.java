@@ -45,23 +45,30 @@ public Librarian {
           String Isbn = s.next();
           System.out.print("/nEnter Patron ID: ");
           String patron = s.next();
-          li.checkOutBook(Isbn, patron);
+          li.checkOutBook(Isbn, patron, li.getDateToday());
+          System.out.println("/nBook checked out successfully");
         } else if (num == 5) {
           System.out.print("/nEnter Isbn: ");
           String Isbn = s.next();
           System.out.print("/nEnter Patron ID: ");
           String patron = s.next();
-          li.checkinBook(Isbn, patron);
+          li.checkinBook(Isbn, patron, li.getDateToday());
+          System.out.println("/nBook checked in successfully");
         } else if (num == 6) {
           System.out.print("/nEnter Title: ");
           String title = s.next();
           li.searchBookByTitle(title);
+        } else if (num == 7) {
+          System.out.print("Enter Isbn: ");
+          String Isbn = s.next();
+          li.viewMostRecentTransaction(Isbn);
+        } else if (num != 8) {
+          System.out.println("Number cannot be used.");
+        }
           
-
-
-
       }
     }
+    System.out.println("Exiting...");
   }
 }
 
