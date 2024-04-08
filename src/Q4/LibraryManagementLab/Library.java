@@ -25,6 +25,16 @@ public class Library implements LibrarySystem {
         patrons = new ArrayList<>();
         transactions = new ArrayList<>();
     }
+
+    public void sort() {
+        int cnt = 0;
+        while (cnt < books.size()-2) {
+            for (int lcv = cnt; lcv < books.size()-1; lcv++) {
+                BinarySearchUtil.sor(books, lcv);
+            }
+            cnt++;
+        }
+    }
     // Implement interface methods
     @Override
     public void addBook(Book book) { /* Implementation; remember to add in sorted order */
@@ -136,7 +146,11 @@ public class Library implements LibrarySystem {
     @Override
     public Book searchBookByTitle(String title) {
         // TODO: Binary search for book; if not found, return the closest book
-        return findClosestBook(title);
+        int spa = (BinarySearchUtil.binser(books, title));
+        if (spa == -1) {
+            return books.get(0);
+        }
+        return books.get(spa);
     }
 
     @Override
@@ -157,4 +171,6 @@ public class Library implements LibrarySystem {
     public static String getDateToday() {
         return Instant.now().atZone(ZoneOffset.UTC).format(DateTimeFormatter.ISO_LOCAL_DATE);
     }
+
+    public ArrayList<Book> getBooks() {return books;}
 }

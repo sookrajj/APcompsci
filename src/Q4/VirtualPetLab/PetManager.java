@@ -9,7 +9,7 @@ public class PetManager {
         pets.add(pet);
     }
     public void removePet(String name) {
-        for (int lcv = 0; lcv < pets; lcv++) {
+        for (int lcv = 0; lcv < pets.size(); lcv++) {
             if (pets.get(lcv).getName().equals(name)) {
                 pets.remove(lcv);
             }

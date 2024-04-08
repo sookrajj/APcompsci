@@ -9,15 +9,20 @@ public class Librarian {
     ArrayList<Book> books = new ArrayList<>();
     books = lib.loadCatalog();
     Library li = new Library(books);
+    li.sort();
     if (books.isEmpty()) {
       System.out.print("Failed to start program");
     } else {
+      for (int lcv = 0; lcv < 100; lcv++) {
+        System.out.println(li.getBooks().get(lcv).getTitle());
+      }
       int num = 10;
       while (num != 8) {
         System.out.println("Menu:\n1. Add Patron\n2. Add Book\n3. Remove Book\n4. Checkout Book\n" +
                            "5. Return book\n6. Search Book\n7. Search Book Transaction\n8. Exit");
         System.out.print("Enter your choice: ");
         num = s.nextInt();
+
 
         if (num == 1) {
           System.out.print("Enter Name: ");
