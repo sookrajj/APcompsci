@@ -10,9 +10,9 @@ public class BinarySearchUtil {
         int las = books.size()-1;
         while (fir <= las) {
             int mid = fir + (las-fir)/2;
-            if (books.get(mid).getTitle().compareTo(title) > 0) {
-                fir = mid+1;
-            } else if (books.get(mid).getTitle().compareTo(title) < 0) {
+            if (books.get(mid).getTitle().toLowerCase().compareTo(title.toLowerCase()) > 0) {
+                fir = mid-1;
+            } else if (books.get(mid).getTitle().toLowerCase().compareTo(title.toLowerCase()) < 0) {
                 las = mid+1;
             } else {
                 return mid;
@@ -25,9 +25,9 @@ public class BinarySearchUtil {
         int las = books.size()-1;
         while (fir <= las) {
             int mid = fir + (las-fir)/2;
-            if (books.get(mid).getAuthor().compareTo(author) > 0) {
+            if (books.get(mid).getAuthor().toLowerCase().compareTo(author.toLowerCase()) > 0) {
                 fir = mid-1;
-            } else if (books.get(mid).getAuthor().compareTo(author) < 0) {
+            } else if (books.get(mid).getAuthor().toLowerCase().compareTo(author.toLowerCase()) < 0) {
                 las = mid+1;
             } else {
                 return mid;

@@ -38,12 +38,13 @@ public class Library implements LibrarySystem {
     // Implement interface methods
     @Override
     public void addBook(Book book) { /* Implementation; remember to add in sorted order */
-        BinarySearchUtil bin = new BinarySearchUtil();
-        if (bin.binser(books, book.getTitle()) == -1) {
-            System.out.println("Could not add book");
-        } else {
-            books.add(bin.binser(books, book.getTitle()), book);
+        for (int l = 0; l < books.size(); l++) {
+            if (book.getTitle().toLowerCase().compareTo(books.get(l).getTitle().toLowerCase()) < 0 && book.getTitle().toLowerCase().compareTo(books.get(l).getTitle().toLowerCase()) > -3) {
+                books.add(l, book);
+                return;
+            }
         }
+        books.add(book);
     }
     @Override
     public void removeBook(String isbn) { /* Implementation */
@@ -138,6 +139,8 @@ public class Library implements LibrarySystem {
         for (int lcv = 0; lcv < books.size(); lcv++) {
             if (Math.abs(books.get(lcv).getTitle().compareTo(title)) < ind) {
                 ind = Math.abs(books.get(lcv).getTitle().compareTo(title));
+            } else if (Math.abs(books.get(lcv).getTitle().compareTo(title)) == ind) {
+                return books.get(lcv);
             }
         }
         return books.get(ind);
