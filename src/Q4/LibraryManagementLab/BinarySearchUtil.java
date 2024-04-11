@@ -10,12 +10,15 @@ public class BinarySearchUtil {
         int las = books.size()-1;
         while (fir <= las) {
             int mid = fir + (las-fir)/2;
-            if (books.get(mid).getTitle().toLowerCase().compareTo(title.toLowerCase()) > 0) {
-                fir = mid-1;
-            } else if (books.get(mid).getTitle().toLowerCase().compareTo(title.toLowerCase()) < 0) {
-                las = mid+1;
-            } else {
-                return mid;
+            if (books.get(mid).getTitle().length() > title.length()) {
+                if (books.get(mid).getTitle().substring(0, title.length()).toLowerCase().compareTo(title.toLowerCase()) > 0) {
+                    fir = mid + 1;
+                } else if (books.get(mid).getTitle().substring(0, title.length()).toLowerCase().compareTo(title.toLowerCase()) < 0) {
+                    las = mid - 1;
+                } else {
+                    return mid;
+                }
+                System.out.println(fir + " " + las);
             }
         }
         return -1;

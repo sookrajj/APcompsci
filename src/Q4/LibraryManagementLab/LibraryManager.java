@@ -75,7 +75,7 @@ public class LibraryManager {
                     System.out.print("\nEnter ISBN: ");
                     String Isbn = s.next();
                     li.removeBook(Isbn);
-                    System.out.print("Removed successfully");
+                    System.out.println("Removed successfully");
                 } else if (num == 4) {
                     System.out.print("Enter Isbn: ");
                     String Isbn = s.next();
@@ -94,7 +94,7 @@ public class LibraryManager {
                     System.out.print("Enter Title: ");
                     String ti = s.next();
                     String title = ti + s.nextLine();
-                    Book b = li.searchBookByTitle(title);
+                    Book b = li.findClosestBook(title);
                     System.out.println(b.toString());
                 } else if (num == 7) {
                     System.out.print("Enter Isbn: ");
@@ -109,3 +109,118 @@ public class LibraryManager {
         System.out.println("Exiting...");
     }
 }
+//Loading catalog...success.
+//Menu:
+//1. Add Patron
+//2. Add Book
+//3. Remove Book
+//4. Checkout Book
+//5. Return book
+//6. Search Book
+//7. Search Book Transaction
+//8. Exit
+//Enter your choice: 1
+//Enter Name: Joe
+//Enter Patron ID: 123
+//Patron added successfully
+//Menu:
+//1. Add Patron
+//2. Add Book
+//3. Remove Book
+//4. Checkout Book
+//5. Return book
+//6. Search Book
+//7. Search Book Transaction
+//8. Exit
+//Enter your choice: 4
+//Enter Isbn: 0801678765
+//Enter Patron ID: 123
+//Book checked out successfully
+//Menu:
+//1. Add Patron
+//2. Add Book
+//3. Remove Book
+//4. Checkout Book
+//5. Return book
+//6. Search Book
+//7. Search Book Transaction
+//8. Exit
+//Enter your choice: 6
+//Enter Title: Basic Nursing
+//Book{title='Basic Nursing: Theory and Practice', isbn='0801678765', author='Patricia A. Potter'}
+//Menu:
+//1. Add Patron
+//2. Add Book
+//3. Remove Book
+//4. Checkout Book
+//5. Return book
+//6. Search Book
+//7. Search Book Transaction
+//8. Exit
+//Enter your choice: 7
+//Enter Isbn: 0801678765
+//Transaction{isbn='0801678765', patronId='123', checkoutDate='2024-04-11', returnDate='null'}
+//Menu:
+//1. Add Patron
+//2. Add Book
+//3. Remove Book
+//4. Checkout Book
+//5. Return book
+//6. Search Book
+//7. Search Book Transaction
+//8. Exit
+//Enter your choice: 5
+//Enter Isbn: 0801678765
+//Enter Patron ID: 123
+//Book checked in successfully
+//Menu:
+//1. Add Patron
+//2. Add Book
+//3. Remove Book
+//4. Checkout Book
+//5. Return book
+//6. Search Book
+//7. Search Book Transaction
+//8. Exit
+//Enter your choice: 7
+//Enter Isbn: 0801678765
+//Transaction{isbn='0801678765', patronId='123', checkoutDate='2024-04-11', returnDate='2024-04-11'}
+//Menu:
+//1. Add Patron
+//2. Add Book
+//3. Remove Book
+//4. Checkout Book
+//5. Return book
+//6. Search Book
+//7. Search Book Transaction
+//8. Exit
+//Enter your choice: 2
+//Enter Isbn: 1122334455
+//Enter Title: Testing User Interfaces 101
+//Enter Author: George Oregon
+//what
+//Book added successfully
+//Menu:
+//1. Add Patron
+//2. Add Book
+//3. Remove Book
+//4. Checkout Book
+//5. Return book
+//6. Search Book
+//7. Search Book Transaction
+//8. Exit
+//Enter your choice: 3
+//
+//Enter ISBN: 1122334455
+//Removed successfully
+//Menu:
+//1. Add Patron
+//2. Add Book
+//3. Remove Book
+//4. Checkout Book
+//5. Return book
+//6. Search Book
+//7. Search Book Transaction
+//8. Exit
+//Enter your choice: 8
+//Exiting...

@@ -39,7 +39,7 @@ public class Library implements LibrarySystem {
     @Override
     public void addBook(Book book) { /* Implementation; remember to add in sorted order */
         for (int l = 0; l < books.size(); l++) {
-            if (book.getTitle().toLowerCase().compareTo(books.get(l).getTitle().toLowerCase()) < 0 && book.getTitle().toLowerCase().compareTo(books.get(l).getTitle().toLowerCase()) > -3) {
+            if (book.getTitle().toLowerCase().compareTo(books.get(l).getTitle().toLowerCase()) < 0) {
                 books.add(l, book);
                 return;
             }
@@ -93,7 +93,7 @@ public class Library implements LibrarySystem {
             if (books.get(lcv).getIsbn().equals(isbn)) {
                 if (!books.get(lcv).getcheck()) {
                     books.get(lcv).setCheckedOut(true);
-                    transactions.add(new Transaction(isbn, patronId, this.getDateToday()));
+                    transactions.add(new Transaction(isbn, patronId, getDateToday()));
                     return true;
                 }
             }
@@ -103,11 +103,17 @@ public class Library implements LibrarySystem {
 
     @Override
     public boolean checkinBook(String isbn, String patronId) {
+        for (int lcv = 0; lcv < transactions.size(); lcv++) {
+            if (transactions.get(lcv).getIsbn().equals(isbn)) {
+                if (transactions.get(lcv).getPatronId().equals(patronId)) {
+                    transactions.get(lcv).setReturn(getDateToday());
+                }
+            }
+        }
         for (int lcv = 0; lcv < books.size(); lcv++) {
             if (books.get(lcv).getIsbn().equals(isbn)) {
-                if (books.get(lcv).getcheck()) {
+                if (!books.get(lcv).getcheck()) {
                     books.get(lcv).setCheckedOut(false);
-                    transactions.get(lcv).setReturn(this.getDateToday());
                     return true;
                 }
             }
@@ -119,13 +125,16 @@ public class Library implements LibrarySystem {
     public void viewMostRecentTransaction(String isbn) {
         // Hint: Use a backward loop to find the most recent transaction
         // If no transaction is found, print "No transactions found for ISBN: <isbn>"
-        for (int lcv = books.size()-1; lcv > 0; lcv--) {
-            if (books.get(lcv).getIsbn().equals(isbn)) {
-                System.out.println("Most recent transaction is " + books.get(lcv).getTitle());
+        for (int lcv = transactions.size()-1; lcv >= 0; lcv-- ) {
+
+
+            if (transactions.get(lcv).getIsbn().equals(isbn)) {
+                System.out.println(transactions.get(lcv).toString());
                 return;
             }
+
         }
-        System.out.println("No transactions found for ISBN: " + isbn);
+        System.out.println("No recent transactions for " + isbn);
     }
 
     // TODO: Complete the implementation of LibrarySystem methods
@@ -134,13 +143,17 @@ public class Library implements LibrarySystem {
     @Override
     public Book findClosestBook(String title) {
         // TODO: Search for the closest book title using .toLowerCase() and .contains(); return the closest book or null
-        title.toLowerCase();
+
         int ind = 1110;
+        int comp = 10000;
         for (int lcv = 0; lcv < books.size(); lcv++) {
-            if (Math.abs(books.get(lcv).getTitle().compareTo(title)) < ind) {
-                ind = Math.abs(books.get(lcv).getTitle().compareTo(title));
-            } else if (Math.abs(books.get(lcv).getTitle().compareTo(title)) == ind) {
-                return books.get(lcv);
+            if (books.get(lcv).getTitle().length() >= title.length()) {
+                if (Math.abs(books.get(lcv).getTitle().substring(0, title.length()).compareTo(title)) < comp) {
+                    comp = Math.abs(books.get(lcv).getTitle().substring(0, title.length()).compareTo(title));
+                    ind = lcv;
+                } else if (Math.abs(books.get(lcv).getTitle().substring(0, title.length()).compareTo(title)) == 0) {
+                    return books.get(lcv);
+                }
             }
         }
         return books.get(ind);
