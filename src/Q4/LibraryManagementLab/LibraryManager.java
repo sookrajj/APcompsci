@@ -68,7 +68,6 @@ public class LibraryManager {
                     System.out.print("Enter Author: ");
                     String a = s.next();
                     String aut = a + s.nextLine();
-                    System.out.println("what");
                     li.addBook(new Book(Isbn, title, aut));
                     System.out.println("Book added successfully");
                 } else if (num == 3) {
@@ -198,7 +197,6 @@ public class LibraryManager {
 //Enter Isbn: 1122334455
 //Enter Title: Testing User Interfaces 101
 //Enter Author: George Oregon
-//what
 //Book added successfully
 //Menu:
 //1. Add Patron
