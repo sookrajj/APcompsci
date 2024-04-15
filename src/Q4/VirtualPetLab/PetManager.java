@@ -15,6 +15,7 @@ public class PetManager {
             }
         }
     }
+    public Pet getSelectedPet(int num) {return pets.get(num);}
 
     public ArrayList<Pet> getPets() { return pets;}
 

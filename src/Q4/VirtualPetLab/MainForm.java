@@ -1,6 +1,7 @@
 package Q4.VirtualPetLab;
 import javax.swing.*;
 import java.awt.*;
+import java.util.ArrayList;
 import java.util.Base64;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -13,6 +14,9 @@ public class MainForm extends JFrame {
     private JLabel statusLabel;
     private JLabel imageLabel;
     private JComboBox<String> petSelectorComboBox;
+    private JButton AdoptAFox;
+    private JButton AdoptACat;
+    private JButton AdoptADog;
     // TODO: add adoption buttons
     // Pet list
     private PetManager petManager = new PetManager();
@@ -26,18 +30,23 @@ public class MainForm extends JFrame {
         this.setMaximumSize(new Dimension(800, 600));
         this.setResizable(false);
         this.pack();
-
+        
         // Initialize starting pets
         petManager.addPet(new Dog("Buddy"));
         petManager.addPet(new Cat("Whiskers"));
         this.updatePetList();
         petSelectorComboBox.setSelectedItem(null);  // Clear selection after populating
 
+
         // Feed button action
         feedButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 // TODO: Implement feeding the selected pet
+                Pet pet = petManager.getSelectedPet(curpet);
+                if (pet.getHunger() +20 > 100)
+
+                waitButtons(3);
             }
         });
 
@@ -46,6 +55,9 @@ public class MainForm extends JFrame {
             @Override
             public void actionPerformed(ActionEvent e) {
                 // TODO: Implement playing with the selected pet
+
+
+                waitButtons(3);
             }
         });
 
@@ -54,6 +66,9 @@ public class MainForm extends JFrame {
             @Override
             public void actionPerformed(ActionEvent e) {
                 // TODO: Implement putting the selected pet to sleep
+
+
+                waitButtons(3);
             }
         });
 
@@ -68,6 +83,11 @@ public class MainForm extends JFrame {
                 // 1. Grab the current pet from the petManager using petSelectorComboBox.getSelectedIndex()
                 // 2. Update statusLabel with the selected pet's status
                 // 3. Update imageLabel with the selected pet's image using setPetImage()
+                Pet pet = petManager.getSelectedPet(petSelectorComboBox.getSelectedIndex());
+                statusLabel.setText(pet.toString());
+                ImageIcon img = new ImageIcon(pet.getImage());
+                imageLabel.setIcon(img);
+                curpet = petSelectorComboBox.getSelectedIndex();
             }
         });
 
@@ -82,6 +102,10 @@ public class MainForm extends JFrame {
         petSelectorComboBox.removeAllItems();  // Clear existing items
         // TODO: Update petSelectorComboBox with pet names from petManager
         // After adding the pet, set the selected index to the last item (petManager.getPets().size() - 1)
+        ArrayList<Pet> pets = petManager.getPets();
+        for (int lcv = 0; lcv < pets.size(); lcv++) {
+            petSelectorComboBox.addItem(pets.get(lcv).getName());
+        }
     }
 
     /* ========== DO NOT MODIFY BELOW ========== */
