@@ -1,7 +1,7 @@
 package Q4.VirtualPetLab;
 
-public class Dog extends Pet {
-    public Dog(String name) {
+public class Fox extends Pet{
+    public Fox(String name) {
         super(name);
         super.setImage(ImageHelper.getRandomDogImg());
     }
@@ -14,15 +14,15 @@ public class Dog extends Pet {
         }else {
             setHunger(getHunger()-10);
         }
-        if (getHappiness() + 15 > MAX_HAPPINESS) {
+        if (getHappiness() + 10 > MAX_HAPPINESS) {
             setHappiness(MAX_HAPPINESS);
         }else {
-            setHappiness(getHappiness()+15);
+            setHappiness(getHappiness()+10);
         }
-        if (getEnergy() + 10 > MAX_ENERGY) {
+        if (getEnergy() + 15 > MAX_ENERGY) {
             setEnergy(MAX_ENERGY);
         }else {
-            setEnergy(getEnergy()+10);
+            setEnergy(getEnergy()+15);
         }
     }
 
