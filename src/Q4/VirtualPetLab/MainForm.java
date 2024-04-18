@@ -91,8 +91,7 @@ public class MainForm extends JFrame {
                 // 3. Update imageLabel with the selected pet's image using setPetImage()
                 Pet pet = petManager.getSelectedPet(petSelectorComboBox.getSelectedIndex());
                 updateStatusLabel(pet.toString());
-                ImageIcon img = new ImageIcon(pet.getImage());
-                imageLabel.setIcon(img);
+                setPetImage(pet.getImage());
                 curpet = petSelectorComboBox.getSelectedIndex();
             }
         });
@@ -103,6 +102,22 @@ public class MainForm extends JFrame {
             public void actionPerformed(ActionEvent e) {
                 // TODO: Implement feeding the selected pet
                 String name = JOptionPane.showInputDialog("Enter new pet name:  ");
+                int num = 0;
+                for (Pet pe : petManager.getPets()) {
+                    if (pe.getName().equals(name)) {
+                        num = 1;
+                    }
+                }
+                while (num != 0) {
+                    int hi = 0;
+                    name = JOptionPane.showInputDialog("Name your pet something else:  ");
+                    for (Pet pe : petManager.getPets()) {
+                        if (pe.getName().equals(name)) {
+                            hi = 1;
+                        }
+                    }
+                    num = hi;
+                }
                 if (!name.trim().isEmpty()) {
                     petManager.addPet(new Cat(name));
                     updatePetList();
@@ -114,6 +129,22 @@ public class MainForm extends JFrame {
             public void actionPerformed(ActionEvent e) {
                 // TODO: Implement feeding the selected pet
                 String name = JOptionPane.showInputDialog("Enter new pet name:  ");
+                int num = 0;
+                for (Pet pe : petManager.getPets()) {
+                    if (pe.getName().equals(name)) {
+                        num = 1;
+                    }
+                }
+                while (num != 0) {
+                    int hi = 0;
+                    name = JOptionPane.showInputDialog("Name your pet something else:  ");
+                    for (Pet pe : petManager.getPets()) {
+                        if (pe.getName().equals(name)) {
+                            hi = 1;
+                        }
+                    }
+                    num = hi;
+                }
                 if (!name.trim().isEmpty()) {
                     petManager.addPet(new Dog(name));
                     updatePetList();
@@ -125,6 +156,22 @@ public class MainForm extends JFrame {
             public void actionPerformed(ActionEvent e) {
                 // TODO: Implement feeding the selected pet
                 String name = JOptionPane.showInputDialog("Enter new pet name:  ");
+                int num = 0;
+                for (Pet pe : petManager.getPets()) {
+                    if (pe.getName().equals(name)) {
+                        num = 1;
+                    }
+                }
+                while (num != 0) {
+                    int hi = 0;
+                    name = JOptionPane.showInputDialog("Name your pet something else:  ");
+                    for (Pet pe : petManager.getPets()) {
+                        if (pe.getName().equals(name)) {
+                            hi = 1;
+                        }
+                    }
+                    num = hi;
+                }
                 if (!name.trim().isEmpty()) {
                     petManager.addPet(new Fox(name));
                     updatePetList();
@@ -148,6 +195,10 @@ public class MainForm extends JFrame {
             petSelectorComboBox.addItem(pets.get(lcv).getName());
         }
         petSelectorComboBox.setSelectedIndex(petManager.getPets().size() - 1);
+        Pet pet = petManager.getSelectedPet(petManager.getPets().size() - 1);
+        updateStatusLabel(pet.toString());
+        setPetImage(pet.getImage());
+        curpet = petSelectorComboBox.getSelectedIndex();
     }
 
     /* ========== DO NOT MODIFY BELOW ========== */

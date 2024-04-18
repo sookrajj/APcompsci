@@ -3,7 +3,7 @@ package Q4.VirtualPetLab;
 public class Fox extends Pet{
     public Fox(String name) {
         super(name);
-        super.setImage(ImageHelper.getRandomDogImg());
+        super.setImage(ImageHelper.getRandomFoxImg());
     }
 
     @Override

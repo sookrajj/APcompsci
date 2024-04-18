@@ -49,7 +49,7 @@ public class Cat extends Pet {
     @Override
     public void sleep() {
         // TODO: Implement sleeping behavior for Dog
-        if (getHunger() + 10 < MAX_HUNGER) {
+        if (getHunger() + 10 > MAX_HUNGER) {
             setHunger(MAX_HUNGER);
         }else {
             setHunger(getHunger()+10);
