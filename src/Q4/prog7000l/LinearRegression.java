@@ -42,7 +42,7 @@ public class LinearRegression {
             }
             double obj = 0;
             for (int i = 0; i < m; i++) {
-                obj = e[i] * e[i];
+                obj += e[i] * e[i];
             }
             objective[epoch] = obj;
 
