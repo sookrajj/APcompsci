@@ -16,7 +16,7 @@ public class Perceptron {
     public Perceptron(double lr, int epochs) {
         this.lr = lr;
         this.epochs = epochs;
-        this.bias = 0;
+        this.bias = 1;
         this.activation = this::unit_step;
     }
 
