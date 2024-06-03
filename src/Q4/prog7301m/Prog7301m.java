@@ -1,4 +1,4 @@
-package Q4.Prog7301m;
+package Q4.prog7301m;
 
 import java.io.*;
 import java.util.*;
@@ -50,7 +50,7 @@ public class Prog7301m {
     }
 
     public static void main(String[] args) {
-        final int N_CLASSES = 10;
+        final int N_CLASSES = 1000;
 
         // Training data (28x28 images, so 784 pixels; 10 possible digits [0-9])
         var Xtr = new ArrayList<Double[]>();
@@ -97,7 +97,7 @@ public class Prog7301m {
 
         var frame = new JFrame("Image");
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        frame.add(new JLabel(new ImageIcon(img)));
+        frame.add(new JLabel(new ImageIcon(img.getScaledInstance(256, 256, 4))));
         frame.pack();
         frame.setVisible(true);
     }

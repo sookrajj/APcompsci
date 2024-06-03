@@ -1,14 +1,15 @@
-package Q4.Prog7301m;
+package Q4.prog7301m;
 
+import java.io.Serializable;
 import java.util.Arrays;
 
-public class NNTest {
+public class NNTest implements Serializable {
     public static void main(String[] args) {
         // Test MLP using XOR
         double[][] X_train = {{0, 0}, {0, 1}, {1, 0}, {1, 1}};
         double[][] y_train = {{0}, {1}, {1}, {0}};
-        var model = new MultiLayerPerceptron(new int[]{2, 3, 1}, 0.1,
-                                             new Activations.Tanh());
+        var model = new Q4.prog7301m.MultiLayerPerceptron(new int[]{2, 3, 1}, 0.1,
+                                             new Q4.prog7301m.Activations.Tanh());
         model.train(X_train, y_train, 1000);
         for (double[] x : X_train) {
             double[] result = model.predict(x);

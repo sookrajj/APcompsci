@@ -1,30 +1,34 @@
 package Q4.prog7301m;
 
-public class layer {
-    class neuron {
-        public double[] weights;
-        public double bias;
-        public double value;
-        public double delta;
 
-        public neuron(int prevlayersize) {
-            weights = new double[prevlayersize];
-            bias = Math.random() - .5;
-            value = Math.random() - .5;
-            delta = Math.random() - .5;
-            for (int i = 0; i < weights.length; i++) {
-                weights[i] = Math.random() - .5;
+import java.io.Serializable;
+
+public class layer implements Serializable {
+
+    static class Neurons implements Serializable {
+        public double[] Weights;
+        public double Bias;
+        public double Value;
+        public double Delta;
+
+        public Neurons(int prevlayersize) {
+            Weights = new double[prevlayersize];
+            Bias = Math.random() - .5;
+            Value = Math.random() - .5;
+            Delta = Math.random() - .5;
+            for (int i = 0; i < Weights.length; i++) {
+                Weights[i] = Math.random() - .5;
             }
         }
     }
-    public neuron[] neurons;
+    public Neurons[] neurons;
     public int size;
 
     public layer(int Neurons, int prevlayersize) {
         size = Neurons;
-        neurons = new neuron[size];
+        neurons = new Neurons[size];
         for (int i = 0; i < size; i++) {
-            neurons[i] = new neuron(prevlayersize);
+            neurons[i] = new Neurons(prevlayersize);
         }
     }
 
