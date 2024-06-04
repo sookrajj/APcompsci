@@ -50,7 +50,7 @@ public class Prog7301m {
     }
 
     public static void main(String[] args) {
-        final int N_CLASSES = 1000;
+        final int N_CLASSES = 2000;
 
         // Training data (28x28 images, so 784 pixels; 10 possible digits [0-9])
         var Xtr = new ArrayList<Double[]>();
@@ -73,9 +73,9 @@ public class Prog7301m {
         normalize(X_test, MAX_VAL);
 
         // Create model
-        var model = new MultiLayerPerceptron(new int[]{N_INPUTS, 100, N_CLASSES}, 0.1,
+        var model = new MultiLayerPerceptron(new int[]{N_INPUTS, 100, N_CLASSES}, 1,
                                              new Activations.Sigmoid());
-        model.train(X_train, y_train, 10);
+        model.train(X_train, y_train, 50);
         System.out.println("Final Accuracy: " + model.accuracy(X_test, y_test));
 
         // Pick a random image from the test set (validation)
