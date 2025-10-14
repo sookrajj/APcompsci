@@ -6,6 +6,7 @@ import java.lang.Math;
 public class adjacent {
     public static void main(String[] args) {
         try {
+            //hi
             Scanner input = new Scanner(new File("src/adjacentest.dat"));
             Map<String, ArrayList<String>> map = new HashMap<>();
             while (input.hasNext()) {

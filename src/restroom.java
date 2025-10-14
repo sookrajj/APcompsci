@@ -49,7 +49,8 @@ public class restroom {
             // }
             // System.out.println(q1 + " " + q2 + " " + q3 + " " + q4);
             
-            for (int i = 0; i < 1000000; i++) {
+            for (long i = 1000000; i < 1000000000; i++) {
+//                System.out.print(i + " ");
                 for (int l = 0; l < robots.size(); l++) {
                     var r = robots.get(l);
                     pluh[r.px][r.py] = 0;

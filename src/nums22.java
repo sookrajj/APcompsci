@@ -2,7 +2,7 @@ import java.util.*;
 import java.io.File;
 import java.io.IOException;
 
-public class 22nums {
+public class nums22 {
     public static void main(String[] args) {
         try {
             Scanner input = new Scanner(new File("src/muls.dat"));
