@@ -44,22 +44,47 @@ public class adjacent {
                                 if (checks.get(i).containsKey(l)) {
                                     if (!checks.get(i).get(l).contains(t)) {
                                         if (t.contains("t")) {
-                                count++;
-                            } else {
-                                seen++;
-                                saw++;
-                            }
-                                        checks.get(i).get(l).add(t);
+                                            checks.get(i).get(l).add(t);
+                                            count++;
+                                        }
                                     }
-                                } else {
-                                    checks.get(i).put(l, new ArrayList<>());
-                                    checks.get(i).get(l).add(t);
+                                } else if (checks.get(i).containsKey(t)) {
+                                    if (!checks.get(i).get(t).contains(l)) {
+                                        if (t.contains("t")) {
+                                            checks.get(i).get(t).add(l);
+                                            count++;
+                                        }
+                                    }
                                 }
-                            } else {
-                                checks.put(i, new HashMap<>());
-                                checks.get(i).put(l, new ArrayList<>());
-                                checks.get(i).get(l).add(t);
+                                
+                            } else if (checks.containsKey(i)) {
+                                if (checks.get(i).containsKey(l)) {
+                                    if (!checks.get(i).get(l).contains(t)) {
+                                        if (t.contains("t")) {
+                                            checks.get(i).get(l).add(t);
+                                            count++;
+                                        }
+                                    }
+                                } else if (checks.get(i).containsKey(t)) {
+                                    if (!checks.get(i).get(t).contains(l)) {
+                                        if (t.contains("t")) {
+                                            checks.get(i).get(t).add(l);
+                                            count++;
+                                        }
+                                    }
+                                }
                             }
+                            //             checks.get(i).get(l).add(t);
+                            //         }
+                            //     } else {
+                            //         checks.get(i).put(l, new ArrayList<>());
+                            //         checks.get(i).get(l).add(t);
+                            //     }
+                            // } else {
+                            //     checks.put(i, new HashMap<>());
+                            //     checks.get(i).put(l, new ArrayList<>());
+                            //     checks.get(i).get(l).add(t);
+                            // }
                         }
                     }
                 }
