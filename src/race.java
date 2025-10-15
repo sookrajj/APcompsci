@@ -3,7 +3,7 @@ import java.io.File;
 import java.io.IOException;
 import java.lang.Math;
 
-public class nodes {
+public class race {
      public static int bread(int px, int py, String[][] mat) {
         Queue<Integer> queue = new Queue<>();
         queue.enqueue(px*1000 + py);
