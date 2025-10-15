@@ -3,26 +3,42 @@ import java.io.File;
 import java.io.IOException;
 
 public class towels {
-    public static boolean check(String checkto, Map<String, ArrayList<String>> map) {
+    public static boolean check(String checkto, Map<String, ArrayList<String>> map, int iter) {
         // if (checkto.isEmpty()) return true;
-        if (map.containsKey(checkto.substring(0,1)) {
+        ArrayList<String> tried = new ArrayList<>();
+        if (iter > 10) return false;
+        boolean hi = false;
+        if (map.containsKey(checkto.substring(0,1))) {
             var coms = map.get(checkto.substring(0,1));
-            for (int i = 0; i < coms.size(); i++) {
-              if (checkto.contains(coms.get(i)) {
-                  if (checkto.equals(coms.get(i)) return true;
-                  else {
-                      check(checkto.substring(coms.get(i).length), map);
-                  }
-              }
+            for (int i = 0; i < checkto.length(); i++) {
+                if (coms.contains(checkto)) return true;
+                if (coms.contains(checkto.substring(0,i))) {
+                    hi = check(checkto.substring(i), map, iter+1);
+//                    break;
+                }
             }
+//            for (int i = 0; i < coms.size(); i++) {
+//                for (String l : tried) if (l.contains(coms.get(i))) break;
+//                tried.add(coms.get(i));
+//              if (checkto.length() >= coms.get(i).length()) {
+//                    if (checkto.startsWith(coms.get(i))) {
+//                        System.out.println(checkto);
+//                        if (checkto.equals(coms.get(i))) return true;
+//                        else {
+//                            hi = check(checkto.substring(coms.get(i).length()), map);
+//                            break;
+//                        }
+//                    }
+//                }
+//            }
         }
 
-        return false;
+        return hi;
     }
   
     public static void main(String[] args) {
         try {
-            Scanner input = new Scanner(new File("src/muls.dat"));
+            Scanner input = new Scanner(new File("src/towels.dat"));
             Map<String, ArrayList<String>> map = new HashMap();
             var change = false;
             int tot = 0;
@@ -36,7 +52,7 @@ public class towels {
                 if (!change) {
                   var g = line.split(", ");
                   for (int i = 0; i < g.length; i++) {
-                    if (map.containsKey(g[i].substring(0,1)) {
+                    if (map.containsKey(g[i].substring(0,1))) {
                         map.get(g[i].substring(0,1)).add(g[i]);
                     } else {
                       map.put(g[i].substring(0,1), new ArrayList<>());
@@ -44,7 +60,8 @@ public class towels {
                     }
                   }
                 } else {
-                    tot += check(line, map) ? 1 : 0;
+                    System.out.println("hi");
+                    tot += check(line, map, 0) ? 1 : 0;
                 }
             }
           System.out.println(tot);
