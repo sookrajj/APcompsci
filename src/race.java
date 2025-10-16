@@ -13,10 +13,10 @@ public class race {
             
             l.enqueue(node);
 //            System.out.print(node.data + " ");
-            if (mat[Math.floor(node/1000)+1][node%1000].equals(".")) queue.enqueue(node+1000);
-            if (mat[Math.floor(node/1000)-1][node%1000].equals(".")) queue.enqueue(node-1000);
-            if (mat[Math.floor(node/1000)][node%1000+1].equals(".")) queue.enqueue(node+1);
-            if (mat[Math.floor(node/1000)][node%1000-1].equals(".")) queue.enqueue(node-1);
+            if (mat[(int)Math.floor(node/1000)+1][node%1000].equals(".")) queue.enqueue(node+1000);
+            if (mat[(int)Math.floor(node/1000)-1][node%1000].equals(".")) queue.enqueue(node-1000);
+            if (mat[(int)Math.floor(node/1000)][node%1000+1].equals(".")) queue.enqueue(node+1);
+            if (mat[(int)Math.floor(node/1000)][node%1000-1].equals(".")) queue.enqueue(node-1);
         }
 //        System.out.println();
         return l.size();
@@ -40,9 +40,9 @@ public class race {
             }
             int px = 0;
             int py = 0;
-            for (int i = 0; i < strs.length(); i++) for (int l = 0; l < strs[0].length; l++) if (mat[i][l].equals("S")) px = i; py = l;
+            for (int i = 0; i < strs.length; i++) for (int l = 0; l < strs[0].length; l++) if (strs[i][l].equals("S")) {px = i; py = l;}
             
-            System.out.println(bread(px, py, strs);
+            System.out.println(bread(px, py, strs));
             
 
         } catch (IOException e) {

@@ -6,30 +6,58 @@ import java.lang.Math;
 public class RAM {
      public static int bread(int px, int py, String[][] mat) {
         Queue<Integer> queue = new Queue<>();
-        queue.enqueue(px*1000 + py);
-        Queue<Integer> l = new Queue<>();
+        queue.enqueue(px*10000 + py);
+         Queue<Integer> q = new Queue<>();
+//        ArrayList<Integer> l = new ArrayList<>();
+        int low = 1000000000;
         while (!queue.isEmpty()) {
             Integer node = queue.dequeue();
-            
-            l.enqueue(node);
+//            System.out.println(node);
+            q.enqueue(node);
+//            l.add(node);
+            for (int i = 0; i < 7; i++) {
+                for (int o = 0; o < 7; o++) {
+                    System.out.print(mat[i][o]);
+                }
+                System.out.println();
+            }
+            mat[(int)Math.floor(node/10000.0)][node%10000] = "P";
 //            System.out.print(node.data + " ");
-            if (Math.floor(node/1000)+1 == mat.length && node%1000+1 == mat[0].length) break;
-            if (mat[Math.floor(node/1000)+1][node%1000].equals(".")) queue.enqueue(node+1000);
-            if (mat[Math.floor(node/1000)-1][node%1000].equals(".")) queue.enqueue(node-1000);
-            if (mat[Math.floor(node/1000)][node%1000+1].equals(".")) queue.enqueue(node+1);
-            if (mat[Math.floor(node/1000)][node%1000-1].equals(".")) queue.enqueue(node-1);
+            if ((int)Math.floor(node/10000.0)+1 == mat.length && node%10000+1 == mat[0].length){break;}
+
+            if ((int)Math.floor(node/10000.0)+1 != mat.length) {
+                if (mat[(int)Math.floor(node/10000.0)+1][node%10000].equals(".")) queue.enqueue(node+10000);
+            }
+
+            if ((int)Math.floor(node/10000.0)-1 != -1 ) {
+                if (mat[(int)Math.floor(node/10000.0)-1][node%10000].equals(".")) queue.enqueue(node-10000);
+            }
+            if (node%10000+1 != mat[0].length ) {
+                if (mat[(int)Math.floor(node/10000.0)][node%10000+1].equals(".")) queue.enqueue(node+1);
+            }
+            if (node%10000-1 != -1 ) {
+                if (mat[(int)Math.floor(node/10000.0)][node%10000-1].equals(".")) queue.enqueue(node-1);
+            }
             
         }
+        ArrayList<Integer> what = new ArrayList<>();
+        what.add(q.dequeue());
+        for (int i = 0; i < q.size(); i++) {
+            var t = q.dequeue();
+            if (!what.contains(t)) what.add(t);
+            i--;
+        }
+//         for (int p : l) System.out.println(p);
 //        System.out.println();
-        return l.size();
+        return what.size();
     }
   
     public static void main(String[] args) {
         try {
-            Scanner input = new Scanner(new File("src/nodes.dat"));
+            Scanner input = new Scanner(new File("src/RAMtest.dat"));
             long tot = 0;
             ArrayList<String> str = new ArrayList<>();
-            while (input.hasNext()) {
+            for (int i = 0; i < 12; i++) {
                 var line = input.nextLine();
                 str.add(line);
             }
@@ -39,18 +67,31 @@ public class RAM {
                     strs[i][l] = ".";
                 }
             }
+
             for (int i = 0; i < 12; i++) {
-                for (int l = 0; l < str.get(i).length; l++) {
+                for (int l = 0; l < str.get(i).length(); l++) {
                     int pox = Integer.parseInt(str.get(i).split(",")[0]);
                     int poy = Integer.parseInt(str.get(i).split(",")[1]);
                     strs[pox][poy] = "#";
                 }
             }
+//            for (int i = 0; i < 71; i++) {
+//                for (int l = 0; l < 71; l++) {
+//                    System.out.print(strs[i][l]);
+//                }
+//                System.out.println();
+//            }
             int px = 0;
             int py = 0;
             // for (int i = 0; i < strs.length(); i++) for (int l = 0; l < strs[0].length; l++) if (mat[i][l].equals("S")) px = i; py = l;
             
-            System.out.println(bread(px, py, strs);
+            System.out.println(bread(px, py, strs));
+//            for (int i = 0; i < 71; i++) {
+//                for (int l = 0; l < 71; l++) {
+//                    System.out.print(strs[i][l]);
+//                }
+//                System.out.println();
+//            }
             
 
         } catch (IOException e) {

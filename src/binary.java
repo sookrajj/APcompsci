@@ -16,13 +16,13 @@ public class binary {
                 line = input.nextLine();
               }
               if (check) {
-                  var g = line.split(": );
-                  map.put(g[0], Integer.parseInt(g[1]);
+                  var g = line.split(": ");
+                  map.put(g[0], Integer.parseInt(g[1]));
               } else {
 
               }
             }
-            System.out.println(count);
+//            System.out.println(count);
         } catch (IOException e) {
             System.out.println("Can't find data file.");
         }
