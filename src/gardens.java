@@ -178,6 +178,55 @@ public class gardens {
         return tot;
     }
 
+    public static int newperim(int px, int py, String find, String[][] mat, Map<Integer, ArrayList<Integer>> map) {
+        Map<Integer, ArrayList<Integer>> xcross = new HashMap<>();
+        Map<Integer, ArrayList<Integer>> ycross = new HashMap<>();
+        //adjust will give wrong number
+        for (int i = 0; i < mat.length; i++) {
+            for (int l = 0; l < mat[0].length; l++) {
+                if (mat[i][l].equals(find)) {
+                    if (xcross.containsKey(i)) {
+                        xcross.get(i).add(l);
+                    } else {
+                        xcross.put(i, new ArrayList<Integer>);
+                        xcross.get(i).add(l);
+                    }
+                    if (ycross.containsKey(l)) {
+                        ycross.get(l).add(i);
+                    } else {
+                        ycross.put(l, new ArrayList<Integer>);
+                        ycross.get(l).add(i);
+                    }
+                }
+            }
+        }
+        int sides = 2;
+        for(Integer key : xcross.keySet()) {
+            var t = xcross.get(key);
+            int count = t.get(0);
+            for (int i = 1; i < tot.size()-1; i++) {
+                if (xcross.containsKey(key-1)) {
+                    var check = xcross.get(key-1);
+                    //TODO: use checking against above and below to determine if adding a side is necessary.
+                    if (
+                }
+            }
+        }
+        for(Integer key : xcross.keySet()) {
+            var t = xcross.get(key);
+            int count = t.get(0);
+            sides++;
+            for (int i = 1; i < tot.size()-1; i++) {
+                if (t.get(i) != count+1) {
+                    count++;
+                    sides++;
+                } else {
+                    count++;
+                }
+            }
+        }
+    }
+
 
     public static void main(String[] args) {
         try {
