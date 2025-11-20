@@ -7,8 +7,9 @@ public class nums {
         try {
             Scanner input = new Scanner(new File("src/nums.dat"));
             int count = 0;
+            String line = "";
             while (input.hasNext()) {
-                String line = input.nextLine();
+                line = input.nextLine();
                 String[] newline = line.split(" ");
                 ArrayList<Integer> nums = new ArrayList<>();
                 for (int i = 0; i < newline.length; i++) {
@@ -65,7 +66,7 @@ public class nums {
                             break;
                         }
                         boom = boom || (n1 - n2 > 3 || n1 - n2 <= 0);
-                        if (boom && (n1 - n2 < -3 || n1 - n2 >= 0)) {
+                        if (boom && (n1 - n2 > 3 || n1 - n2 <= 0)) {
                             nums.remove(i+1);
                             i--;
                         }
@@ -86,6 +87,7 @@ public class nums {
                 // count += boom ? 0 : 1;
                 
             }
+            System.out.println(line);
             System.out.println(count);
         } catch (IOException e) {
             System.out.println("Can't find data file.");
